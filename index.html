@@ -644,6 +644,14 @@ header.hd a{border:2px solid #ffe066}
 .toc li a{font-size:19px}
 .cta{font-size:21px}
 
+/* 相場表：見出しを表の中に入れ、左右の空きをなくす */
+.price{gap:16px}
+.price table{table-layout:fixed;border-collapse:separate;border-spacing:0;background:#fff}
+.price th.pcap{background:linear-gradient(180deg,#2f86ea 0%,#0b5fcc 55%,#0a4fb0 100%)!important;color:#fff;text-align:center;font-size:19px;padding:10px;width:auto}
+.price tbody th{width:36%;text-align:center;font-size:18px;padding:12px 8px;background:var(--pale)}
+.price td{text-align:center;font-size:clamp(17px,5vw,21px);padding:12px 6px;color:var(--red);white-space:nowrap}
+.price tbody tr:last-child th,.price tbody tr:last-child td{border-bottom:0}
+
 @media (max-width:380px){.h2-wrap .h2{font-size:26px}.chap h2{font-size:28px}}
 
 @media (max-width:380px){
@@ -874,9 +882,9 @@ header.hd a{border:2px solid #ffe066}
   <div class="wrap">
     <div class="h2-wrap"><p class="sub-lab">まずは</p><h3 class="h2"><span class="y">相場</span>を知っておきましょう</h3></div>
     <div class="price">
-      <table><caption>太陽光パネル</caption>
+      <table><thead><tr><th colspan="2" class="pcap">太陽光パネル</th></tr></thead>
         <tr><th>4kW</th><td>約107万円</td></tr><tr><th>5kW</th><td>約134万円</td></tr><tr><th>6kW</th><td>約160万円</td></tr><tr><th>10kW</th><td>約267万円</td></tr></table>
-      <table><caption>蓄電池</caption>
+      <table><thead><tr><th colspan="2" class="pcap">蓄電池</th></tr></thead>
         <tr><th>5kWh</th><td>約130〜180万円</td></tr><tr><th>7kWh</th><td>約170〜230万円</td></tr><tr><th>10kWh</th><td>約200〜300万円</td></tr><tr><th>12kWh以上</th><td>約250〜350万円</td></tr></table>
     </div>
     <p class="note" style="margin-top:8px">太陽光は1kWあたり 約26.7万円で計算。※工事費込みの目安。屋根の形・メーカー・工事内容で前後します。<span class="kari">【アームズの実際の価格帯に差し替え】</span></p>
