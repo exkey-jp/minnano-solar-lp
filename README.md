@@ -1,0 +1,1 @@
+# minnano-solar-lp
