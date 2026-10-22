@@ -611,6 +611,29 @@ header.hd a{border:2px solid #ffe066}
 .g-l2{white-space:nowrap}
 
 
+/* ===== v4：見出しはボタンに見えないよう「文字だけ」の大きなタイトルに ===== */
+.h2-wrap .h2{display:block;background:none;border:0;box-shadow:none;padding:0;border-radius:0;
+  font-size:30px;font-weight:900;line-height:1.35;letter-spacing:.03em;color:var(--navy);text-shadow:0 2px 0 #fff}
+.h2-wrap .h2::after{content:"";display:block;width:72px;height:6px;border-radius:6px;margin:12px auto 0;
+  background:linear-gradient(90deg,var(--red) 0 33%,var(--yellow) 33% 66%,var(--blue) 66%)}
+.h2-wrap .h2 .y{color:var(--red);text-shadow:0 2px 0 #fff}
+.char .h2-wrap .h2,.blue .h2-wrap .h2{color:#fff;text-shadow:0 3px 0 rgba(0,25,80,.6)}
+.char .h2-wrap .h2 .y,.blue .h2-wrap .h2 .y{color:var(--yellow);text-shadow:0 3px 0 rgba(0,25,80,.6)}
+.sub-lab{background:none!important;box-shadow:none!important;color:var(--blue)!important;font-size:16px;padding:0;margin-bottom:4px}
+.sub-lab::before{content:"＼ "}.sub-lab::after{content:" ／"}
+.char .sub-lab,.blue .sub-lab{color:#ffe600!important}
+/* 章見出しも文字だけに */
+.chap h2{display:block;background:none;border:0;box-shadow:none;padding:0;margin-top:12px;
+  color:#fff;font-size:32px;line-height:1.35;text-shadow:0 3px 0 rgba(0,25,80,.6)}
+.chap h2 .y{color:var(--yellow)}
+.feat-top .s{background:none;box-shadow:none;color:var(--blue);font-size:16px;padding:0}
+/* まとめの一文も枠なし・太字の文章に */
+.close{background:none!important;border:0!important;box-shadow:none!important;padding:4px 2px!important;border-radius:0!important;
+  font-size:18px;font-weight:900;color:var(--navy);text-align:center;line-height:1.75}
+.char .close,.blue .close{color:#fff}
+
+@media (max-width:380px){.h2-wrap .h2{font-size:26px}.chap h2{font-size:28px}}
+
 @media (max-width:380px){
   .fv .hero .big{font-size:100px}.fv .burst{width:96px;height:96px}.fv .burst b{font-size:25px}
   .h2{font-size:22px}.chap h2{font-size:25px}.cta{font-size:18px}
