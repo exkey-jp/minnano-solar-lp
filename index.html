@@ -402,6 +402,31 @@ footer{background:var(--navy);color:#cfdcef;text-align:center;font-size:12.5px;p
 @keyframes ctapulse{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
 .cta-lab{font-size:19px!important;font-weight:900!important;color:var(--orange-d)!important;margin-bottom:8px!important}
 .sticky .cta{font-size:19px!important;padding:13px 52px 13px 16px!important;animation:none}
+
+/* 診断フォーム：わかりやすく */
+.form{padding:0 0 18px!important;overflow:hidden;border:5px solid #ff8a00!important}
+.form>*:not(.f-title):not(.dots){margin-left:16px;margin-right:16px}
+.f-title{background:linear-gradient(180deg,#ff9a1f,#f26b00);color:#fff;text-align:center;font-weight:900;font-size:26px;padding:14px 8px 12px;line-height:1.3;letter-spacing:.04em}
+.f-title small{display:block;font-size:15px;font-weight:800;color:#fff3d6}
+.dots{list-style:none;display:flex;justify-content:center;gap:0;margin:16px 16px 6px;counter-reset:d}
+.dots li{position:relative;flex:1;text-align:center;font-weight:900;font-size:15px;color:#9aa6b6}
+.dots li::before{content:"";display:block;width:30px;height:30px;margin:0 auto 2px;border-radius:50%;background:#e3eaf3;border:3px solid #e3eaf3}
+.dots li::after{content:"";position:absolute;top:15px;left:calc(50% + 18px);right:calc(-50% + 18px);height:3px;background:#e3eaf3}
+.dots li:last-child::after{display:none}
+.dots li.on{color:#f26b00}.dots li.on::before{background:#ff8a00;border-color:#ffd8a8}
+.dots li.done{color:#2f6fbd}.dots li.done::before{background:#2f6fbd;border-color:#2f6fbd}.dots li.done::after{background:#2f6fbd}
+.prog{display:none!important}.pbar{display:none!important}
+.f-guide{text-align:center;font-weight:900;color:#f26b00;font-size:16px;margin-top:6px!important}
+.step h3{font-size:23px!important;background:none!important;padding:4px 0 0!important;color:var(--navy)}
+.opts .o{background:#eef5ff!important;border:3px solid #2f6fbd!important;color:var(--navy)!important;font-size:19px!important;box-shadow:0 4px 0 #2f6fbd!important;border-radius:14px!important}
+.opts .o:active{transform:translateY(3px);box-shadow:0 1px 0 #2f6fbd!important}
+
+/* CTA 文字さらに大きく */
+.cta{font-size:clamp(21px,6.1vw,27px)!important;padding:20px 50px 20px 12px!important;letter-spacing:0;white-space:nowrap}
+.cta .free{font-size:.72em!important}
+.cta .arrow{right:12px!important}
+.sticky .cta{font-size:clamp(19px,5.6vw,23px)!important;padding:12px 50px 12px 12px!important}
+.sticky .cta small{font-size:13px!important;font-weight:800}
 </style>
 </head>
 <body>
@@ -584,11 +609,12 @@ footer{background:var(--navy);color:#cfdcef;text-align:center;font-size:12.5px;p
 
 <section class="form-sec" id="form">
   <img class="form-hd" src="form_hd.webp" alt="入力するだけ！約30秒 わが家の削減額を無料で診断！ 無料・約30秒・しつこい営業なし">
-  <img class="gift-img" src="I19.webp" alt="このページを見た方限定 Amazonギフトカード 最大10万円分プレゼント" loading="lazy">
-  <p class="gift-bd" style="text-align:center">初回相談 ¥2,000／お見積もり ¥5,000／ご成約で合計 ¥100,000</p>
   <div class="form" id="qform">
+    <div class="f-title">かんたん無料診断<small>（全5問・約30秒）</small></div>
+    <ol class="dots"><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li></ol>
     <div class="prog"><span id="pnum">質問 1／5</span><span class="rest" id="prest"></span></div>
     <div class="pbar"><i id="pbar"></i></div>
+    <p class="f-guide">▼ 当てはまるものをタップしてください</p>
     <div class="qs">
       <div class="step on" data-s="1"><h3>太陽光パネルは設置していますか？</h3><div class="opts"><button class="o">設置していない</button><button class="o">設置している（10年以上）</button><button class="o">設置している（10年未満）</button></div></div>
       <div class="step" data-s="2"><h3>毎月の電気代</h3><div class="opts"><button class="o">1万円未満</button><button class="o">1万〜2万円</button><button class="o">2万〜3万円</button><button class="o">3万円以上</button></div><button class="back">戻る</button></div>
@@ -606,6 +632,10 @@ footer{background:var(--navy);color:#cfdcef;text-align:center;font-size:12.5px;p
         <button class="back">戻る</button></div>
     </div>
   </div>
+  <div style="margin-top:22px">
+  <img class="gift-img" src="I19.webp" alt="このページを見た方限定 Amazonギフトカード 最大10万円分プレゼント" loading="lazy">
+  <p class="gift-bd" style="text-align:center">初回相談 ¥2,000／お見積もり ¥5,000／ご成約で合計 ¥100,000</p>
+  </div>
   <div class="gift-cond">
     <p>※ギフトの進呈条件：対象は持ち家の一戸建て・対応エリア内／初回相談＝お電話でのヒアリング完了／見積もり＝現地調査の上でお見積もりを提出／成約＝工事完了後に¥93,000（相談・見積もり分と合わせて合計10万円分）／1世帯1回／進呈時期・方法<span class="kari">【◯】</span>／他キャンペーンとの併用<span class="kari">【可否】</span></p>
     <p style="margin-top:6px">※本キャンペーンは当社による提供です。Amazonではお問い合わせを受け付けていません。Amazon、Amazon.co.jpおよびそれらのロゴはAmazon.com, Inc.またはその関連会社の商標です。</p>
@@ -615,20 +645,21 @@ footer{background:var(--navy);color:#cfdcef;text-align:center;font-size:12.5px;p
 <footer>© みんなの住まい.com</footer>
 </div>
 
-<div class="sticky" id="sticky"><a class="cta" href="#form"><span><span class="free">無料</span>電気代の削減額を診断する<small>入力たった30秒</small></span><span class="arrow">›</span></a></div>
+<div class="sticky" id="sticky"><a class="cta" href="#form"><span><span class="free">無料</span>いくら下がるか診断する<small>入力たった30秒・しつこい営業なし</small></span><span class="arrow">›</span></a></div>
 
 <script>
 (function(){
   const s=document.getElementById('sticky'); const seen=new Set();
-  const io=new IntersectionObserver(es=>{es.forEach(e=>{e.isIntersecting?seen.add(e.target):seen.delete(e.target)}); s.classList.toggle('hide',seen.size>0)},{threshold:.1});
-  document.querySelectorAll('.js-cta,#form').forEach(el=>io.observe(el));
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{e.isIntersecting?seen.add(e.target):seen.delete(e.target)}); s.classList.toggle('hide',seen.size>0)},{threshold:0});
+  document.querySelectorAll('.js-cta,#form,#qform').forEach(el=>io.observe(el));
 })();
 (function(){
   const steps=[...document.querySelectorAll('#qform .step')]; let cur=1; const total=steps.length;
   const show=n=>{cur=n;steps.forEach(st=>st.classList.toggle('on',+st.dataset.s===n));
     document.getElementById('pnum').textContent='質問 '+n+'／'+total;
     document.getElementById('prest').textContent=n>=3&&n<total?'あと'+(total-n)+'問':(n===total?'最後です':'');
-    document.getElementById('pbar').style.width=(n/total*100)+'%';};
+    document.getElementById('pbar').style.width=(n/total*100)+'%';
+    document.querySelectorAll('#qform .dots li').forEach((li,i)=>{li.className=i+1<n?'done':(i+1===n?'on':'')});};
   steps.forEach(st=>st.querySelectorAll('.opts .o').forEach(b=>b.addEventListener('click',()=>show(Math.min(cur+1,total)))));
   document.getElementById('next4').addEventListener('click',()=>show(5));
   document.querySelectorAll('#qform .back').forEach(b=>b.addEventListener('click',()=>show(Math.max(cur-1,1))));
