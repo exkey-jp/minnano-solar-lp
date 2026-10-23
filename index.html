@@ -280,8 +280,9 @@ header.hd a{background:var(--orange);color:#fff;font-weight:800;font-size:13px;t
 .feat h3{font-size:19px;font-weight:900;color:var(--navy);line-height:1.4}
 .feat p{font-size:15.5px;line-height:1.65;margin-top:2px}
 .feat-num{font-size:52px;font-weight:900;color:var(--blue);line-height:1;margin-right:2px}
-.makers{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
-.maker{background:#fff;border:1px solid var(--line);border-radius:8px;text-align:center;padding:14px 4px;font-weight:800;color:#9aa3ae;font-size:14.5px;line-height:1.3}
+.makers{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
+.maker{background:transparent;border:0;border-radius:0;text-align:center;padding:0;font-weight:800;color:#9aa3ae;font-size:14.5px;line-height:1.3}
+.maker img{width:100%;height:auto;display:block}
 .maker small{display:block;font-size:11px;font-weight:500}
 .warranty{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line)}
 .warranty th{background:#f3f6fa;color:var(--navy);font-weight:800;font-size:15px;padding:12px;width:38%;text-align:left;border-bottom:1px solid var(--line)}
@@ -295,6 +296,7 @@ header.hd a{background:var(--orange);color:#fff;font-weight:800;font-size:13px;t
 .voice .ba{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:12px;background:#f6f8fb;border-radius:10px;padding:10px;font-weight:800}
 .voice .ba .b{color:#8a94a0;font-size:18px}.voice .ba .a{color:var(--blue-d);font-size:24px}
 .voice .ba i{font-style:normal;color:var(--orange)}
+.voice .vph{position:relative;margin-top:12px}.voice .vph img{width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:10px}.voice .vph span{position:absolute;right:6px;bottom:6px;background:rgba(0,0,0,.5);color:#fff;font-size:11px;padding:1px 6px;border-radius:3px}
 .voice .c{margin-top:10px;font-size:15.5px;line-height:1.75}
 .voice .kansou{font-size:12.5px;color:var(--sub);text-align:right}
 
@@ -381,6 +383,25 @@ footer{background:var(--navy);color:#cfdcef;text-align:center;font-size:12.5px;p
 .gift-img{display:block;width:100%;max-width:560px;margin:0 auto 6px}
 .html-sec{padding:44px 0}
 .html-sec .h2{font-size:24px}
+
+/* フォームを目立たせる */
+.form-sec{background:#2f6fbd!important;padding:0 14px 44px!important}
+.form-sec .form-hd{display:block;width:calc(100% + 28px);margin:0 -14px 6px;height:auto}
+.form-sec .gift-img{margin-top:6px}
+.form-sec .gift-bd{color:#e3edf9!important}
+.form{border:4px solid #ffde3b!important;border-radius:18px!important;box-shadow:0 8px 0 rgba(0,30,80,.35)!important;padding:20px 16px!important}
+.prog{font-size:16px!important}
+.step h3{font-size:22px!important;background:#fff8d6;border-radius:10px;padding:10px 6px}
+.o{font-size:18px!important;padding:16px 40px 16px 16px!important;border-width:3px!important}
+.form-sec .gift-cond{color:#d9e6f7!important}
+
+/* CTAを目立たせる */
+.cta{font-size:24px!important;line-height:1.35!important;padding:20px 60px 20px 22px!important;box-shadow:0 6px 0 var(--orange-d),0 10px 24px rgba(200,80,0,.35)!important;animation:ctapulse 2.4s ease-in-out infinite}
+.cta .free{display:inline-block;background:#fff;color:var(--orange);border-radius:6px;padding:0 8px;margin-right:6px;font-size:.8em;vertical-align:.1em}
+.cta .arrow{width:36px!important;height:36px!important;margin-top:-18px!important;font-size:22px!important}
+@keyframes ctapulse{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+.cta-lab{font-size:19px!important;font-weight:900!important;color:var(--orange-d)!important;margin-bottom:8px!important}
+.sticky .cta{font-size:19px!important;padding:13px 52px 13px 16px!important;animation:none}
 </style>
 </head>
 <body>
@@ -422,8 +443,8 @@ footer{background:var(--navy);color:#cfdcef;text-align:center;font-size:12.5px;p
   <p class="note" style="margin-bottom:8px">施工実績 <span class="kari">1,200件</span>／太陽光事業 <span class="kari">12年</span>　<span class="kari">※仮の数字（【20XX年X月時点・当社調べ】の注記を入れる）</span></p>
   <img class="gift-img" src="I19.webp" alt="このページを見た方限定 Amazonギフトカード 最大10万円分プレゼント" loading="lazy">
   <p class="gift-bd">初回相談 ¥2,000／お見積もり ¥5,000／ご成約で合計 ¥100,000</p>
-  <span class="cta-lab">＼ 約30秒でわかる！ ／</span>
-  <a class="cta js-cta" href="#form"><span>わが家の削減額を<br>無料で診断する</span><span class="arrow">›</span></a>
+  <span class="cta-lab">＼ 入力たった30秒！ ／</span>
+  <a class="cta js-cta" href="#form"><span><span class="free">無料</span>わが家の電気代が<br>いくら下がるか診断する</span><span class="arrow">›</span></a>
   <p class="note cta-note">※ギフトの進呈条件はフォーム下をご確認ください</p>
 </div>
 
@@ -437,8 +458,8 @@ footer{background:var(--navy);color:#cfdcef;text-align:center;font-size:12.5px;p
 <div class="blk"><p class="note">※賦課金単価は経済産業省の公表値。東北電力は2026年9月28日の同社発表。30年の金額は月額3万円が続いた場合の単純計算（値上がりは含みません）</p></div>
 <div class="cta-band">
   
-  <span class="cta-lab">＼ 約30秒でわかる！ ／</span>
-  <a class="cta js-cta" href="#form"><span>わが家の削減額を<br>無料で診断する</span><span class="arrow">›</span></a>
+  <span class="cta-lab">＼ 入力たった30秒！ ／</span>
+  <a class="cta js-cta" href="#form"><span><span class="free">無料</span>わが家の電気代が<br>いくら下がるか診断する</span><span class="arrow">›</span></a>
   
 </div>
 
@@ -449,8 +470,8 @@ footer{background:var(--navy);color:#cfdcef;text-align:center;font-size:12.5px;p
 <div class="cta-band">
   <img class="gift-img" src="I19.webp" alt="このページを見た方限定 Amazonギフトカード 最大10万円分プレゼント" loading="lazy">
   <p class="gift-bd">初回相談 ¥2,000／お見積もり ¥5,000／ご成約で合計 ¥100,000</p>
-  <span class="cta-lab">＼ 約30秒でわかる！ ／</span>
-  <a class="cta js-cta" href="#form"><span>わが家の削減額を<br>無料で診断する</span><span class="arrow">›</span></a>
+  <span class="cta-lab">＼ 入力たった30秒！ ／</span>
+  <a class="cta js-cta" href="#form"><span><span class="free">無料</span>わが家の電気代が<br>いくら下がるか診断する</span><span class="arrow">›</span></a>
   
 </div>
 
@@ -460,8 +481,8 @@ footer{background:var(--navy);color:#cfdcef;text-align:center;font-size:12.5px;p
 <div class="blk"><p class="note">※売電単価は買取プラン・認定時期で異なります。買う単価は東北電力 従量電灯Bの<span class="kari">【三段階目＋賦課金】</span>の例<span class="kari">【要確認】</span></p></div>
 <div class="cta-band">
   
-  <span class="cta-lab">＼ 約30秒でわかる！ ／</span>
-  <a class="cta js-cta" href="#form"><span>うちはいくら下がる？<br>無料で診断する</span><span class="arrow">›</span></a>
+  <span class="cta-lab">＼ 入力たった30秒！ ／</span>
+  <a class="cta js-cta" href="#form"><span><span class="free">無料</span>わが家の電気代が<br>いくら下がるか診断する</span><span class="arrow">›</span></a>
   
 </div>
 
@@ -479,8 +500,8 @@ footer{background:var(--navy);color:#cfdcef;text-align:center;font-size:12.5px;p
     <p class="note" style="margin-top:8px">※診断書には、20年間の支出として交換費用も入れて試算します。年数はメーカー・製品で異なります</p></div></section>
 <div class="cta-band pale">
   
-  <span class="cta-lab">＼ 約30秒でわかる！ ／</span>
-  <a class="cta js-cta" href="#form"><span>うちの回収年数を<br>無料で診断する</span><span class="arrow">›</span></a>
+  <span class="cta-lab">＼ 入力たった30秒！ ／</span>
+  <a class="cta js-cta" href="#form"><span><span class="free">無料</span>うちは何年で<br>元が取れるか診断する</span><span class="arrow">›</span></a>
   
 </div>
 
@@ -488,8 +509,8 @@ footer{background:var(--navy);color:#cfdcef;text-align:center;font-size:12.5px;p
 <img class="sx" src="I13.webp" alt="その見積もり、6つを確認してください。1本体価格 2工事費 3支払総額 4補助金 5保証 6比べる条件" loading="lazy" decoding="async">
 <div class="cta-band">
   
-  <span class="cta-lab">＼ 他社の見積もりもOK ／</span>
-  <a class="cta js-cta" href="#form"><span>今の見積もりを<br>無料で確認してもらう</span><span class="arrow">›</span></a>
+  <span class="cta-lab">＼ 入力たった30秒！ ／</span>
+  <a class="cta js-cta" href="#form"><span><span class="free">無料</span>今の見積もりを<br>プロに確認してもらう</span><span class="arrow">›</span></a>
   
 </div>
 <img class="sx" src="I14.webp" alt="蓄電池のトラブル相談が約4倍に（2016年度325件→2020年度1,314件）。こんな営業に注意：この値段は今日だけです／電力会社の関連会社です／無料点検のついでに…" loading="lazy" decoding="async">
@@ -503,33 +524,26 @@ footer{background:var(--navy);color:#cfdcef;text-align:center;font-size:12.5px;p
 <div class="cta-band pale">
   <img class="gift-img" src="I19.webp" alt="このページを見た方限定 Amazonギフトカード 最大10万円分プレゼント" loading="lazy">
   <p class="gift-bd">初回相談 ¥2,000／お見積もり ¥5,000／ご成約で合計 ¥100,000</p>
-  <span class="cta-lab">＼ 約30秒でわかる！ ／</span>
-  <a class="cta js-cta" href="#form"><span>わが家の削減額を<br>無料で診断する</span><span class="arrow">›</span></a>
+  <span class="cta-lab">＼ 入力たった30秒！ ／</span>
+  <a class="cta js-cta" href="#form"><span><span class="free">無料</span>わが家の電気代が<br>いくら下がるか診断する</span><span class="arrow">›</span></a>
   
 </div>
 <section class="html-sec bg-pale" style="padding-top:20px"><div class="wrap"><div class="hgroup" style="margin-top:52px"><span class="kicker">取扱メーカー</span><h2 class="h2">ご家庭に合う組み合わせを</h2></div>
-    <div class="makers"><div class="maker">メーカーA<small>ロゴ（仮）</small></div><div class="maker">メーカーB<small>ロゴ（仮）</small></div><div class="maker">メーカーC<small>ロゴ（仮）</small></div><div class="maker">メーカーD<small>ロゴ（仮）</small></div><div class="maker">メーカーE<small>ロゴ（仮）</small></div><div class="maker">メーカーF<small>ロゴ（仮）</small></div></div>
-
-    <div class="hgroup" style="margin-top:52px"><span class="kicker">保証・アフター</span><h2 class="h2">導入したあとも、<span class="mk">ずっと</span></h2></div>
-    <p class="lead-p" style="margin-bottom:12px">メーカーと工事会社に別々に連絡する必要はありません。窓口は当社ひとつです。</p>
-    <table class="warranty">
-      <tr><th>メーカー保証</th><td><span class="kari">【◯年】</span></td></tr>
-      <tr><th>施工保証</th><td><span class="kari">【◯年】</span>（工事が原因の不具合を無償で修理）</td></tr>
-      <tr><th>自然災害の補償</th><td><span class="kari">【◯年】</span>（火災・落雷・風災・水害など）</td></tr>
-      <tr><th>定期点検</th><td><span class="kari">【◯年に1回・無償】</span></td></tr>
-      <tr><th>故障したとき</th><td><span class="kari">【◯時間以内】</span>にご連絡</td></tr>
-    </table></div></section>
+    <div class="makers"><div class="maker"><img src="mk_01.png" alt="京セラ" loading="lazy"></div><div class="maker"><img src="mk_02.png" alt="ニチコン" loading="lazy"></div><div class="maker"><img src="mk_03.png" alt="オムロン" loading="lazy"></div><div class="maker"><img src="mk_04.png" alt="長州産業" loading="lazy"></div><div class="maker"><img src="mk_05.png" alt="シャープ" loading="lazy"></div><div class="maker"><img src="mk_06.png" alt="ダイヤモンドエレクトリック" loading="lazy"></div><div class="maker"><img src="mk_07.png" alt="スマートソーラー" loading="lazy"></div><div class="maker"><img src="mk_08.png" alt="パナソニック" loading="lazy"></div><div class="maker"><img src="mk_09.png" alt="スマートスター" loading="lazy"></div><div class="maker"><img src="mk_10.png" alt="村田製作所" loading="lazy"></div><div class="maker"><img src="mk_11.png" alt="ファーウェイ" loading="lazy"></div><div class="maker"><img src="mk_12.png" alt="リミックスポイント" loading="lazy"></div><div class="maker"><img src="mk_13.png" alt="ネクストエナジー" loading="lazy"></div><div class="maker"><img src="mk_14.png" alt="ジンコソーラー" loading="lazy"></div><div class="maker"><img src="mk_15.png" alt="エリーパワー" loading="lazy"></div><div class="maker"><img src="mk_16.png" alt="住友電工" loading="lazy"></div></div></div></section>
 
 <section class="sec bg-white">
   <div class="wrap">
     <div class="hgroup"><span class="kicker">当社で導入した</span><h2 class="h2">お客様の声</h2></div>
     <div class="voice"><div class="top"><div class="av"><svg class="ico"><use href="#i-user"/></svg></div><div><p class="meta kari">埼玉県にお住まい</p><p class="h kari">補助金を使って、電気代が約9割下がりました</p></div></div>
+      <div class="vph"><img src="voice_p1.webp" alt="お客様のイメージ" loading="lazy"><span>写真はイメージ</span></div>
       <div class="ba"><span class="b kari">24,800円</span><i>▶</i><span class="a kari">2,500円</span></div>
       <p class="c kari">【決め手・工事の印象・導入後の変化をご本人の言葉で】</p><p class="kansou">※個人の感想です</p></div>
     <div class="voice"><div class="top"><div class="av"><svg class="ico"><use href="#i-user"/></svg></div><div><p class="meta kari">宮城県にお住まい</p><p class="h kari">停電の夜も、冷蔵庫と照明が使えて安心でした</p></div></div>
+      <div class="vph"><img src="voice_p2.webp" alt="お客様のイメージ" loading="lazy"><span>写真はイメージ</span></div>
       <div class="ba"><span class="b kari">31,500円</span><i>▶</i><span class="a kari">3,100円</span></div>
       <p class="c kari">【決め手・工事の印象・導入後の変化をご本人の言葉で】</p><p class="kansou">※個人の感想です</p></div>
     <div class="voice"><div class="top"><div class="av"><svg class="ico"><use href="#i-user"/></svg></div><div><p class="meta kari">千葉県にお住まい</p><p class="h kari">他社の見積もりを確認してもらい、納得して決められました</p></div></div>
+      <div class="vph"><img src="voice_p3.webp" alt="お客様のイメージ" loading="lazy"><span>写真はイメージ</span></div>
       <div class="ba"><span class="b kari">19,200円</span><i>▶</i><span class="a kari">2,100円</span></div>
       <p class="c kari">【決め手・工事の印象・導入後の変化をご本人の言葉で】</p><p class="kansou">※個人の感想です</p></div>
     <p class="note" style="margin-top:10px">※個人の感想です。ご契約プランや機器によって異なり、効果を保証するものではありません</p>
@@ -541,19 +555,12 @@ footer{background:var(--navy);color:#cfdcef;text-align:center;font-size:12.5px;p
 <div class="blk"><p class="note">※診断書の数字は記入例です。補助制度の有無・内容・受付状況は、自治体や時期により異なります</p></div>
 <div class="cta-band">
   
-  <span class="cta-lab">＼ 約30秒でわかる！ ／</span>
-  <a class="cta js-cta" href="#form"><span>わが家の診断書を<br>無料でもらう</span><span class="arrow">›</span></a>
+  <span class="cta-lab">＼ 入力たった30秒！ ／</span>
+  <a class="cta js-cta" href="#form"><span><span class="free">無料</span>わが家の診断書を<br>受け取る</span><span class="arrow">›</span></a>
   
 </div>
 <img class="sx" src="I18.webp" alt="お申込みから設置まで。1無料診断に申し込む 2お電話でご状況を確認 3現地調査（無料） 4診断書とお見積もりをご説明（ここで決めなくて大丈夫） 5ご契約・補助金の申請 6工事 7運転開始・定期点検" loading="lazy" decoding="async">
 <div class="blk"><p class="note">※設置までの期間は補助金の審査期間により前後します（最短<span class="kari">約3週間</span>）</p></div>
-<section class="html-sec bg-pale" style="padding-top:10px"><div class="wrap"><div class="hgroup" style="margin-top:52px"><span class="kicker">対象エリア</span><h2 class="h2">対象となるお住まい</h2></div>
-    <div class="area">
-      <div><h4>対応エリア</h4><p class="rg">関東</p><p class="pr"><span>東京都</span><span>神奈川県</span><span>埼玉県</span><span>千葉県</span><span>茨城県</span><span>栃木県</span><span>群馬県</span></p><p class="rg">東北</p><p class="pr"><span>宮城県</span><span>福島県</span></p></div>
-      <div><h4>お住まい</h4><p style="font-weight:800;margin-top:4px">持ち家の一戸建て<span style="font-weight:500;font-size:14.5px;color:var(--sub)">（賃貸・マンションは対象外）</span></p><p style="font-size:15.5px;margin-top:4px">築年数や屋根の状態は現地調査で確認します。屋根の修繕が先に必要な場合もお伝えします</p></div>
-    </div>
-  </div></section>
-
 <section class="sec bg-white">
   <div class="wrap">
     <div class="hgroup"><span class="kicker">Q&amp;A</span><h2 class="h2">よくあるご質問</h2></div>
@@ -575,9 +582,7 @@ footer{background:var(--navy);color:#cfdcef;text-align:center;font-size:12.5px;p
 </section>
 
 <section class="form-sec" id="form">
-  <p style="text-align:center;font-weight:800;color:var(--blue)">＼ 入力するだけ！約30秒 ／</p>
-  <h2>わが家の削減額を<br>無料で診断</h2>
-  <p class="trust"><span>✓ 無料</span><span>✓ 約30秒</span><span>✓ しつこい営業はしません</span></p>
+  <img class="form-hd" src="form_hd.webp" alt="入力するだけ！約30秒 わが家の削減額を無料で診断！ 無料・約30秒・しつこい営業なし">
   <img class="gift-img" src="I19.webp" alt="このページを見た方限定 Amazonギフトカード 最大10万円分プレゼント" loading="lazy">
   <p class="gift-bd" style="text-align:center">初回相談 ¥2,000／お見積もり ¥5,000／ご成約で合計 ¥100,000</p>
   <div class="form" id="qform">
@@ -606,24 +611,10 @@ footer{background:var(--navy);color:#cfdcef;text-align:center;font-size:12.5px;p
   </div>
 </section>
 
-<section class="company">
-  <div class="wrap">
-    <h3>会社概要</h3>
-    <dl>
-      <dt>会社名</dt><dd class="kari">【会社名】</dd>
-      <dt>所在地</dt><dd class="kari">【所在地】</dd>
-      <dt>建設業許可</dt><dd class="kari">【建設業許可番号】</dd>
-      <dt>電気工事業</dt><dd class="kari">【登録電気工事業者番号】</dd>
-      <dt>受付時間</dt><dd class="kari">【受付時間】</dd>
-      <dt>電話番号</dt><dd class="kari">【電話番号】</dd>
-    </dl>
-    <p style="margin-top:16px;font-size:15px;text-align:center"><a href="#">プライバシーポリシー</a></p>
-  </div>
-</section>
 <footer>© みんなの住まい.com</footer>
 </div>
 
-<div class="sticky" id="sticky"><a class="cta" href="#form"><span>わが家の削減額を無料で診断する<small>約30秒・無料</small></span><span class="arrow">›</span></a></div>
+<div class="sticky" id="sticky"><a class="cta" href="#form"><span><span class="free">無料</span>電気代の削減額を診断する<small>入力たった30秒</small></span><span class="arrow">›</span></a></div>
 
 <script>
 (function(){
