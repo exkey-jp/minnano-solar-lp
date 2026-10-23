@@ -9,1042 +9,701 @@
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
-  --blue:#0b6bd3; --blue-d:#0a4fa3; --navy:#12306b; --sky1:#1d7fe0; --sky2:#8fd0ff;
-  --red:#e60b1a; --red-d:#b8000c; --yellow:#ffe600; --yellow-l:#fff9cf; --orange:#ff8a00; --orange-d:#e05a00;
-  --char:#3b3f45; --char-d:#2b2e33; --ink:#1f2633; --sub:#5b6474; --line:#d9e2ee; --pale:#eef6ff;
+  --ink:#27303d; --sub:#5d6878; --navy:#1f3b6a; --blue:#3a78c4; --blue-d:#2a5d9f; --blue-l:#eaf2fb; --line:#d6e2f0;
+  --char:#3d434a; --cream:#fffdf3; --yellow:#ffde3b; --mark:#fff176; --red:#e0322b; --orange:#f2711c; --orange-d:#c9540a;
+  --gray-bar:#c4c9cf;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:"Noto Sans JP",sans-serif;color:var(--ink);line-height:1.75;font-size:17px;
-  background:#cfe8fb url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Ccircle cx='2' cy='2' r='1.4' fill='%23ffffff' opacity='.7'/%3E%3C/svg%3E");}
+body{font-family:"M PLUS Rounded 1c","Hiragino Maru Gothic ProN","Noto Sans JP",sans-serif;color:var(--ink);font-size:17px;line-height:1.8;font-weight:500;background:#e9eef4}
 img{max-width:100%;display:block}
 a{color:inherit}
-.page{max-width:640px;margin:0 auto;background:#fff;box-shadow:0 0 40px rgba(10,60,120,.18);overflow:hidden;padding-bottom:84px}
-.num,.en{font-family:"Montserrat",sans-serif;font-weight:800;letter-spacing:-.01em}
-.nw{white-space:nowrap}.ib{display:inline-block}
-.kari{text-decoration:underline dotted #ff6a00 2px;text-underline-offset:3px}
-.mk{background:linear-gradient(transparent 58%,var(--yellow) 58%);padding:0 2px}
+b,strong{font-weight:800}
+.page{max-width:640px;margin:0 auto;background:#fff;overflow:hidden;padding-bottom:84px;box-shadow:0 0 30px rgba(20,40,70,.12)}
+.wrap{padding:0 20px}
+.note{font-size:13.5px;color:var(--sub);line-height:1.65}
+.kari{text-decoration:underline dotted #f08a24 2px;text-underline-offset:3px}
+.mk{background:linear-gradient(transparent 58%,var(--mark) 58%)}
 .red{color:var(--red)}
-.note{font-size:13px;color:var(--sub);line-height:1.6}
-.wrap{padding:0 18px}
+.nw{white-space:nowrap}
+.ico{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 
-/* ---------- header ---------- */
-header.hd{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:8px 12px;background:#fff;border-bottom:3px solid var(--blue)}
+header.hd{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:8px 14px;background:#fff;border-bottom:1px solid var(--line)}
 header.hd img{height:30px;width:auto}
-header.hd a{background:linear-gradient(#ff9d1f,var(--orange-d));color:#fff;font-weight:900;font-size:14px;text-decoration:none;padding:7px 12px;border-radius:999px;box-shadow:0 3px 0 #a33d00;line-height:1.2;text-align:center}
+header.hd a{background:var(--orange);color:#fff;font-weight:800;font-size:13px;text-decoration:none;padding:7px 14px;border-radius:999px;line-height:1.25;text-align:center}
 
-/* ---------- FV (HTML版。ChatGPT画像ができたら .fv-img に差し替え) ---------- */
-.fv{position:relative;background:linear-gradient(180deg,#0756c2 0%,var(--sky1) 38%,#5fb6f5 72%,#bfe6ff 100%);padding:18px 14px 0;color:#fff;overflow:hidden}
-.fv::before{content:"";position:absolute;left:-120px;top:-140px;width:360px;height:360px;border-radius:50%;
-  background:radial-gradient(circle,#fff 0,rgba(255,255,255,.75) 18%,rgba(255,255,255,0) 62%);pointer-events:none}
-.fv .band{position:relative;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:8px;background:var(--yellow);color:var(--navy);font-weight:900;font-size:21px;
-  border-radius:6px;padding:6px 10px;box-shadow:0 4px 0 #c9a800;max-width:420px;}
-.fv .band svg{flex:0 0 auto}
-.fv .mid{position:relative;display:flex;align-items:center;justify-content:center;gap:14px;margin-top:16px}
-.fv .lead{position:relative;font-weight:900;font-size:clamp(20px,6vw,26px);line-height:1.25;text-shadow:0 2px 6px rgba(0,40,110,.45);letter-spacing:.02em}
-.fv .lead .y{color:var(--yellow);font-size:1.6em}
-.fv .lead .y .num{font-size:1.25em}
-.fv .hero{position:relative;display:flex;align-items:flex-end;justify-content:center;margin-top:2px;line-height:1}
-.fv .hero .big{font-family:"Montserrat",sans-serif;font-weight:900;font-size:clamp(64px,17.5vw,118px);color:var(--red);letter-spacing:-.04em;
-  text-shadow:4px 0 #fff,-4px 0 #fff,0 4px #fff,0 -4px #fff,3px 3px #fff,-3px 3px #fff,3px -3px #fff,-3px -3px #fff,
-  6px 0 #fff,-6px 0 #fff,0 6px #fff,0 -6px #fff,5px 5px #fff,-5px 5px #fff,5px -5px #fff,-5px -5px #fff,0 10px 0 #0a3f8f,6px 12px 16px rgba(0,30,90,.45)}
-.fv .hero .yen{white-space:nowrap;font-weight:900;font-size:clamp(26px,7.6vw,42px);margin:0 0 10px 2px;text-shadow:0 3px 0 #0a3f8f}
-.fv .hero sup{font-size:12.5px;align-self:flex-start;margin-top:22px;font-weight:700}
-.fv .burst{position:relative;flex:0 0 auto;width:clamp(96px,28vw,124px);height:clamp(96px,28vw,124px);display:grid;place-items:center;text-align:center;color:#fff;font-weight:900;line-height:1.05;}
-.fv .burst::before{content:"";position:absolute;inset:0;background:var(--red);border:4px solid var(--yellow);
-  clip-path:polygon(50% 0%,61% 12%,76% 5%,80% 21%,96% 22%,90% 38%,100% 50%,90% 62%,96% 78%,80% 79%,76% 95%,61% 88%,50% 100%,39% 88%,24% 95%,20% 79%,4% 78%,10% 62%,0% 50%,10% 38%,4% 22%,20% 21%,24% 5%,39% 12%)}
-.fv .burst span{position:relative;font-size:15.5px}.fv .burst b{position:relative;display:block;font-size:clamp(26px,8vw,34px);font-family:"Montserrat"}
-.fv .card{position:relative;background:#fff;color:var(--ink);border-radius:14px;border:2px solid #e8c55a;box-shadow:0 6px 18px rgba(0,40,100,.25);padding:14px 14px 12px;margin:14px 2px 0}
-.fv .card h2{font-size:17px;font-weight:900;color:var(--navy);text-align:center}
-.fv .bars{margin-top:8px;display:grid;grid-template-columns:62px 1fr;gap:8px 8px;align-items:center}
-.fv .bars .lb{font-size:14.5px;font-weight:900;color:var(--sub);text-align:right;line-height:1.2}
-.fv .bars .lb.r{color:var(--red)}
-.fv .bars .tr{position:relative;height:34px;display:flex;align-items:center}
-.fv .bars .b{height:26px;border-radius:0 6px 6px 0}
-.fv .bars .now .b{width:52%;background:repeating-linear-gradient(135deg,#a9b1bd 0 8px,#9aa3b0 8px 16px)}
-.fv .bars .aft .b{width:6.6%;background:var(--red)}
-.fv .bars .v{margin-left:8px;font-weight:900;white-space:nowrap}
-.fv .bars .now .v{font-size:20px;color:#7b8594;text-decoration:line-through 3px rgba(230,11,26,.7)}
-.fv .bars .aft .v{font-size:30px;color:var(--red)}
-.fv .bars .v .num{font-size:1.15em}
-.fv .bars sup{font-size:12px;color:var(--ink)}
-.fv .diff{margin:10px auto 0;width:max-content;background:var(--yellow);color:var(--navy);border-radius:999px;padding:3px 18px;font-weight:900;font-size:16.5px;box-shadow:0 3px 0 #d1b100}
-.fv .diff b{font-size:22px;color:var(--red)}
-.fv .bubble{position:relative;z-index:2;margin:14px auto -40px;width:220px;height:84px;border-radius:50%;background:var(--yellow);color:var(--navy);display:grid;place-items:center;text-align:center;font-weight:900;line-height:1.3;font-size:17px;box-shadow:0 4px 0 #d1b100}
-.fv .bubble::after{content:"";position:absolute;bottom:-14px;left:50%;margin-left:-10px;border:12px solid transparent;border-top:16px solid var(--yellow);border-bottom:0}
-.fv .bubble b{color:var(--red);font-size:19px}
-.fv .town{position:relative;height:170px;margin:0 -14px;background:url(case3.jpg) center 62%/cover;
-  -webkit-mask-image:linear-gradient(transparent 0,#000 38%);mask-image:linear-gradient(transparent 0,#000 38%)}
-.fv-notes{background:var(--blue-d);color:#d9ebff;padding:8px 14px;font-size:12.5px;line-height:1.55}
-.slot.is-img{margin:0 -18px}
-.sec>.wrap>.slot.is-img:first-child{margin-top:-44px}
-.bridge+.slot.is-img{margin-top:22px}
-.slot.is-img img{width:100%;height:auto;display:block}
-.slot[data-img="S09"].is-img{margin:0}
-.slot[data-img="S15"].is-img{margin:0 -14px 10px}
-.fv-img{display:none}
 .fv-img img{width:100%;height:auto}
-/* 画像版FVに切り替えるときは body に class="use-fv-img" を付ける */
-.use-fv-img .fv{display:none}.use-fv-img .fv-img{display:block}
+.fv-notes{background:var(--blue-d);color:#e3edf9;padding:10px 16px;font-size:12.5px;line-height:1.6}
 
-/* ---------- CTA ---------- */
-.cta-wrap{padding:18px 16px 6px;text-align:center}
-.cta-lab{display:inline-block;font-weight:900;color:var(--orange-d);font-size:16.5px;margin-bottom:6px}
-.cta-lab::before{content:"＼ "}.cta-lab::after{content:" ／"}
-.cta{position:relative;display:flex;align-items:center;justify-content:center;gap:10px;width:100%;max-width:520px;margin:0 auto;padding:16px 56px 16px 20px;border:3px solid #fff;border-radius:999px;
-  background:linear-gradient(180deg,#ffb11f 0%,#ff8a00 48%,#f26b00 100%);color:#fff;font-weight:900;font-size:20px;line-height:1.35;text-decoration:none;text-shadow:0 2px 0 rgba(160,60,0,.55);
-  box-shadow:0 6px 0 #b54800,0 10px 18px rgba(180,70,0,.35);cursor:pointer;font-family:inherit;transition:transform .1s}
-.cta:active{transform:translateY(4px);box-shadow:0 2px 0 #b54800}
-.cta small{display:block;font-size:13.5px;font-weight:700}
-.cta .arrow{position:absolute;right:14px;top:50%;width:32px;height:32px;margin-top:-16px;border-radius:50%;background:#fff;color:var(--orange-d);display:grid;place-items:center;font-size:18px;text-shadow:none}
-.cta::after{content:"";position:absolute;inset:0;border-radius:999px;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.45) 45%,transparent 60%);background-size:250% 100%;animation:shine 3.2s infinite}
-@keyframes shine{0%{background-position:150% 0}60%,100%{background-position:-60% 0}}
-.cta-note{margin-top:10px}
-.gift{position:relative;margin:4px auto 14px;max-width:520px;border-radius:12px;overflow:hidden;background:linear-gradient(90deg,#fffbe0,#fff3b0);border:2px solid #f4c400;display:flex;align-items:center;gap:10px;padding:10px 12px;text-align:left}
-.gift .tag{flex:0 0 auto;background:var(--red);color:#fff;font-weight:900;font-size:12.5px;padding:3px 8px;border-radius:4px;line-height:1.3;text-align:center}
-.gift p{font-weight:900;color:var(--navy);font-size:clamp(13px,3.8vw,16px);line-height:1.3;white-space:nowrap}
-.gift p b{color:var(--red);font-size:1.9em;font-family:"Montserrat"}
-.gift .card-ic{flex:0 0 40px;height:40px;margin-left:auto;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect x='5' y='16' width='30' height='20' rx='2' fill='%23e60b1a'/%3E%3Crect x='3' y='10' width='34' height='8' rx='2' fill='%23ff3b47'/%3E%3Crect x='17' y='10' width='6' height='26' fill='%23ffe600'/%3E%3Cpath d='M20 10c-3-7-11-7-9-2 1 2 5 2 9 2zm0 0c3-7 11-7 9-2-1 2-5 2-9 2z' fill='none' stroke='%23ffe600' stroke-width='2.5'/%3E%3C/svg%3E") center/contain no-repeat}
-.gift-bd{font-size:13px;color:var(--sub);margin:-8px 0 12px}
+.sec{padding:56px 0}
+.bg-white{background:#fff}
+.bg-pale{background:var(--blue-l)}
+.bg-char{background:var(--char) repeating-linear-gradient(90deg,rgba(255,255,255,.025) 0 2px,transparent 2px 10px);color:#fff}
+.bg-blue{background:var(--blue);color:#fff}
 
-/* ---------- section common ---------- */
-.sec{padding:44px 0 40px;position:relative}
-.sec.white{background:#fff}
-.sec.pale{background:var(--pale)}
-.sec.yel{background:var(--yellow-l)}
-.sec.char{background:var(--char);color:#fff}
-.sec.blue{background:linear-gradient(180deg,var(--blue) 0,#2f8ee8 100%);color:#fff}
-.sub-lab{text-align:center;font-weight:900;font-size:16.5px;color:var(--sub);letter-spacing:.05em}
-.sub-lab::before{content:"＼ "}.sub-lab::after{content:" ／"}
-.char .sub-lab,.blue .sub-lab{color:#fff}
-.h2{text-align:center;font-weight:900;font-size:25px;line-height:1.45;color:var(--navy);letter-spacing:.02em}
-.char .h2,.blue .h2{color:#fff}
-.h2 .y{color:var(--red)}
-.char .h2 .y,.blue .h2 .y{color:var(--yellow)}
-.h2-wrap{margin:44px 0 18px}
-.h2-wrap:first-child{margin-top:0}
-.h2-line{display:block;width:60px;height:4px;border-radius:4px;background:var(--yellow);margin:10px auto 0}
-.bridge{margin:30px 0 0;text-align:center;font-weight:900;font-size:17px;color:var(--navy);line-height:1.6;position:relative;padding-top:30px}
-.bridge::before{content:"";position:absolute;left:50%;top:0;margin-left:-11px;border:11px solid transparent;border-top:14px solid #f4c400;border-bottom:0}
-.char .bridge,.blue .bridge{color:#fff}
-.lead-p{font-size:17px;line-height:1.85}
-.close{margin-top:18px;font-weight:700;font-size:17px;line-height:1.8;background:#fff;border-left:6px solid var(--yellow);padding:12px 14px;border-radius:0 10px 10px 0;box-shadow:0 2px 10px rgba(20,60,120,.08)}
-.char .close{color:var(--ink)}
-.img-note{font-size:12.5px;color:var(--sub);text-align:right;margin-top:4px}
-.zu{width:100%;border-radius:10px}
-
-/* chapter header */
-.chap{background:linear-gradient(180deg,var(--navy),#1b4596);color:#fff;text-align:center;padding:30px 16px 34px;position:relative}
-.chap::after{content:"";position:absolute;left:50%;bottom:-18px;margin-left:-22px;border:22px solid transparent;border-top:18px solid #1b4596;border-bottom:0;z-index:2}
-.chap .no{display:inline-block;background:var(--yellow);color:var(--navy);font-family:"Montserrat";font-weight:900;font-size:15.5px;padding:2px 14px;border-radius:999px;letter-spacing:.08em}
-.chap h2{font-size:29px;font-weight:900;line-height:1.4;margin-top:10px}
+.hgroup{text-align:center;margin-bottom:26px}
+.kicker{display:inline-block;font-size:16px;font-weight:800;color:var(--blue);letter-spacing:.06em}
+.kicker::before{content:"＼  "}.kicker::after{content:"  ／"}
+.h2{font-size:28px;font-weight:900;line-height:1.45;color:var(--navy);letter-spacing:.02em}
+.h2 .mk{padding:0 2px}
+.h2 .r{color:var(--red)}
+.bg-char .kicker,.bg-blue .kicker{color:#fff}
+.bg-char .h2,.bg-blue .h2{color:#fff}
+.h2 .y{color:var(--yellow)}
+.pill-h{position:relative;background:#fff;color:var(--navy);border-radius:999px;text-align:center;font-weight:900;font-size:24px;padding:14px 18px;margin:0 4px 34px;line-height:1.4}
+.pill-h::after{content:"";position:absolute;left:50%;bottom:-16px;margin-left:-14px;border:14px solid transparent;border-top:16px solid #fff;border-bottom:0}
+.chap{background:var(--navy);color:#fff;text-align:center;padding:30px 20px 34px;position:relative}
+.chap::after{content:"";position:absolute;left:50%;bottom:-16px;margin-left:-18px;border:18px solid transparent;border-top:16px solid var(--navy);border-bottom:0;z-index:2}
+.chap p{font-size:15px;color:#c9d6ea;font-weight:700}
+.chap h2{font-size:28px;font-weight:900;line-height:1.45;margin-top:4px}
 .chap h2 .y{color:var(--yellow)}
+.tokoro{display:flex;align-items:flex-end;justify-content:space-between;padding:14px 18px 0;background:#fff;border-bottom:3px solid var(--navy)}
+.tokoro img{width:92px;height:auto}
+.tokoro p{flex:1;text-align:center;font-weight:900;font-size:24px;color:var(--navy);padding-bottom:22px;letter-spacing:.06em}
+.lead-p{font-size:17px;line-height:1.9}
+.close{margin-top:22px;text-align:center;font-weight:800;font-size:19px;line-height:1.75;color:var(--navy)}
+.bg-char .close,.bg-blue .close{color:#fff}
+.bridge{margin-top:36px;text-align:center;font-weight:800;font-size:19px;line-height:1.75;color:var(--navy)}
+.bridge::before{content:"";display:block;width:2px;height:28px;background:var(--line);margin:0 auto 12px}
 
-/* ---------- cases ---------- */
-.cases{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 18px 12px;margin:0 -18px;-webkit-overflow-scrolling:touch}
-.case{flex:0 0 82%;scroll-snap-align:center;background:#fff;border-radius:14px;overflow:hidden;border:3px solid var(--char-d);box-shadow:0 4px 14px rgba(0,0,0,.12)}
-.case .who{background:var(--char-d);color:#fff;font-weight:900;font-size:17px;padding:6px 12px}
-.case .ph{position:relative}
-.case .ph img{width:100%;aspect-ratio:16/10;object-fit:cover}
-.case .ph span{position:absolute;right:6px;bottom:6px;background:rgba(0,0,0,.55);color:#fff;font-size:12px;padding:1px 6px;border-radius:3px}
-.case .ph .cut{position:absolute;left:8px;bottom:8px;background:var(--yellow);color:var(--red);font-weight:900;font-size:22px;padding:2px 10px;border-radius:4px;box-shadow:0 2px 0 #c9a800}
-.case .bd{padding:10px 14px 14px}
-.case .spec{font-size:14.5px;color:var(--sub);font-weight:700}
-.case .ba{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:center;margin-top:8px}
-.case .ba .t{font-family:"Montserrat";font-weight:800;font-size:14.5px;padding:1px 8px;border-radius:4px;text-align:center}
-.case .ba .t.b{background:#e6e9ee;color:var(--sub)}
-.case .ba .t.a{background:var(--red);color:#fff}
-.case .ba .v{font-weight:900;font-size:22px;color:#7b8594}
-.case .ba .v.a{font-size:34px;color:var(--red);line-height:1.1}
-.case .ba .v .num{font-size:1.1em}
-.swipe{text-align:center;font-size:14px;color:var(--sub);font-weight:700}
-.swipe::before{content:"← "}.swipe::after{content:" →"}
+.cta-wrap{padding:30px 0 4px;text-align:center}
+.wrap.cta-wrap{padding:30px 20px 4px}
+.cta-lab{display:block;font-weight:800;font-size:15px;color:var(--orange-d);margin-bottom:6px}
+.bg-char .cta-lab,.bg-blue .cta-lab{color:var(--yellow)}
+.cta{position:relative;display:flex;align-items:center;justify-content:center;width:100%;max-width:520px;margin:0 auto;padding:17px 56px 17px 24px;border:0;border-radius:999px;
+  background:var(--orange);color:#fff;font-family:inherit;font-weight:900;font-size:20px;line-height:1.4;text-decoration:none;box-shadow:0 5px 0 var(--orange-d);cursor:pointer}
+.cta:active{transform:translateY(3px);box-shadow:0 2px 0 var(--orange-d)}
+.cta small{display:block;font-size:12.5px;font-weight:700}
+.cta .arrow{position:absolute;right:16px;top:50%;width:30px;height:30px;margin-top:-15px;border-radius:50%;background:#fff;color:var(--orange);display:grid;place-items:center;font-size:18px}
+.cta-note{margin-top:10px}
+.bg-char .note,.bg-blue .note{color:#d9e3ef}
 
-/* toc */
-.toc{margin-top:30px;border-radius:16px;overflow:hidden;border:3px solid var(--blue);background:#fff}
-.toc h3{background:var(--blue);color:#fff;text-align:center;font-size:19px;font-weight:900;padding:8px}
-.toc ol{list-style:none;padding:8px 14px}
-.toc li a{display:flex;align-items:center;gap:12px;padding:10px 4px;border-bottom:1px dashed var(--line);text-decoration:none;font-weight:900;font-size:17px;color:var(--navy)}
+.gift2{position:relative;display:flex;align-items:center;gap:6px;max-width:560px;margin:22px auto 10px;padding:22px 12px 16px;border-radius:16px;border:3px solid #fff;outline:2px solid #ff9a1a;
+  background:repeating-conic-gradient(from 0deg at 30% 50%,rgba(255,255,255,.10) 0 8deg,transparent 8deg 18deg),linear-gradient(180deg,#ffc23a 0%,#ff9d12 55%,#ff8400 100%);text-align:left}
+.g-rib{position:absolute;left:50%;top:-16px;transform:translateX(-50%);white-space:nowrap;background:var(--red);color:#fff;font-weight:900;font-size:14.5px;padding:4px 22px 5px;clip-path:polygon(0 0,100% 0,96% 50%,100% 100%,0 100%,4% 50%)}
+.g-visual{position:relative;flex:0 0 33%;height:88px}
+.g-card{position:absolute;inset:8px 6px 6px 4px;background:#fff;border:3px solid #5a2a00;border-radius:10px;overflow:hidden;display:grid;place-items:center}
+.g-card::before{content:"";position:absolute;left:28%;top:0;bottom:0;width:9px;background:#ff8a00}
+.g-card::after{content:"";position:absolute;left:0;right:0;top:34%;height:9px;background:#ff8a00}
+.g-card span{position:relative;z-index:1;margin-left:18%;margin-top:22%;font-weight:900;font-size:11px;line-height:1.15;color:#222;text-align:center;white-space:nowrap}
+.g-coin{position:absolute;width:28px;height:28px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff6b0 0,#ffd400 40%,#e0a400 100%);border:2px solid #9a5a00;z-index:2}
+.g-coin.c1{left:-4px;bottom:-4px}.g-coin.c2{right:-6px;top:-2px;width:22px;height:22px}
+.g-txt{flex:1;text-align:center;line-height:1.15;white-space:nowrap}
+.g-l1,.g-l2{font-weight:900;color:#fff;font-size:clamp(17px,4.8vw,23px);text-shadow:2px 0 #6b3000,-2px 0 #6b3000,0 2px #6b3000,0 -2px #6b3000,2px 2px #6b3000,-2px 2px #6b3000,2px -2px #6b3000,-2px -2px #6b3000}
+.g-l2{margin-top:6px}
+.g-l2 b{font-size:1.9em;color:#ffe600;vertical-align:-.08em;text-shadow:3px 0 #6b3000,-3px 0 #6b3000,0 3px #6b3000,0 -3px #6b3000,3px 3px #6b3000,-3px 3px #6b3000,3px -3px #6b3000,-3px -3px #6b3000}
+.gift-bd{font-size:13px;color:var(--sub);margin-bottom:4px}
+.bg-blue .gift-bd,.bg-char .gift-bd{color:#e3edf9}
+
+.cases{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 20px 14px;margin:0 -20px;-webkit-overflow-scrolling:touch}
+.case{flex:0 0 80%;scroll-snap-align:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 16px 14px}
+.case .who{font-weight:800;color:var(--navy);font-size:17px}
+.case .spec{font-size:14px;color:var(--sub)}
+.bars2{position:relative;display:flex;align-items:flex-end;gap:16px;height:150px;margin-top:14px;padding:0 6px;border-bottom:2px solid #b8c2ce}
+.bars2 .col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%}
+.bars2 .bar{width:100%;border-radius:4px 4px 0 0;display:flex;flex-direction:column;justify-content:center;align-items:center;color:#fff;font-weight:800;font-size:13px;line-height:1.3;text-align:center}
+.bars2 .bar b{font-size:17px}
+.bars2 .before .bar{background:#b8bfc7}
+.bars2 .after .bar{background:var(--blue)}
+.bars2 .bubble{position:absolute;right:4px;top:-2px;width:74px;height:74px;border-radius:50%;background:var(--orange);color:#fff;display:grid;place-items:center;text-align:center;font-weight:900;font-size:13px;line-height:1.15}
+.bars2 .bubble b{display:block;font-size:22px;color:#fff}
+.bars2-lb{display:flex;gap:16px;padding:6px 6px 0}.bars2-lb span{flex:1;text-align:center;font-weight:800;font-size:14px;color:var(--navy)}
+.swipe{text-align:center;font-size:13.5px;color:var(--sub);font-weight:700;margin-top:4px}
+
+.toc{margin-top:36px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.toc h3{background:var(--navy);color:#fff;text-align:center;font-size:18px;font-weight:800;padding:10px}
+.toc ol{list-style:none;padding:6px 16px}
+.toc li a{display:flex;align-items:center;gap:12px;padding:12px 2px;border-bottom:1px dashed var(--line);text-decoration:none;font-weight:800;font-size:18px;color:var(--navy)}
 .toc li:last-child a{border-bottom:0}
 .toc li a::after{content:"›";margin-left:auto;color:var(--blue);font-size:22px}
-.toc .num{flex:0 0 30px;height:30px;border-radius:50%;background:var(--yellow);display:grid;place-items:center;font-size:16.5px;color:var(--navy)}
-.toc .last{background:var(--yellow-l);text-align:center;font-weight:900;font-size:15.5px;padding:10px;color:var(--red)}
+.toc .n{flex:0 0 30px;height:30px;border-radius:50%;background:var(--blue-l);color:var(--blue);display:grid;place-items:center;font-size:15px}
+.toc .last{background:var(--blue-l);text-align:center;font-weight:800;font-size:15px;padding:10px;color:var(--navy)}
 
-/* worries */
-.worry{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
-.worry li{list-style:none;background:#fff;color:var(--ink);border-radius:14px;padding:12px 10px 12px 34px;font-weight:700;font-size:15.5px;line-height:1.5;position:relative}
-.worry li::before{content:"";position:absolute;left:10px;top:14px;width:16px;height:16px;border-radius:3px;background:var(--red);
-  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 8l4 4 8-9' stroke='black' stroke-width='3' fill='none'/%3E%3C/svg%3E") center/contain no-repeat;
-  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M2 8l4 4 8-9' stroke='black' stroke-width='3' fill='none'/%3E%3C/svg%3E") center/contain no-repeat}
-.face{width:92px;height:92px;margin:14px auto 0;border-radius:50%;background:#e8ebef;display:grid;place-items:center;font-size:50px}
+.checks{list-style:none;background:#fff;border-radius:14px;padding:8px 18px;border:1px solid var(--line)}
+.checks li{position:relative;padding:13px 0 13px 34px;border-bottom:1px dashed var(--line);font-weight:700;font-size:17px;line-height:1.6}
+.checks li:last-child{border-bottom:0}
+.checks li::before{content:"";position:absolute;left:0;top:15px;width:22px;height:22px;border-radius:5px;border:2px solid var(--blue)}
+.checks li::after{content:"";position:absolute;left:7px;top:17px;width:8px;height:13px;border:solid var(--red);border-width:0 3px 3px 0;transform:rotate(45deg)}
 
-/* reasons */
-.rbox{margin-top:16px;background:var(--yellow-l);border:4px solid var(--yellow);border-radius:4px;padding:30px 14px 16px;position:relative;color:var(--ink)}
-.rbox .ttl{position:absolute;left:50%;top:-24px;transform:translateX(-50%);white-space:nowrap;background:var(--yellow);color:var(--navy);font-weight:900;font-size:21px;padding:4px 24px;clip-path:polygon(0 0,100% 0,96% 50%,100% 100%,0 100%,4% 50%)}
-.rbox .ttl b{color:var(--red);font-size:34px;font-family:"Montserrat";line-height:1;vertical-align:-3px}
-.reason{background:#fff;margin-top:14px}
-.reason .lab{background:var(--char-d);color:#fff;text-align:center;font-weight:900;font-size:14.5px;letter-spacing:.1em}
-.reason .in{padding:10px 12px 12px}
-.reason h4{color:var(--red);font-size:19px;font-weight:900}
-.reason p{font-size:16px;line-height:1.7}
-/* 賦課金グラフ */
-.levy{margin-top:10px;border:1px solid var(--line);border-radius:8px;padding:10px 8px 6px}
-.levy .ttl2{font-size:14px;font-weight:900;color:var(--navy)}
-.levy .bars{display:flex;align-items:flex-end;gap:12px;height:130px;padding:0 6px;border-bottom:2px solid #9aa3b0;margin-top:6px}
-.levy .col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%}
-.levy .col i{display:block;width:70%;background:#c9cfd8;border-radius:3px 3px 0 0}
+.reasons{position:relative;background:var(--cream);border:4px solid var(--yellow);margin-top:50px;padding:70px 18px 22px;color:var(--ink)}
+.reasons .rhead{position:absolute;left:-14px;right:-14px;top:-36px;background:var(--yellow);clip-path:polygon(0 0,100% 0,96% 50%,100% 100%,0 100%,4% 50%);text-align:center;padding:10px 10px 12px;color:var(--ink)}
+.reasons .rhead small{display:block;font-size:14px;font-weight:800}
+.reasons .rhead p{font-size:23px;font-weight:900;line-height:1.3}
+.reasons .rhead p b{color:var(--red);font-size:40px;vertical-align:-5px;margin:0 2px}
+.reason{margin-top:22px}
+.reason .lab{background:var(--char);color:#fff;text-align:center;font-weight:800;font-size:15px;padding:4px;letter-spacing:.1em}
+.reason .lab b{font-size:19px;margin-left:4px}
+.reason .body{display:flex;gap:10px;align-items:center;padding:14px 2px 4px}
+.reason .tx{flex:1}
+.reason h4{font-size:22px;font-weight:900;line-height:1.4}
+.reason h4 .r{color:var(--red)}
+.reason p{font-size:16px;line-height:1.7;margin-top:4px}
+.reason .ri{flex:0 0 64px;width:64px;height:64px;color:#8a9099}
+.levy{margin-top:10px;background:#fff;border:1px solid #e6e2cf;border-radius:10px;padding:12px 10px 8px}
+.levy .t{font-size:13.5px;font-weight:800;color:var(--sub)}
+.levy .bars{display:flex;align-items:flex-end;gap:12px;height:120px;border-bottom:2px solid #b8c2ce;margin-top:6px;padding:0 4px}
+.levy .col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%}
+.levy .col i{display:block;width:70%;background:var(--gray-bar);border-radius:3px 3px 0 0}
 .levy .col.now i{background:var(--red)}
-.levy .col b{font-size:13.5px;font-weight:900;white-space:nowrap}
-.levy .col.now b{color:var(--red);font-size:16.5px}
-.levy .yr{display:flex;gap:12px;padding:0 6px}
-.levy .yr span{flex:1;text-align:center;font-size:12.5px;color:var(--sub);font-weight:700}
+.levy .col b{font-size:13px;white-space:nowrap}
+.levy .col.now b{color:var(--red);font-size:15px}
+.levy .yr{display:flex;gap:12px;padding:4px 4px 0}.levy .yr span{flex:1;text-align:center;font-size:12.5px;color:var(--sub);font-weight:700}
 
-/* bill (4人家族) */
-.bill{background:#fff;color:var(--ink);border-radius:6px;overflow:hidden;margin-top:16px;border-top:5px solid var(--orange)}
-.bill dl{display:grid;grid-template-columns:1fr auto;padding:4px 16px}
-.bill dt,.bill dd{padding:10px 0;border-bottom:1px dashed var(--line);font-weight:900}
-.bill dt{font-size:17px}
-.bill dd{text-align:right;font-size:24px}
-.bill dd .num{font-size:1.1em}
-.bill dl>*:nth-last-child(-n+2){border-bottom:0}
-.bill .tot{background:var(--char-d);color:#fff;text-align:center;padding:14px 10px 16px}
-.bill .tot p{font-size:16.5px;font-weight:700}
-.bill .tot b{display:block;color:var(--yellow);font-size:46px;line-height:1.1;font-weight:900}
-.bill .tot b .num{font-size:1.25em}
+.family-h{position:relative;display:flex;align-items:center;background:#fff;border-radius:999px;padding:8px 18px 8px 8px;margin:64px 0 30px;color:var(--ink)}
+.family-h img{width:108px;margin:-40px 8px 0 0}
+.family-h p{font-size:21px;font-weight:900;white-space:nowrap}
+.family-h p b{color:var(--orange);font-size:32px}
+.family-h::after{content:"";position:absolute;left:50%;bottom:-14px;margin-left:-12px;border:12px solid transparent;border-top:14px solid #fff;border-bottom:0}
+.bill{background:#fff;color:var(--ink);border-top:6px solid var(--orange);padding:16px 18px}
+.bill dl{display:grid;grid-template-columns:1fr auto;row-gap:4px}
+.bill dt{font-weight:700;font-size:17px}
+.bill dd{text-align:right;font-weight:800;font-size:21px}
+.bill .sum{border-top:2px solid var(--ink);margin-top:10px;padding-top:10px;text-align:center;font-weight:800;font-size:17px}
+.bill .sum b{display:block;font-size:46px;line-height:1.2;color:var(--red);font-weight:900}
+.bill .sum b span{font-size:24px}
 
-/* day flow */
-.day{list-style:none;margin-top:16px;display:grid;gap:10px}
-.day li{display:flex;gap:12px;align-items:center;background:#fff;border-radius:12px;padding:12px;box-shadow:0 2px 8px rgba(20,60,120,.08)}
-.day .t{flex:0 0 88px;text-align:center;font-weight:900;font-size:16.5px;color:#fff;background:var(--blue);border-radius:8px;padding:6px 4px;line-height:1.35}
-.day li:nth-child(1) .t{background:#f0a020}.day li:nth-child(2) .t{background:#ffb800;color:var(--navy)}.day li:nth-child(3) .t{background:#4a5bd0}
-.day li.buy{background:#f1f2f4}.day li.buy .t{background:#8a94a3;font-size:14px}
-.day .d{font-size:16.5px;font-weight:700;line-height:1.55}
+.day{list-style:none;display:grid;gap:12px;margin-top:6px}
+.day li{display:flex;gap:14px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px}
+.day .t{flex:0 0 78px;text-align:center;font-weight:800;font-size:15px;color:var(--navy);line-height:1.4}
+.day .t .ico{display:block;margin:0 auto 4px;font-size:34px;color:var(--blue)}
+.day li.buy{background:#f3f5f7}.day li.buy .t .ico{color:#9aa3ad}
+.day .d{font-size:16.5px;font-weight:700;line-height:1.6;border-left:1px solid var(--line);padding-left:14px}
 
-/* cmp */
-.cmp{margin-top:16px;display:grid;gap:12px}
-.cmp .item{background:#fff;border-radius:12px;overflow:hidden;border:2px solid var(--blue)}
-.cmp h4{background:var(--blue);color:#fff;font-size:17px;font-weight:900;padding:5px 12px}
-.cmp .opt{display:grid;grid-template-columns:92px 1fr;gap:8px;padding:8px 12px;border-top:1px solid var(--line);font-size:16px;align-items:center}
-.cmp .opt:first-of-type{border-top:0}
-.cmp .opt b{font-size:14.5px;color:var(--sub)}
-.cmp .opt.set{background:var(--yellow-l)}
-.cmp .opt.set b{color:#fff;background:var(--red);border-radius:4px;text-align:center;padding:1px 4px}
-.cmp .opt.set span{font-weight:900;color:var(--red)}
-
-.cmpt{width:100%;border-collapse:separate;border-spacing:0;margin-top:16px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 10px rgba(20,60,120,.1);table-layout:fixed;font-size:14px;line-height:1.45}
-.cmpt th,.cmpt td{padding:8px 5px;border-bottom:1px solid var(--line);text-align:center;vertical-align:middle}
-.cmpt thead th{background:var(--blue);color:#fff;font-weight:900;font-size:14.5px}
+.cmpt{width:100%;border-collapse:collapse;background:#fff;table-layout:fixed;font-size:14.5px;line-height:1.45;border:1px solid var(--line)}
+.cmpt th,.cmpt td{padding:10px 5px;border-bottom:1px solid var(--line);text-align:center;vertical-align:middle}
+.cmpt thead th{background:#eef2f6;color:var(--navy);font-weight:800;font-size:14.5px}
 .cmpt thead th:first-child{width:22%;background:#fff}
-.cmpt thead th.set{background:var(--red);font-size:17px}
-.cmpt tbody th{background:var(--pale);font-weight:900;font-size:13.5px;color:var(--navy)}
-.cmpt td i{display:block;font-style:normal;font-size:20px;font-weight:900;color:var(--blue);line-height:1.2}
-.cmpt td i.x{color:#9aa3b0}
-.cmpt td.set{background:var(--yellow-l);font-weight:900;color:var(--red-d);border-left:3px solid var(--red);border-right:3px solid var(--red)}
+.cmpt thead th.set{background:var(--blue);color:#fff;font-size:17px}
+.cmpt tbody th{font-weight:800;font-size:14px;color:var(--navy);background:#f8fafc}
+.cmpt td i{display:block;font-style:normal;font-size:20px;font-weight:800;color:#8a94a0;line-height:1.2}
+.cmpt td.set{background:#f2f7fd;font-weight:800;color:var(--blue-d)}
 .cmpt td.set i{color:var(--red)}
-.cmpt tr:last-child td.set{border-bottom:3px solid var(--red)}
-/* change (merits) */
-.merit-top{text-align:center;margin-top:6px}
-.merit-top .pair{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:12px}
-.merit-top .pair span{background:var(--yellow);color:var(--navy);font-weight:900;font-size:19px;padding:4px 16px;border-radius:6px}
-.merit-top .pair i{font-style:normal;width:30px;height:30px;border-radius:50%;background:#fff;color:var(--blue);font-weight:900;display:grid;place-items:center}
-.mimg{position:relative;margin-top:16px;border-radius:12px;overflow:hidden}
-.mimg img{width:100%;aspect-ratio:16/9;object-fit:cover}
-.pt{background:#fff;color:var(--ink);border-radius:10px;margin-top:14px;position:relative;padding:14px 14px 12px;box-shadow:0 3px 0 rgba(0,0,0,.12)}
-.pt .lab{position:absolute;left:-2px;top:-12px;background:var(--yellow);color:var(--navy);font-weight:900;font-size:13.5px;padding:2px 12px 2px 10px;clip-path:polygon(0 0,100% 0,92% 50%,100% 100%,0 100%)}
-.pt .lab .num{font-size:18px;vertical-align:-1px;margin-left:3px}
-.pt b{display:block;color:var(--blue);font-size:18px;font-weight:900;margin-top:2px}
-.pt p{font-size:16px;line-height:1.65;margin-top:2px}
 
-/* outage */
-.outage img{border-radius:12px;width:100%}
-.use{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
-.use span{background:#fff;border:2px solid var(--blue);color:var(--blue);font-weight:900;font-size:15px;padding:3px 10px;border-radius:999px}
-.types{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
-.types div{background:#fff;border-radius:10px;padding:10px 12px;border-top:5px solid var(--blue)}
-.types div:last-child{border-top-color:var(--orange)}
-.types h4{font-weight:900;font-size:17px}
+.pt{position:relative;background:#fff;color:var(--ink);border:2px solid #cfe0f3;border-radius:8px;margin-top:40px;padding:34px 18px 18px;overflow:hidden}
+.pt .lab{position:absolute;left:-2px;top:-2px;background:var(--yellow);color:var(--navy);font-weight:800;font-size:14px;padding:6px 26px 6px 16px;clip-path:polygon(0 0,100% 0,88% 100%,0 100%)}
+.pt .lab b{font-size:22px;margin-left:6px;vertical-align:-2px}
+.pt h4{position:relative;z-index:1;font-size:23px;font-weight:900;color:var(--blue-d)}
+.pt p{position:relative;z-index:1;font-size:16px;line-height:1.75;margin-top:4px}
+.pt .wm{position:absolute;right:-10px;bottom:-14px;width:120px;height:120px;color:#e3eef9;stroke-width:1.4}
+.pt-wrap{margin-top:-12px}
+
+.use{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.use div{background:#fff;border:1px solid var(--line);border-radius:12px;text-align:center;padding:12px 4px 10px;font-weight:800;font-size:14.5px;color:var(--navy);line-height:1.4}
+.use .ico{display:block;margin:0 auto 6px;font-size:36px;color:var(--blue)}
+.types{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.types div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.types h4{font-weight:900;font-size:17px;color:var(--navy)}
 .types p{font-size:15px;line-height:1.6}
-.ur{display:grid;grid-template-columns:1fr auto 1fr;gap:6px;align-items:center;margin-top:16px}
-.ur .bx{border-radius:12px;text-align:center;padding:12px 6px;background:#fff;border:3px solid #b8c0cc}
-.ur .bx.buy{background:var(--red);border-color:var(--red);color:#fff}
-.ur .bx p{font-weight:900;font-size:16.5px}
-.ur .bx b{display:block;font-size:30px;font-weight:900;line-height:1.2}
-.ur .bx b .num{font-size:1.25em}
-.ur .bx small{font-size:12.5px;font-weight:700}
-.ur .vs{font-weight:900;color:var(--sub)}
-.ur-msg{margin-top:10px;background:var(--yellow);text-align:center;font-weight:900;color:var(--navy);padding:8px;border-radius:8px;font-size:16.5px}
+.ur{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+.ur .bx{border-radius:12px;text-align:center;padding:16px 8px;background:#fff;border:1px solid var(--line)}
+.ur .bx p{font-weight:800;font-size:16px;color:var(--sub)}
+.ur .bx b{display:block;font-size:34px;font-weight:900;line-height:1.3;color:#8a94a0}
+.ur .bx b small{font-size:18px}
+.ur .bx.buy{background:var(--blue);border-color:var(--blue)}
+.ur .bx.buy p,.ur .bx.buy b{color:#fff}
+.ur .bx span{font-size:13px;color:var(--sub)}.ur .bx.buy span{color:#dbe8f7}
+.ur-msg{margin-top:14px;text-align:center;font-weight:800;font-size:18px;color:var(--navy)}
 
-/* price */
-.price{display:grid;gap:12px;margin-top:16px}
-.price table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(20,60,120,.1)}
-.price caption{background:var(--blue);color:#fff;font-weight:900;padding:6px;font-size:17px;caption-side:top;border-radius:10px 10px 0 0}
-.price th,.price td{padding:9px 12px;border-bottom:1px solid var(--line);font-size:16.5px}
-.price th{background:var(--pale);width:38%;text-align:left;font-weight:900}
-.price td{text-align:right;font-weight:900}
-.point{margin-top:16px;font-weight:900;font-size:17px;text-align:center;line-height:1.7}
-.point .mk{color:var(--red)}
+.price{display:grid;gap:16px}
+.price table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);table-layout:fixed}
+.price .pcap{background:var(--navy);color:#fff;font-size:17px;padding:9px;font-weight:800}
+.price tbody th{width:38%;text-align:center;font-size:17px;padding:11px 6px;background:#f6f8fb;border-bottom:1px solid var(--line);font-weight:800}
+.price td{text-align:center;font-size:clamp(17px,5vw,20px);padding:11px 6px;border-bottom:1px solid var(--line);font-weight:800;white-space:nowrap}
+.point{margin-top:20px;text-align:center;font-weight:800;font-size:17px;line-height:1.8}
+.point .big{font-size:24px;color:var(--red)}
+.wf{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}
+.wf .total{background:var(--gray-bar);color:#fff;text-align:center;font-weight:800;padding:10px;border-radius:6px}
+.wf .row{display:flex;gap:3px;margin-top:6px;height:60px}
+.wf .row>div{display:grid;place-items:center;color:#fff;font-weight:800;font-size:13.5px;border-radius:6px;text-align:center;line-height:1.25}
+.wf .pay{background:var(--orange)}.wf .s1{background:var(--navy)}.wf .s2{background:var(--blue)}.wf .s3{background:#7fa9dc}
+.wf .legend{margin-top:12px}
+.wf .legend p{font-size:15px;line-height:1.6;padding:4px 0;border-bottom:1px dashed var(--line)}
+.wf .legend b{display:inline-block;min-width:76px;color:var(--blue-d)}
+.caution{margin-top:16px;border-left:4px solid var(--red);background:#fff4f3;padding:12px 14px;font-weight:700;font-size:16px;color:#9b1c16}
+.notice{margin-top:28px;background:#fff;border:2px solid var(--char);border-radius:4px;overflow:hidden}
+.notice h3{background:var(--char);color:var(--yellow);text-align:center;font-weight:900;font-size:18px;padding:8px;letter-spacing:.08em}
+.notice p{padding:14px 16px;font-weight:700;font-size:16.5px;line-height:1.8}
 
-/* subsidy waterfall */
-.wf{background:#fff;border-radius:12px;padding:14px;margin-top:16px;box-shadow:0 2px 10px rgba(20,60,120,.1)}
-.wf .cap{font-weight:900;font-size:15.5px;text-align:center;color:var(--navy)}
-.wf .total{background:#9aa3b0;color:#fff;text-align:center;font-weight:900;padding:8px;border-radius:6px;margin-top:8px}
-.wf .row{display:flex;gap:3px;margin-top:6px;height:56px}
-.wf .row>div{display:grid;place-items:center;color:#fff;font-weight:900;font-size:14px;border-radius:6px;text-align:center;line-height:1.2}
-.wf .pay{background:var(--red)}.wf .s1{background:var(--blue)}.wf .s2{background:#3f95ea}.wf .s3{background:#7cb8f2}
-.wf .legend p{font-size:14.5px;margin-top:6px;line-height:1.55}
-.wf .legend b{display:inline-block;min-width:66px;background:var(--pale);color:var(--blue);border-radius:4px;text-align:center;margin-right:6px;font-size:13.5px}
-.caution{margin-top:12px;background:#fff0f0;border:2px solid var(--red);color:var(--red-d);font-weight:900;padding:10px 12px;border-radius:8px;font-size:16px}
-.notice{margin-top:24px;background:#111;color:#fff;padding:22px 16px;position:relative;text-align:center}
-.notice::before,.notice::after{content:"";position:absolute;left:0;right:0;height:10px;background:repeating-linear-gradient(-45deg,var(--yellow) 0 12px,#111 12px 24px)}
-.notice::before{top:0}.notice::after{bottom:0}
-.notice h3{display:inline-block;background:var(--yellow);color:#111;font-weight:900;font-size:16.5px;padding:2px 16px;border-radius:999px}
-.notice p{margin-top:10px;font-weight:700;font-size:16px;line-height:1.7;text-align:left}
-.notice p .y{color:var(--yellow)}
-
-/* sims */
-.sim{background:#fff;border-radius:12px;overflow:hidden;margin-top:14px;box-shadow:0 3px 12px rgba(20,60,120,.12)}
-.sim .hd2{background:var(--blue);color:#fff;padding:8px 14px}
-.sim .hd2 b{display:block;font-size:17px;font-weight:900}
-.sim .hd2 span{font-size:13.5px}
-.sim .bd{padding:12px 14px}
-.ba2{display:flex;align-items:baseline;justify-content:center;gap:6px;font-weight:900;font-size:17px;flex-wrap:wrap}
-.ba2 .num{font-size:28px;color:#7b8594}
-.ba2 .num.after{font-size:42px;color:var(--red)}
-.ba2 .to{color:var(--red);font-size:22px}
-.sim dl{display:grid;grid-template-columns:1fr 1fr 1fr;margin-top:10px;text-align:center;border:1px solid var(--line);border-radius:8px;overflow:hidden}
-.sim dt{grid-row:1;background:var(--pale);font-size:13.5px;font-weight:900;padding:3px}
-.sim dd{grid-row:2;font-weight:900;font-size:15.5px;padding:6px 2px}
-.sim dd .num{font-size:20px;color:var(--navy)}
-.formula{margin-top:14px;background:var(--navy);color:#fff;text-align:center;font-weight:900;padding:12px;border-radius:10px;font-size:16.5px;line-height:1.6}
-.pb{background:#fff;border-radius:12px;padding:14px;margin-top:14px;box-shadow:0 3px 12px rgba(20,60,120,.12)}
+.sim{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 16px 16px;margin-top:18px}
+.sim h4{font-size:18px;font-weight:900;color:var(--navy)}
+.sim .sp{font-size:13.5px;color:var(--sub)}
+.sim .bars2{height:190px}
+.sim dl{display:grid;grid-template-columns:repeat(3,1fr);margin-top:14px;text-align:center;border-top:1px solid var(--line)}
+.sim dt{grid-row:1;font-size:13px;font-weight:800;color:var(--sub);padding-top:8px}
+.sim dd{grid-row:2;font-weight:900;font-size:18px;color:var(--navy)}
+.formula{margin-top:12px;background:var(--blue-l);text-align:center;font-weight:800;padding:12px;border-radius:10px;font-size:15.5px;line-height:1.6;color:var(--navy)}
+.pb{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px;margin-top:14px}
 .pb h4{font-weight:900;font-size:17px;color:var(--navy)}
-.pb .r{display:grid;grid-template-columns:96px 1fr;gap:8px;align-items:center;margin-top:10px;font-size:14.5px;font-weight:700}
-.pb .bar{background:#9aa3b0;color:#fff;font-weight:900;font-size:16.5px;padding:6px 8px;border-radius:0 6px 6px 0;white-space:nowrap;min-width:max-content}
-.pb .bar.with{background:var(--red);font-size:18px}
-.cap2{font-size:12.5px;color:var(--sub);text-align:right;margin-top:4px}
-.life{display:grid;gap:8px;margin-top:16px}
-.life div{background:#fff;border-radius:10px;padding:10px 14px;border-left:6px solid var(--blue)}
-.life b{display:block;font-weight:900;font-size:17px}
+.pb .r{display:grid;grid-template-columns:86px 1fr;gap:8px;align-items:center;margin-top:10px;font-size:14px;font-weight:700}
+.pb .bar{background:var(--gray-bar);color:#fff;font-weight:800;font-size:15px;padding:6px 10px;border-radius:0 6px 6px 0;white-space:nowrap;min-width:max-content}
+.pb .bar.with{background:var(--blue);font-size:17px}
+.life{display:grid;gap:10px}
+.life div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+.life b{display:block;font-size:17px;color:var(--navy)}
 .life span{font-size:15.5px}
 
-/* estimate */
-.est img{width:78%;margin:16px auto 0;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.15);filter:hue-rotate(48deg) saturate(1.1)}
-.estlist{list-style:none;margin-top:16px;display:grid;gap:8px}
-.estlist li{display:flex;gap:10px;align-items:flex-start;background:#fff;border-radius:10px;padding:10px 12px;font-size:16px;line-height:1.6;box-shadow:0 2px 8px rgba(20,60,120,.08)}
-.estlist .mark{flex:0 0 28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:900;font-family:"Montserrat"}
+.estlist{list-style:none;display:grid;gap:10px}
+.estlist li{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:16px;line-height:1.6}
+.estlist .m{flex:0 0 30px;height:30px;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-weight:800;font-size:15px}
 .estlist b{display:block;font-size:17px;color:var(--navy)}
-.soudan{background:#fff;color:var(--ink);border-radius:12px;padding:14px;margin-top:16px}
-.soudan .ttl2{font-weight:900;font-size:15.5px;text-align:center;background:var(--char-d);color:#fff;border-radius:6px;padding:4px}
-.soudan .bars{display:flex;align-items:flex-end;justify-content:center;gap:40px;height:170px;border-bottom:2px solid #9aa3b0;margin-top:12px;position:relative}
-.soudan .col{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;height:100%;width:80px}
-.soudan .col i{width:100%;background:#c9cfd8;border-radius:4px 4px 0 0}
-.soudan .col.now i{background:var(--red)}
-.soudan .col b{font-weight:900;font-size:17px}.soudan .col.now b{font-size:26px;color:var(--red)}
-.soudan .x4{position:absolute;right:12px;top:6px;width:74px;height:74px;border-radius:50%;background:var(--yellow);display:grid;place-items:center;font-weight:900;color:var(--navy);line-height:1.1;text-align:center;font-size:14.5px}
-.soudan .x4 b{font-size:28px;color:var(--red)}
-.soudan .yr{display:flex;justify-content:center;gap:40px}.soudan .yr span{width:80px;text-align:center;font-size:13.5px;font-weight:700;color:var(--sub)}
-.quotes{display:grid;gap:10px;margin-top:16px}
-.quotes blockquote{background:#fff;color:var(--ink);border-radius:14px;padding:12px 14px 12px 50px;position:relative;font-weight:700;font-size:16.5px;line-height:1.6}
-.quotes .num{position:absolute;left:12px;top:12px;width:28px;height:28px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center;font-size:15.5px}
-.cool{margin-top:16px;background:#fff;border:3px dashed var(--red);border-radius:10px;padding:12px 14px;color:var(--ink)}
-.cool h4{color:var(--red);font-weight:900}
-.promise{display:grid;gap:12px;margin-top:16px}
-.promise>div{display:flex;gap:12px;background:#fff;border-radius:12px;padding:14px;border:2px solid var(--blue);align-items:flex-start}
-.promise .num{flex:0 0 44px;height:44px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:20px}
-.promise b{font-weight:900;font-size:17px;color:var(--navy);line-height:1.45;display:block}
-.promise p{font-size:15.5px;margin-top:4px}
+.trouble{display:flex;align-items:flex-end;justify-content:center;gap:28px;height:200px;border-bottom:2px solid rgba(255,255,255,.4);position:relative;margin-top:14px}
+.trouble .col{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;width:86px}
+.trouble .col i{width:100%;background:#8c949d;border-radius:4px 4px 0 0}
+.trouble .col.now i{background:var(--yellow)}
+.trouble .col b{font-size:18px;font-weight:900;white-space:nowrap}
+.trouble .col.now b{color:var(--yellow);font-size:24px}
+.trouble .bubble{position:absolute;right:0;top:0;width:80px;height:80px;border-radius:50%;background:var(--orange);display:grid;place-items:center;text-align:center;font-weight:900;font-size:14px;line-height:1.1}
+.trouble .bubble b{display:block;font-size:30px}
+.trouble-yr{display:flex;justify-content:center;gap:28px;padding-top:6px}.trouble-yr span{width:86px;text-align:center;font-size:13.5px;font-weight:700;color:#d9e3ef}
+.warn-h{margin-top:40px;text-align:center;font-weight:900;font-size:22px;color:var(--yellow)}
+.quotes{display:grid;gap:14px;margin-top:16px}
+.quotes p{position:relative;background:#fff;color:var(--ink);border-radius:14px;padding:12px 16px;font-weight:800;font-size:16.5px;line-height:1.6}
+.quotes p::after{content:"";position:absolute;left:24px;bottom:-10px;border:10px solid transparent;border-top:12px solid #fff;border-bottom:0}
+.cool{margin-top:26px;border:1px solid rgba(255,255,255,.5);border-radius:12px;padding:14px 16px}
+.cool h4{color:var(--yellow);font-weight:900;font-size:17px}
+.cool p{font-size:15.5px;margin-top:4px}
+.staff{display:flex;align-items:flex-end;gap:6px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px 14px 0;overflow:hidden}
+.staff img{flex:0 0 38%;width:38%;align-self:flex-end}
+.staff .say{flex:1;padding-bottom:18px}
+.staff .say h4{display:inline-block;background:var(--navy);color:#fff;border-radius:999px;padding:6px 16px;font-weight:900;font-size:16px;line-height:1.4}
+.staff .say p{font-size:15.5px;font-weight:700;line-height:1.75;margin-top:10px}
+.promise{list-style:none;margin-top:16px;display:grid;gap:10px}
+.promise li{display:flex;gap:12px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px}
+.promise .n{flex:0 0 34px;height:34px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:900}
+.promise b{display:block;font-size:18px;color:var(--navy);line-height:1.5}
+.promise p{font-size:15.5px;margin-top:2px}
 
-/* features */
-.feat-top{text-align:center}
-.feat-top .s{display:inline-block;background:var(--blue);color:#fff;font-weight:900;font-size:15.5px;padding:4px 18px;border-radius:999px}
-.feat-top h3{font-size:46px;font-weight:900;color:var(--navy);line-height:1.2;margin-top:8px}
-.feat-top h3 .num{font-size:64px;color:var(--blue);vertical-align:-4px}
-.feat-top .bn{font-size:17px;font-weight:900;color:var(--navy)}
-.feat article{background:#fff;margin-top:16px;border-radius:0 0 10px 10px;overflow:hidden;box-shadow:0 3px 12px rgba(20,60,120,.12)}
-.feat .no{display:block;background:var(--blue);color:#fff;font-family:"Montserrat";font-weight:800;font-size:17px;padding:4px 14px}
-.feat .row{padding:0 0 14px}
-.feat .row img{width:100%;aspect-ratio:16/7;object-fit:cover}
-.feat .row>div{padding:12px 14px 0}
-.feat h3{font-size:18px;font-weight:900;line-height:1.4;background:linear-gradient(transparent 62%,var(--yellow) 62%);display:inline}
-.feat p{font-size:15.5px;line-height:1.65;margin-top:6px}
-.makers{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:16px}
-.maker{background:#fff;border:1px solid var(--line);border-radius:8px;text-align:center;padding:14px 4px;font-weight:900;color:#98a1ae;font-size:15.5px;line-height:1.3}
-.maker small{display:block;font-size:12px;font-weight:500}
-.warranty{width:100%;border-collapse:separate;border-spacing:0 6px;margin-top:12px}
-.warranty th{background:var(--blue);color:#fff;font-weight:900;font-size:15.5px;padding:10px;width:36%;border-radius:8px 0 0 8px;text-align:left}
-.warranty td{background:#fff;font-size:15.5px;padding:10px;border-radius:0 8px 8px 0}
+.feat{display:grid;gap:12px}
+.feat article{display:flex;gap:14px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}
+.feat .fi{flex:0 0 66px;height:66px;border-radius:50%;background:var(--blue-l);display:grid;place-items:center;color:var(--blue);font-size:36px}
+.feat .no{font-size:12.5px;font-weight:800;color:var(--blue);letter-spacing:.08em}
+.feat h3{font-size:19px;font-weight:900;color:var(--navy);line-height:1.4}
+.feat p{font-size:15.5px;line-height:1.65;margin-top:2px}
+.feat-num{font-size:52px;font-weight:900;color:var(--blue);line-height:1;margin-right:2px}
+.makers{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.maker{background:#fff;border:1px solid var(--line);border-radius:8px;text-align:center;padding:14px 4px;font-weight:800;color:#9aa3ae;font-size:14.5px;line-height:1.3}
+.maker small{display:block;font-size:11px;font-weight:500}
+.warranty{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line)}
+.warranty th{background:#f3f6fa;color:var(--navy);font-weight:800;font-size:15px;padding:12px;width:38%;text-align:left;border-bottom:1px solid var(--line)}
+.warranty td{font-size:15.5px;padding:12px;border-bottom:1px solid var(--line)}
 
-/* voices */
-.voice{background:#fff;border-radius:12px;overflow:hidden;margin-top:18px;box-shadow:0 3px 12px rgba(20,60,120,.12)}
-.voice .meta{background:linear-gradient(90deg,var(--orange-d),var(--orange));color:#fff;font-weight:900;font-size:15.5px;padding:6px 14px}
-.voice .in{padding:12px 14px 14px}
-.voice .h{font-size:19px;font-weight:900;color:var(--red);line-height:1.5}
-.voice .ph{position:relative;margin-top:10px}
-.voice .ph img{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:8px}
-.voice .ph span{position:absolute;right:6px;bottom:6px;background:rgba(0,0,0,.55);color:#fff;font-size:12px;padding:1px 6px;border-radius:3px}
-.voice .ba{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;text-align:center}
-.voice .ba div{border-radius:8px;padding:8px 4px}
-.voice .ba .b{background:#e6e9ee}.voice .ba .a{background:var(--red);color:#fff}
-.voice .ba small{display:block;font-family:"Montserrat";font-weight:800;font-size:13.5px}
-.voice .ba b{font-size:24px;font-weight:900}
-.voice .c{margin-top:10px;font-size:15.5px;line-height:1.75;border-top:1px dashed var(--line);padding-top:10px}
+.voice{background:#fff;border:1px solid var(--line);border-radius:14px;padding:18px 16px;margin-top:14px}
+.voice .top{display:flex;gap:12px;align-items:center}
+.voice .av{flex:0 0 52px;height:52px;border-radius:50%;background:var(--blue-l);display:grid;place-items:center;color:var(--blue);font-size:30px}
+.voice .meta{font-size:14px;color:var(--sub);font-weight:700}
+.voice .h{font-size:18px;font-weight:900;color:var(--navy);line-height:1.5}
+.voice .ba{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:12px;background:#f6f8fb;border-radius:10px;padding:10px;font-weight:800}
+.voice .ba .b{color:#8a94a0;font-size:18px}.voice .ba .a{color:var(--blue-d);font-size:24px}
+.voice .ba i{font-style:normal;color:var(--orange)}
+.voice .c{margin-top:10px;font-size:15.5px;line-height:1.75}
 .voice .kansou{font-size:12.5px;color:var(--sub);text-align:right}
 
-/* diagnosis */
-.know{list-style:none;display:grid;gap:8px;margin-top:16px}
-.know li{display:flex;gap:10px;align-items:center;background:#fff;border-radius:10px;padding:10px 12px;font-size:16.5px;box-shadow:0 2px 8px rgba(20,60,120,.08)}
-.know .num{flex:0 0 30px;height:30px;border-radius:50%;background:var(--red);color:#fff;display:grid;place-items:center}
-.know b{color:var(--navy);font-weight:900}
-.diag-img{width:72%;margin:18px auto 0;border-radius:8px;box-shadow:0 4px 16px rgba(0,0,0,.15);filter:hue-rotate(48deg) saturate(1.1)}
-.flow-total{display:flex;justify-content:center;align-items:baseline;gap:10px;margin-top:12px;font-weight:900}
-.flow-total b{font-size:22px;color:var(--red)}.flow-total b .num{font-size:34px}
-.flow{list-style:none;margin-top:12px}
-.flow li{display:flex;gap:12px;align-items:center;background:#fff;border-radius:10px;padding:12px;position:relative;margin-bottom:22px;box-shadow:0 2px 8px rgba(20,60,120,.1)}
-.flow li:not(:last-child)::after{content:"";position:absolute;left:50%;bottom:-17px;margin-left:-12px;border:12px solid transparent;border-top:12px solid #f4c400;border-bottom:0}
-.flow .n{flex:0 0 40px;height:40px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-family:"Montserrat";font-weight:800;font-size:18px}
-.flow li.key{border:3px solid var(--red)}.flow li.key .n{background:var(--red)}
-.flow .ft{font-weight:900;font-size:17px;color:var(--navy)}
-.flow .fd{font-size:15px;line-height:1.55}
-.flow .who{margin-left:auto;flex:0 0 auto;font-size:12.5px;font-weight:900;padding:2px 8px;border-radius:999px;background:var(--pale);color:var(--blue)}
-.flow .who.you{background:var(--yellow);color:var(--navy)}
-.area{display:grid;gap:12px;margin-top:16px}
-.area>div{background:#fff;border-radius:12px;padding:14px;border:2px solid var(--blue)}
-.area h4{display:inline-block;background:var(--blue);color:#fff;font-weight:900;padding:2px 14px;border-radius:999px;font-size:16.5px}
+.doc{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.doc .dh{display:flex;justify-content:space-between;align-items:center;background:var(--navy);color:#fff;padding:10px 16px;font-weight:900;font-size:18px}
+.doc .dh small{border:1px solid #fff;border-radius:4px;font-size:12px;padding:1px 8px}
+.doc dl{display:grid;grid-template-columns:1fr auto;padding:4px 16px}
+.doc dt,.doc dd{padding:11px 0;border-bottom:1px dashed var(--line);font-weight:800}
+.doc dt{font-size:15.5px;color:var(--sub)}
+.doc dd{text-align:right;font-size:20px;color:var(--navy)}
+.doc dl>*:nth-last-child(-n+2){border-bottom:0}
+.doc .ft{font-size:12.5px;color:var(--sub);text-align:right;padding:0 16px 10px}
+.know{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.know li{background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px;font-size:14.5px;line-height:1.55;text-align:center}
+.know b{display:block;font-size:16.5px;color:var(--navy)}
+.flow{list-style:none;margin-top:8px;border-left:3px solid var(--line);margin-left:16px}
+.flow li{position:relative;padding:0 0 22px 28px}
+.flow .n{position:absolute;left:-19px;top:0;width:34px;height:34px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:900;font-size:16px}
+.flow li.key .n{background:var(--orange)}
+.flow .ft{font-weight:900;font-size:18px;color:var(--navy);line-height:1.5}
+.flow .fd{font-size:15.5px;line-height:1.65}
+.flow .tag{display:inline-block;margin-left:6px;font-size:12.5px;font-weight:800;color:var(--orange-d);border:1px solid var(--orange);border-radius:999px;padding:0 8px;vertical-align:2px}
+.area{display:grid;gap:12px}
+.area>div{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+.area h4{font-weight:900;font-size:17px;color:var(--navy)}
+.area .rg{margin-top:8px;font-size:13.5px;color:var(--sub);font-weight:700}
 .area .pr{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
-.area .pr span{background:var(--pale);font-weight:900;font-size:15.5px;padding:3px 10px;border-radius:6px}
-.area .rg{margin-top:10px;font-size:14.5px;color:var(--sub);font-weight:700}
+.area .pr span{background:var(--blue-l);font-weight:800;font-size:15px;padding:3px 10px;border-radius:6px;color:var(--navy)}
 
-/* FAQ */
-.faq{margin-top:16px;display:grid;gap:12px}
-.faq details{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(20,60,120,.1)}
-.faq summary{list-style:none;cursor:pointer;background:var(--blue);color:#fff;font-weight:900;font-size:17px;padding:11px 40px 11px 46px;position:relative;line-height:1.5}
+.faq{display:grid;gap:10px}
+.faq details{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.faq summary{list-style:none;cursor:pointer;font-weight:800;font-size:16.5px;padding:14px 42px 14px 48px;position:relative;color:var(--navy);line-height:1.5}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"+";position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:22px}
-.faq details[open] summary::after{content:"−"}
-.faq .q,.faq .a::before{position:absolute;left:14px;font-family:"Montserrat";font-weight:800;font-size:22px;line-height:1}
-.faq .q{top:10px;color:var(--yellow)}
-.faq .a{position:relative;padding:12px 14px 14px 46px;font-size:16px;line-height:1.75}
-.faq .a::before{content:"A";top:12px;color:var(--orange-d)}
+.faq summary::after{content:"＋";position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--blue)}
+.faq details[open] summary::after{content:"－"}
+.faq .q,.faq .a::before{position:absolute;left:16px;font-weight:900;font-size:20px;line-height:1}
+.faq .q{top:15px;color:var(--blue)}
+.faq .a{position:relative;padding:12px 16px 16px 48px;font-size:16px;line-height:1.8;border-top:1px dashed var(--line)}
+.faq .a::before{content:"A";top:14px;color:var(--orange)}
 
-/* form */
-.form-sec{background:linear-gradient(180deg,var(--blue) 0,#2f8ee8 100%);padding:40px 14px 40px;color:#fff}
-.form-sec .s{text-align:center;font-weight:900;font-size:16.5px}
-.form-sec .s::before{content:"＼ "}.form-sec .s::after{content:" ／"}
-.form-sec .s .num{color:var(--yellow);font-size:22px}
-.form-sec h2{text-align:center;color:var(--yellow);font-weight:900;font-size:30px;line-height:1.35;text-shadow:0 3px 0 rgba(0,40,110,.4);margin-top:4px}
-.trust{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin:12px 0 14px}
-.trust span{background:#fff;color:var(--blue);font-weight:900;font-size:14.5px;padding:3px 10px;border-radius:999px}
-.form{background:#fff;color:var(--ink);border-radius:14px;padding:16px;box-shadow:0 6px 0 rgba(0,40,110,.3)}
-.prog{display:flex;justify-content:space-between;font-weight:900;font-size:14.5px;color:var(--blue)}
-.prog .rest{color:var(--red)}
+.form-sec{background:var(--blue-l);padding:50px 16px 44px}
+.form-sec h2{text-align:center;color:var(--navy);font-weight:900;font-size:28px;line-height:1.45}
+.trust{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin:12px 0 4px}
+.trust span{background:#fff;color:var(--navy);font-weight:800;font-size:14px;padding:3px 12px;border-radius:999px;border:1px solid var(--line)}
+.form{background:#fff;border-radius:14px;padding:18px;border:1px solid var(--line);margin-top:14px}
+.prog{display:flex;justify-content:space-between;font-weight:800;font-size:14.5px;color:var(--blue)}
+.prog .rest{color:var(--orange-d)}
 .pbar{height:8px;border-radius:8px;background:#e3eaf3;margin-top:6px;overflow:hidden}
-.pbar i{display:block;height:100%;background:linear-gradient(90deg,var(--orange),var(--red));transition:width .3s}
-.step{display:none;margin-top:14px}.step.on{display:block}
-.step h3{font-size:19px;font-weight:900;color:var(--navy);text-align:center;margin-bottom:10px}
+.pbar i{display:block;height:100%;background:var(--blue);transition:width .3s}
+.step{display:none;margin-top:16px}.step.on{display:block}
+.step h3{font-size:20px;font-weight:900;color:var(--navy);text-align:center;margin-bottom:12px}
 .opts{display:grid;gap:8px}
-.o{font-family:inherit;font-weight:900;font-size:17px;background:#fff;border:2px solid var(--blue);color:var(--blue);border-radius:10px;padding:13px 40px 13px 14px;text-align:left;cursor:pointer;position:relative;box-shadow:0 3px 0 #b9d4f3}
-.opts .o::after{content:"›";position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:22px}
-.o:hover{background:var(--pale)}
-#next4{text-align:center;padding-right:14px;background:var(--blue);color:#fff;width:100%;margin-top:14px}
-.back{display:block;margin:10px auto 0;background:none;border:0;color:var(--sub);font-family:inherit;font-size:14.5px;text-decoration:underline;cursor:pointer}
+.o{font-family:inherit;font-weight:800;font-size:17px;background:#fff;border:2px solid var(--blue);color:var(--blue-d);border-radius:12px;padding:14px 40px 14px 16px;text-align:left;cursor:pointer;position:relative}
+.opts .o::after{content:"›";position:absolute;right:16px;top:50%;transform:translateY(-50%);font-size:22px}
+.o:hover{background:var(--blue-l)}
+#next4{text-align:center;padding-right:16px;background:var(--blue);color:#fff;width:100%;margin-top:14px}
+.back{display:block;margin:10px auto 0;background:none;border:0;color:var(--sub);font-family:inherit;font-size:14px;text-decoration:underline;cursor:pointer}
 .step select,.step input[type=text],.step input[type=tel]{width:100%;font-family:inherit;font-size:17px;padding:12px;border:2px solid var(--line);border-radius:8px;margin-top:4px;background:#fff}
-.step label{display:block;font-weight:900;font-size:15.5px;margin-top:10px}
-.step .chk{display:flex;gap:8px;font-weight:700;font-size:15px;align-items:flex-start;background:var(--yellow-l);padding:10px;border-radius:8px}
-.step .chk input{margin-top:5px;width:18px;height:18px}
+.step label{display:block;font-weight:800;font-size:15.5px;margin-top:10px}
+.step .chk{display:flex;gap:8px;font-weight:700;font-size:15px;align-items:flex-start;background:#fbf8ea;padding:10px;border-radius:8px}
+.step .chk input{margin-top:6px;width:18px;height:18px}
 .hint{font-size:13.5px;color:var(--sub);margin-top:4px}
-.submit{margin-top:14px;font-size:18px}
-.gift-cond{font-size:12.5px;line-height:1.65;color:#e1eeff;margin-top:16px}
+.submit{margin-top:14px}
+.gift-cond{font-size:12.5px;line-height:1.65;color:var(--sub);margin-top:16px}
+.company{background:#f6f8fb;padding:36px 0}
+.company h3{text-align:center;font-weight:900;font-size:20px;color:var(--navy)}
+.company dl{display:grid;grid-template-columns:110px 1fr;margin-top:14px;font-size:15.5px;background:#fff;border:1px solid var(--line)}
+.company dt,.company dd{padding:10px 12px;border-bottom:1px solid var(--line)}
+.company dt{background:#f3f6fa;font-weight:800}
+footer{background:var(--navy);color:#cfdcef;text-align:center;font-size:12.5px;padding:16px}
 
-.company{background:#f3f5f8;padding:30px 0}
-.company dl{display:grid;grid-template-columns:110px 1fr;margin-top:14px;font-size:15.5px;background:#fff;border-radius:10px;overflow:hidden}
-.company dt,.company dd{padding:9px 12px;border-bottom:1px solid var(--line)}
-.company dt{background:var(--pale);font-weight:900}
-footer{background:var(--navy);color:#cfe0f5;text-align:center;font-size:12.5px;padding:16px}
-
-/* sticky */
-.sticky{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:100%;max-width:640px;z-index:40;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:rgba(255,255,255,.94);box-shadow:0 -4px 14px rgba(0,0,0,.12);transition:transform .3s}
+.sticky{position:fixed;left:50%;bottom:0;transform:translateX(-50%);width:100%;max-width:640px;z-index:40;padding:8px 12px calc(8px + env(safe-area-inset-bottom));background:rgba(255,255,255,.95);border-top:1px solid var(--line);transition:transform .3s}
 .sticky.hide{transform:translate(-50%,120%)}
-.sticky .cta{font-size:17px;padding:12px 50px 12px 16px}
-.sticky .cta small{font-size:12.5px}
-
-/* ===== FVに合わせた上書き（金枠カード・立体数字・青空） ===== */
-:root{--gold:#e5b94a}
-.sub-lab{display:table;margin:0 auto 8px;background:var(--yellow);color:var(--navy);padding:3px 16px;border-radius:999px;font-size:15.5px;box-shadow:0 3px 0 #d1b100}
-.sub-lab::before,.sub-lab::after{content:""}
-.char .sub-lab,.blue .sub-lab{color:var(--navy)}
-.h2{font-size:27px;line-height:1.4}
-.h2 .y{color:var(--red);text-shadow:2px 2px 0 #fff,-2px -2px 0 #fff,2px -2px 0 #fff,-2px 2px 0 #fff}
-.char .h2,.blue .h2{text-shadow:0 3px 0 rgba(0,30,90,.55)}
-.char .h2 .y,.blue .h2 .y{color:var(--yellow);text-shadow:0 3px 0 rgba(0,30,90,.55)}
-.h2-line{display:none}
-.sec.blue,.form-sec{background:
-  radial-gradient(ellipse 60% 28% at 15% 8%,rgba(255,255,255,.55),transparent 70%),
-  radial-gradient(ellipse 50% 18% at 90% 40%,rgba(255,255,255,.35),transparent 70%),
-  linear-gradient(180deg,#0756c2 0%,#1d7fe0 45%,#6dbdf6 100%)}
-.sec.char{background:linear-gradient(180deg,#0d2a63 0%,#173f8c 100%)}
-.sec.pale{background:linear-gradient(180deg,#e6f3ff,#f4faff)}
-.chap{background:
-  radial-gradient(circle at 10% 0%,rgba(255,255,255,.7),transparent 35%),
-  linear-gradient(180deg,#0756c2,#1d7fe0);padding:28px 16px 32px}
-.chap::after{border-top-color:#1d7fe0}
-.chap .no{background:#fff;color:var(--blue);display:table;margin:0 auto}
-.soudan .col b{white-space:nowrap}
-.slot>.h2-wrap:first-child{margin-top:44px}
-.wrap>.slot:first-child>.h2-wrap:first-child{margin-top:0}
-.chap h2{display:inline-block;margin-top:12px;background:var(--yellow);color:var(--navy);padding:8px 22px;border-radius:6px;box-shadow:0 5px 0 #c9a800;font-size:25px;line-height:1.35}
-.chap h2 .y{color:var(--red)}
-/* 金枠カード */
-.close,.case,.toc,.sim,.pb,.voice,.feat article,.promise>div,.price table,.wf,.faq details,.area>div,.life div,.estlist li,.know li,.flow li,.types div,.warranty,.cmpt,.day li,.pt,.bill,.levy,.soudan,.cool,.quotes blockquote,.worry li,.reason{border:2px solid var(--gold)!important}
-.close{border-left:6px solid var(--yellow)!important;border-radius:10px}
-.case{border-color:var(--gold)!important}
-.case .who{background:linear-gradient(90deg,var(--blue),#2f8ee8)}
-.toc h3,.cmp h4,.faq summary,.warranty th,.sim .hd2,.feat .no,.price caption{background:linear-gradient(90deg,var(--blue),#2f8ee8)}
-/* 立体数字（FVの3,000風） */
-.case .ba .v.a,.ba2 .num.after,.flow-total b .num,.feat-top h3 .num,.bill .tot b,.voice .ba .a b{
-  text-shadow:2px 0 #fff,-2px 0 #fff,0 2px #fff,0 -2px #fff,2px 2px #fff,-2px 2px #fff,2px -2px #fff,-2px -2px #fff,0 4px 0 var(--gold),2px 6px 8px rgba(0,30,90,.3)}
-.voice .ba .a{background:#fff3f3;border:2px solid var(--red)}
-.voice .ba .a,.voice .ba .a small{color:var(--red)}
-.bill .tot{background:var(--navy)}
-.bill .tot b{color:var(--red)}
-.voice .meta{background:linear-gradient(90deg,var(--blue),#2f8ee8)}
-.gift{border-color:var(--gold);background:#fff}
-.bridge::before{border-top-color:var(--yellow)}
-.notice{background:#111}
-
-/* ===== v2：画像（S01〜S15）と見た目を揃える ===== */
-:root{--gold:#e8b53c;--gold-d:#c99118;--sky-a:#cfe9ff;--sky-b:#f3faff}
-/* 背景：薄い青空＋雲（画像の青空とつながる） */
-.sec.white,.sec.pale,.sec.yel{background:
-  radial-gradient(ellipse 45% 9% at 12% 6%,rgba(255,255,255,.95),transparent 70%),
-  radial-gradient(ellipse 40% 7% at 88% 30%,rgba(255,255,255,.9),transparent 70%),
-  radial-gradient(ellipse 50% 8% at 20% 62%,rgba(255,255,255,.85),transparent 70%),
-  radial-gradient(ellipse 40% 7% at 85% 85%,rgba(255,255,255,.85),transparent 70%),
-  linear-gradient(180deg,var(--sky-a) 0%,var(--sky-b) 100%)}
-.sec.yel{background:
-  radial-gradient(ellipse 45% 9% at 12% 6%,rgba(255,255,255,.9),transparent 70%),
-  linear-gradient(180deg,#fff6c9 0%,#fffdf0 100%)}
-/* 見出し：画像と同じ「金縁の黄色リボン」 */
-.h2-wrap{text-align:center}
-.h2-wrap .h2{display:inline-block;position:relative;background:linear-gradient(180deg,#fff57a 0%,#ffe100 55%,#ffd000 100%);
-  color:var(--navy);padding:10px 26px 12px;border:3px solid var(--gold);border-radius:10px;
-  box-shadow:0 5px 0 var(--gold-d),0 10px 18px rgba(0,40,110,.22);font-size:24px;line-height:1.4;text-shadow:0 2px 0 #fff}
-.h2-wrap .h2 .y{color:var(--red);text-shadow:2px 2px 0 #fff,-2px -2px 0 #fff,2px -2px 0 #fff,-2px 2px 0 #fff}
-.char .h2-wrap .h2,.blue .h2-wrap .h2{color:var(--navy);text-shadow:0 2px 0 #fff}
-.char .h2-wrap .h2 .y,.blue .h2-wrap .h2 .y{color:var(--red);text-shadow:2px 2px 0 #fff,-2px -2px 0 #fff}
-.sub-lab{background:var(--navy);color:#fff;box-shadow:0 3px 0 #07193f;font-size:14.5px;padding:3px 18px}
-.char .sub-lab,.blue .sub-lab{background:#fff;color:var(--navy);box-shadow:0 3px 0 rgba(0,0,0,.2)}
-/* 章の見出し：リボン型 */
-.chap h2{border:3px solid var(--gold);box-shadow:0 5px 0 var(--gold-d),0 10px 18px rgba(0,30,90,.3);
-  background:linear-gradient(180deg,#fff57a 0%,#ffe100 55%,#ffd000 100%);text-shadow:0 2px 0 #fff;font-size:26px;padding:10px 26px}
-.chap .no{box-shadow:0 3px 0 rgba(0,0,0,.2);font-size:14.5px}
-/* カード：白＋金縁＋立体の影 */
-.close,.case,.toc,.pb,.voice,.feat article,.promise>div,.price table,.faq details,.area>div,.life div,.estlist li,.know li,.flow li,.types div,.cmpt,.day li,.pt,.cool,.quotes blockquote,.worry li,.makers .maker,.gift{
-  border:3px solid var(--gold)!important;border-radius:14px!important;box-shadow:0 4px 0 var(--gold-d),0 10px 18px rgba(0,40,110,.14)!important}
-.close{border-left-width:3px!important;font-weight:900;color:var(--navy);text-align:center;background:#fff}
-.price table,.cmpt{overflow:hidden}
-.warranty{border:3px solid var(--gold);border-radius:14px;overflow:hidden;box-shadow:0 4px 0 var(--gold-d);border-spacing:0;background:#fff}
-.warranty th,.warranty td{border-radius:0!important;border-bottom:1px solid var(--line)}
-/* 青い帯（表の見出しなど）を画像と同じ光沢のある青に */
-.toc h3,.faq summary,.warranty th,.feat .no,.price caption,.case .who,.voice .meta,.cmpt thead th:not(:first-child):not(.set),.area h4{
-  background:linear-gradient(180deg,#2f86ea 0%,#0b5fcc 55%,#0a4fb0 100%)!important;color:#fff;text-shadow:0 1px 0 rgba(0,0,0,.25)}
-.cmpt thead th.set{background:linear-gradient(180deg,#ff4a4a,#d9000f)!important}
-/* 数字：赤の立体 */
-.case .ba .v.a,.voice .ba .a b,.flow-total b .num,.feat-top h3 .num,.price td{font-family:"Montserrat","Noto Sans JP",sans-serif}
-.case .ba .v.a,.voice .ba .a b{color:var(--red);
-  text-shadow:2px 0 #fff,-2px 0 #fff,0 2px #fff,0 -2px #fff,0 4px 0 var(--gold),2px 6px 8px rgba(0,30,90,.25)}
-.case .ph .cut{background:linear-gradient(180deg,#fff57a,#ffd000);border:2px solid var(--gold);box-shadow:0 3px 0 var(--gold-d)}
-.price td{color:var(--red);font-size:17px}
-/* ギフト帯（S15と同じ雰囲気） */
-.gift{background:#fff;padding:12px 14px}
-.gift .tag{background:linear-gradient(180deg,#ff4a4a,#d9000f);border-radius:6px;box-shadow:0 2px 0 #8f0008}
-.gift p b{text-shadow:2px 0 #fff,-2px 0 #fff,0 2px #fff,0 -2px #fff,0 3px 0 var(--gold)}
-/* CTA：金縁＋光沢 */
-.cta{border:3px solid #ffe066;background:linear-gradient(180deg,#ffb52b 0%,#ff8a00 45%,#f25c00 100%);
-  box-shadow:0 6px 0 #b54200,0 12px 22px rgba(180,60,0,.35),inset 0 2px 0 rgba(255,255,255,.55)}
-.cta-lab{color:var(--navy)}
-.char .cta-lab,.blue .cta-lab{color:#fff}
-/* つなぎの文 */
-.bridge{font-size:17px}
-.bridge::before{border-top-color:var(--gold)}
-/* 5つの特徴の見出し */
-.feat-top .s{background:var(--navy);box-shadow:0 3px 0 #07193f}
-.feat-top h3{font-size:50px;text-shadow:0 3px 0 #fff,0 6px 10px rgba(0,40,110,.2)}
-.feat-top h3 .num{color:var(--red);text-shadow:3px 0 #fff,-3px 0 #fff,0 3px #fff,0 -3px #fff,0 6px 0 var(--gold)}
-.feat h3{font-size:19px;color:var(--navy)}
-/* FAQ */
-.faq .a{background:#fff}
-.faq .q{color:var(--yellow)}
-/* フォーム */
-.form{border:3px solid var(--gold);box-shadow:0 6px 0 var(--gold-d),0 14px 26px rgba(0,30,90,.3)}
-.o{border-width:3px;border-radius:12px;box-shadow:0 4px 0 #8fb7ea}
-#next4{background:linear-gradient(180deg,#2f86ea,#0a4fb0)}
-/* 会社概要・フッター */
-.company{background:linear-gradient(180deg,#e6f3ff,#f6fbff)}
-.company dl{border:3px solid var(--gold);box-shadow:0 4px 0 var(--gold-d)}
-/* ヘッダー */
-header.hd{border-bottom:4px solid var(--gold);box-shadow:0 2px 10px rgba(0,40,110,.15)}
-header.hd a{border:2px solid #ffe066}
-/* 注記の色（濃い背景の上） */
-.char .note,.blue .note{color:#d6e4ff!important}
-
-/* ===== Amazonギフト帯（オレンジの目立つ版） ===== */
-.gift2{position:relative;display:flex;align-items:center;gap:6px;max-width:560px;margin:26px auto 12px;padding:22px 12px 16px;border-radius:18px;
-  border:4px solid #fff;outline:3px solid #ff9a1a;
-  background:repeating-conic-gradient(from 0deg at 30% 50%,rgba(255,255,255,.10) 0 8deg,transparent 8deg 18deg),linear-gradient(180deg,#ffc23a 0%,#ff9d12 55%,#ff8400 100%);
-  box-shadow:0 6px 0 #d96a00,0 12px 24px rgba(200,90,0,.35);text-align:left}
-.g-rib{position:absolute;left:50%;top:-18px;transform:translateX(-50%);white-space:nowrap;background:linear-gradient(180deg,#ff3b3b,#d4000c);color:#fff;font-weight:900;font-size:15px;
-  padding:5px 22px 6px;clip-path:polygon(0 0,100% 0,96% 50%,100% 100%,0 100%,4% 50%);text-shadow:0 1px 0 rgba(0,0,0,.25)}
-.g-visual{position:relative;flex:0 0 34%;height:92px}
-.g-card{position:absolute;inset:8px 6px 6px 4px;background:#fff;border:3px solid #5a2a00;border-radius:10px;box-shadow:0 4px 0 rgba(90,40,0,.35);overflow:hidden;display:grid;place-items:center}
-.g-card::before{content:"";position:absolute;left:28%;top:0;bottom:0;width:10px;background:#ff8a00}
-.g-card::after{content:"";position:absolute;left:0;right:0;top:34%;height:10px;background:#ff8a00}
-.g-card span{position:relative;z-index:1;margin-left:24%;margin-top:22%;font-weight:900;font-size:12.5px;line-height:1.15;color:#222;text-align:center}
-.g-coin{position:absolute;width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff6b0 0,#ffd400 40%,#e0a400 100%);border:2px solid #9a5a00;z-index:2}
-.g-coin.c1{left:-4px;bottom:-4px}.g-coin.c2{right:-6px;top:-2px;width:24px;height:24px}
-.g-txt{flex:1;text-align:center;line-height:1.15}
-.g-l1{font-weight:900;color:#fff;font-size:clamp(17px,4.8vw,24px);letter-spacing:.02em;
-  text-shadow:2px 0 #6b3000,-2px 0 #6b3000,0 2px #6b3000,0 -2px #6b3000,2px 2px #6b3000,-2px 2px #6b3000,2px -2px #6b3000,-2px -2px #6b3000,0 4px 0 #6b3000}
-.g-l2{margin-top:6px;font-weight:900;color:#fff;font-size:clamp(17px,4.8vw,24px);
-  text-shadow:2px 0 #6b3000,-2px 0 #6b3000,0 2px #6b3000,0 -2px #6b3000,2px 2px #6b3000,-2px 2px #6b3000,2px -2px #6b3000,-2px -2px #6b3000,0 4px 0 #6b3000}
-.g-l2 b{font-family:"Montserrat","Noto Sans JP",sans-serif;font-size:2em;color:#ffe600;vertical-align:-.08em;
-  text-shadow:3px 0 #6b3000,-3px 0 #6b3000,0 3px #6b3000,0 -3px #6b3000,3px 3px #6b3000,-3px 3px #6b3000,3px -3px #6b3000,-3px -3px #6b3000,0 6px 0 #6b3000}
-.g-l2{white-space:nowrap}
-
-
-/* ===== v4：見出しはボタンに見えないよう「文字だけ」の大きなタイトルに ===== */
-.h2-wrap .h2{display:block;background:none;border:0;box-shadow:none;padding:0;border-radius:0;
-  font-size:30px;font-weight:900;line-height:1.35;letter-spacing:.03em;color:var(--navy);text-shadow:0 2px 0 #fff}
-.h2-wrap .h2::after{content:"";display:block;width:72px;height:6px;border-radius:6px;margin:12px auto 0;
-  background:linear-gradient(90deg,var(--red) 0 33%,var(--yellow) 33% 66%,var(--blue) 66%)}
-.h2-wrap .h2 .y{color:var(--red);text-shadow:0 2px 0 #fff}
-.char .h2-wrap .h2,.blue .h2-wrap .h2{color:#fff;text-shadow:0 3px 0 rgba(0,25,80,.6)}
-.char .h2-wrap .h2 .y,.blue .h2-wrap .h2 .y{color:var(--yellow);text-shadow:0 3px 0 rgba(0,25,80,.6)}
-.sub-lab{background:none!important;box-shadow:none!important;color:var(--blue)!important;font-size:16px;padding:0;margin-bottom:4px}
-.sub-lab::before{content:"＼ "}.sub-lab::after{content:" ／"}
-.char .sub-lab,.blue .sub-lab{color:#ffe600!important}
-/* 章見出しも文字だけに */
-.chap h2{display:block;background:none;border:0;box-shadow:none;padding:0;margin-top:12px;
-  color:#fff;font-size:32px;line-height:1.35;text-shadow:0 3px 0 rgba(0,25,80,.6)}
-.chap h2 .y{color:var(--yellow)}
-.feat-top .s{background:none;box-shadow:none;color:var(--blue);font-size:16px;padding:0}
-/* まとめの一文も枠なし・太字の文章に */
-.close{background:none!important;border:0!important;box-shadow:none!important;padding:4px 2px!important;border-radius:0!important;
-  font-size:18px;font-weight:900;color:var(--navy);text-align:center;line-height:1.75}
-.char .close,.blue .close{color:#fff}
-
-/* v5：つなぎ文・本文・小さい文字をさらに大きく */
-.bridge{font-size:21px!important;line-height:1.7;font-weight:900}
-.lead-p{font-size:18px}
-.close{font-size:20px!important}
-.chap h2{margin-top:0}
-.chap{padding:30px 16px 34px}
-.note,.img-note,.gift-bd,.cap2,.kansou,.hint,.gift-cond,.swipe{font-size:13.5px!important;line-height:1.65}
-.cmpt{font-size:14.5px}.cmpt tbody th{font-size:14px}
-.case .spec,.flow .fd,.types p,.life span,.estlist li,.know li,.feat p,.promise p,.voice .c,.pt p,.faq .a,.warranty td,.warranty th,.area .pr span,.company dl{font-size:16px!important}
-.toc li a{font-size:19px}
-.cta{font-size:21px}
-
-/* 相場表：見出しを表の中に入れ、左右の空きをなくす */
-.price{gap:16px}
-.price table{table-layout:fixed;border-collapse:separate;border-spacing:0;background:#fff}
-.price th.pcap{background:linear-gradient(180deg,#2f86ea 0%,#0b5fcc 55%,#0a4fb0 100%)!important;color:#fff;text-align:center;font-size:19px;padding:10px;width:auto}
-.price tbody th{width:36%;text-align:center;font-size:18px;padding:12px 8px;background:var(--pale)}
-.price td{text-align:center;font-size:clamp(17px,5vw,21px);padding:12px 6px;color:var(--red);white-space:nowrap}
-.price tbody tr:last-child th,.price tbody tr:last-child td{border-bottom:0}
-
-.g-card span{font-size:11px!important;white-space:nowrap;margin-left:18%!important}
-/* v6：フォントを丸ゴシック（M PLUS Rounded 1c）に統一 */
-body,button,input,select,textarea{font-family:"M PLUS Rounded 1c","Hiragino Maru Gothic ProN","Noto Sans JP",sans-serif}
-.num,.en,.g-l2 b,.case .ba .v.a,.voice .ba .a b,.flow-total b .num,.feat-top h3 .num,.price td,.fv .hero .big,.fv .burst b,.gift p b,.faq .q,.faq .a::before,.estlist .mark,.flow .n,.feat .no,.case .ba .t,.voice .ba small,.chap .no,.ba2 .num{font-family:"M PLUS Rounded 1c","Hiragino Maru Gothic ProN",sans-serif!important;font-weight:900}
-
-@media (max-width:380px){.h2-wrap .h2{font-size:26px}.chap h2{font-size:28px}}
-
-@media (max-width:380px){
-  .fv .hero .big{font-size:100px}.fv .burst{width:96px;height:96px}.fv .burst b{font-size:25px}
-  .h2{font-size:22px}.chap h2{font-size:25px}.cta{font-size:18px}
-  .worry{grid-template-columns:1fr}
-}
+.sticky .cta{font-size:17px;padding:12px 50px 12px 18px}
+@media (max-width:380px){.h2,.chap h2{font-size:24px}.pill-h{font-size:21px}.reasons .rhead p{font-size:20px}.bill .sum b{font-size:40px}.family-h p{font-size:18px}.family-h p b{font-size:28px}}
 </style>
 </head>
-<body class="use-fv-img">
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-oil" viewBox="0 0 64 64"><path d="M14 58V22l6-6 6 6v36M10 58h20M14 30h12M14 40h12M14 50h12M20 8v8"/><path d="M28 30l24-10 4 6-24 10z"/><path d="M50 24v24M46 58h10M48 48h4"/><circle cx="20" cy="6" r="2"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 64 64"><path d="M24 40c0-6-8-9-8-18a16 16 0 0132 0c0 9-8 12-8 18z"/><path d="M26 46h12M27 52h10M34 20l-5 9h7l-5 9"/><path d="M8 32A24 24 0 0132 8M56 32a24 24 0 01-24 24"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 64 64"><path d="M8 58h50M14 58V42M26 58V34M38 58V26M50 58V16"/><path d="M12 34l14-12 10 6 16-16M44 12h8v8"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 64 64"><circle cx="32" cy="32" r="11"/><path d="M32 6v8M32 50v8M6 32h8M50 32h8M13 13l6 6M45 45l6 6M13 51l6-6M45 19l6-6"/></symbol>
+  <symbol id="i-sunset" viewBox="0 0 64 64"><path d="M14 44a18 18 0 0136 0M6 44h52M14 52h36M32 14v8M12 24l6 5M52 24l-6 5"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 64 64"><path d="M40 10a22 22 0 1014 36A18 18 0 0140 10z"/></symbol>
+  <symbol id="i-tower" viewBox="0 0 64 64"><path d="M32 6L18 58M32 6l14 52M22 42h20M25 30h14M28 18h8M10 22h44M14 22v6M50 22v6"/></symbol>
+  <symbol id="i-fridge" viewBox="0 0 64 64"><rect x="16" y="6" width="32" height="52" rx="4"/><path d="M16 24h32M22 13v6M22 30v10"/></symbol>
+  <symbol id="i-light" viewBox="0 0 64 64"><path d="M24 38c0-6-8-9-8-18a16 16 0 0132 0c0 9-8 12-8 18z"/><path d="M26 44h12M27 50h10M29 56h6"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 64 64"><rect x="18" y="4" width="28" height="56" rx="5"/><path d="M28 52h8M34 18l-6 10h8l-6 10"/></symbol>
+  <symbol id="i-tv" viewBox="0 0 64 64"><rect x="6" y="12" width="52" height="34" rx="3"/><path d="M22 56h20M32 46v10"/></symbol>
+  <symbol id="i-wifi" viewBox="0 0 64 64"><path d="M6 24a38 38 0 0152 0M14 32a26 26 0 0136 0M22 40a14 14 0 0120 0"/><circle cx="32" cy="48" r="3"/></symbol>
+  <symbol id="i-ac" viewBox="0 0 64 64"><rect x="6" y="12" width="52" height="20" rx="4"/><path d="M14 26h36M20 40c-2 4 2 6 0 10M32 40c-2 4 2 6 0 10M44 40c-2 4 2 6 0 10"/></symbol>
+  <symbol id="i-yen" viewBox="0 0 64 64"><rect x="10" y="6" width="44" height="52" rx="4"/><path d="M20 18l12 14 12-14M32 32v16M22 36h20M22 43h20"/></symbol>
+  <symbol id="i-house" viewBox="0 0 64 64"><path d="M6 30L32 8l26 22M12 26v32h40V26M26 58V42h12v16"/></symbol>
+  <symbol id="i-bill" viewBox="0 0 64 64"><path d="M14 6h36v52l-6-4-6 4-6-4-6 4-6-4-6 4z"/><path d="M22 18h20M22 26h20M22 34h12M12 52L52 12"/></symbol>
+  <symbol id="i-battery" viewBox="0 0 64 64"><rect x="16" y="8" width="32" height="50" rx="4"/><path d="M26 4h12M34 20l-6 12h8l-6 12"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 64 64"><path d="M32 6l22 8v16c0 14-10 24-22 28C20 54 10 44 10 30V14z"/><path d="M22 32l7 7 13-14"/></symbol>
+  <symbol id="i-leaf" viewBox="0 0 64 64"><path d="M12 52C12 24 30 10 54 10c0 26-16 42-42 42z"/><path d="M12 52L38 26"/></symbol>
+  <symbol id="i-tool" viewBox="0 0 64 64"><path d="M40 8a12 12 0 00-12 16L8 44l12 12 20-20A12 12 0 0056 24l-8 4-6-6 4-8z"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 64 64"><path d="M6 44L18 14h28l12 30z"/><path d="M12 29h40M24 14l-4 30M40 14l4 30M32 14v30M28 52h8M32 44v8"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 64 64"><path d="M14 4h26l12 12v44H14z"/><path d="M40 4v12h12M22 28h22M22 36h22M22 44h14"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 64 64"><path d="M8 40h10l12 4h10a4 4 0 010 8H28M18 40v16H8M40 52l14-8a4 4 0 014 6L42 60H18"/><path d="M38 8a8 8 0 100 16 8 8 0 000-16zM38 13v6M35 16h6"/></symbol>
+  <symbol id="i-user" viewBox="0 0 64 64"><circle cx="32" cy="22" r="10"/><path d="M12 56c2-12 10-18 20-18s18 6 20 18"/></symbol>
+</svg>
 <div class="page">
 
 <header class="hd"><img src="logo.png" alt="みんなの住まい.com"><a href="#form">無料診断<br>はこちら</a></header>
 
-<!-- =================== 1 FV =================== -->
-<!-- FV：画像版（img/fv_sp.webp）。body の class="use-fv-img" を外すとHTML版に戻る -->
+<!-- FV -->
 <div class="fv-img"><img src="fv_sp.webp" width="1024" height="1536" fetchpriority="high" alt="太陽光パネル＋蓄電池で、毎月の電気代3万円が3,000円に。約90%削減。30年間の電気代は1,080万円が108万円に"></div>
-<section class="fv" aria-label="毎月の電気代3万円が3,000円に">
-  <div class="band">
-    <svg width="34" height="28" viewBox="0 0 34 28" aria-hidden="true"><path d="M2 14 17 2l15 12" fill="none" stroke="#12306b" stroke-width="3" stroke-linejoin="round"/><path d="M6 12v14h22V12" fill="#fff" stroke="#12306b" stroke-width="2.5"/><path d="M8 11l7-5.5h6L26 11z" fill="#1f5fbf"/><rect x="14" y="17" width="6" height="9" fill="#12306b"/></svg>
-    <span>太陽光パネル＋蓄電池で</span>
-    <svg width="20" height="30" viewBox="0 0 20 30" aria-hidden="true"><rect x="1.5" y="1.5" width="17" height="27" rx="3" fill="#fff" stroke="#12306b" stroke-width="2.5"/><path d="M11 7l-4 8h4l-2 8 5-10h-4l2-6z" fill="#1f8be8"/></svg>
-  </div>
-  <div class="mid"><p class="lead">毎月の電気代<br><span class="y"><span class="num">3</span>万円</span>が</p>
-    <div class="burst"><div><span>約</span><b>90%</b><span>削減</span></div></div></div>
-  <div class="hero"><span class="big">3,000</span><sup>※1</sup><span class="yen">円に！</span></div>
-  <div class="card">
-    <h2>30年間の電気代で比べると…</h2>
-    <div class="bars">
-      <span class="lb">今のまま</span><div class="tr now"><div class="b"></div><span class="v"><span class="num">1,080</span>万円</span></div>
-      <span class="lb r">導入後</span><div class="tr aft"><div class="b"></div><span class="v"><span class="num">108</span>万円<sup>※2</sup></span></div>
-    </div>
-    <div class="diff">差額 <b><span class="num">972</span>万円</b> も！</div>
-  </div>
-  <div class="bubble"><p>わが家は<b>いくら</b>下がる？<br>無料で診断</p></div>
-  <div class="town" role="img" aria-label="屋根に太陽光パネルを載せた戸建て住宅"></div>
-</section>
 <p class="fv-notes">※1 当社試算のモデルケース（月の電気代3万円のご家庭で約90%削減した場合）。削減額はお住まい・ご契約プラン・機器・使い方により異なります。<br>※2 月額を30年間同じとした単純計算（3万円×12か月×30年／3,000円×12か月×30年）。電気料金の値上がり・機器費用は含みません。</p>
 
-<div class="cta-wrap">
-  <p class="note" style="margin-bottom:8px">施工実績 <span class="kari">1,200件</span>／太陽光事業 <span class="kari">12年</span>　<span class="kari">※仮の数字（【20XX年X月時点・当社調べ】の注記を入れる）</span></p>
-  <div class="gift2" role="img" aria-label="このページを見た方限定 Amazonギフトカード 最大10万円分プレゼント">
-  <span class="g-rib">このページを見た方限定</span>
-  <div class="g-visual"><i class="g-coin c1"></i><i class="g-coin c2"></i><div class="g-card"><span>Amazon<br>ギフトカード</span></div></div>
-  <div class="g-txt"><p class="g-l1">Amazonギフトカード</p><p class="g-l2">最大<b>10万円</b>分<br>プレゼント</p></div>
-</div>
+<div class="wrap cta-wrap">
+  <p class="note" style="margin-bottom:6px">施工実績 <span class="kari">1,200件</span>／太陽光事業 <span class="kari">12年</span>　<span class="kari">※仮の数字（【20XX年X月時点・当社調べ】の注記を入れる）</span></p>
+  <div class="gift2" role="img" aria-label="このページを見た方限定 Amazonギフトカード 最大10万円分プレゼント"><span class="g-rib">このページを見た方限定</span><div class="g-visual"><i class="g-coin c1"></i><i class="g-coin c2"></i><div class="g-card"><span>Amazon<br>ギフトカード</span></div></div><div class="g-txt"><p class="g-l1">Amazonギフトカード</p><p class="g-l2">最大<b>10万円</b>分<br>プレゼント</p></div></div>
   <p class="gift-bd">初回相談 ¥2,000／お見積もり ¥5,000／ご成約で合計 ¥100,000</p>
-  <span class="cta-lab">約30秒でわかる！</span>
+  <span class="cta-lab">＼ 約30秒でわかる！ ／</span>
   <a class="cta js-cta" href="#form"><span>わが家の削減額を<br>無料で診断する</span><span class="arrow">›</span></a>
   <p class="note cta-note">※ギフトの進呈条件はフォーム下をご確認ください</p>
 </div>
 
-<!-- =================== 2 実例と目次 =================== -->
-<section class="sec white">
+<!-- 実例・目次 -->
+<section class="sec bg-white">
   <div class="wrap">
-    <div class="h2-wrap"><p class="sub-lab">導入したご家庭の電気代</p><h2 class="h2">実際に、こんなふうに<br><span class="y">下がっています。</span></h2><span class="h2-line"></span></div>
+    <div class="hgroup"><span class="kicker">導入したご家庭の電気代</span><h2 class="h2">実際に、こんなふうに<br><span class="mk">下がっています。</span></h2></div>
     <div class="cases">
-      <article class="case"><p class="who kari">埼玉県在住 S様</p><div class="ph"><img src="case1.jpg" alt="埼玉県の実例の家"><span>写真は仮</span><b class="cut">約75%減</b></div><div class="bd">
-        <p class="spec">太陽光 <span class="kari">5.5kW</span>＋蓄電池 <span class="kari">9.8kWh</span></p>
-        <div class="ba"><span class="t b">Before</span><span class="v kari"><span class="num">24,800</span>円</span><span class="t a">After</span><span class="v a kari"><span class="num">6,200</span>円</span></div></div></article>
-      <article class="case"><p class="who kari">宮城県在住 K様</p><div class="ph"><img src="case2.jpg" alt="宮城県の実例の家"><span>写真は仮</span><b class="cut">約75%減</b></div><div class="bd">
-        <p class="spec">太陽光 <span class="kari">6.2kW</span>＋蓄電池 <span class="kari">12.7kWh</span></p>
-        <div class="ba"><span class="t b">Before</span><span class="v kari"><span class="num">31,500</span>円</span><span class="t a">After</span><span class="v a kari"><span class="num">7,900</span>円</span></div></div></article>
-      <article class="case"><p class="who kari">千葉県在住 T様</p><div class="ph"><img src="case3.jpg" alt="千葉県の実例の家"><span>写真は仮</span><b class="cut">約71%減</b></div><div class="bd">
-        <p class="spec">太陽光 <span class="kari">4.8kW</span>＋蓄電池 <span class="kari">7.0kWh</span></p>
-        <div class="ba"><span class="t b">Before</span><span class="v kari"><span class="num">19,200</span>円</span><span class="t a">After</span><span class="v a kari"><span class="num">5,600</span>円</span></div></div></article>
-      <article class="case"><p class="who kari">福島県在住 M様</p><div class="ph"><img src="case4.jpg" alt="福島県の実例の家"><span>写真は仮</span><b class="cut">約56%減</b></div><div class="bd">
-        <p class="spec">蓄電池 <span class="kari">9.8kWh</span>（卒FIT）</p>
-        <div class="ba"><span class="t b">Before</span><span class="v kari"><span class="num">22,100</span>円</span><span class="t a">After</span><span class="v a kari"><span class="num">9,800</span>円</span></div></div></article>
+      <article class="case"><p class="who kari">埼玉県在住 S様</p><p class="spec">太陽光 <span class="kari">5.5kW</span>＋蓄電池 <span class="kari">9.8kWh</span></p>
+        <div class="bars2"><div class="col before"><div class="bar" style="height:100%">電気代<b class="kari">24,800円</b></div></div><div class="col after"><div class="bar" style="height:30%"><b class="kari">6,200円</b></div></div><div class="bubble"><div>約<b>75%</b>削減</div></div></div>
+        <div class="bars2-lb"><span>導入前</span><span>導入後</span></div></article>
+      <article class="case"><p class="who kari">宮城県在住 K様</p><p class="spec">太陽光 <span class="kari">6.2kW</span>＋蓄電池 <span class="kari">12.7kWh</span></p>
+        <div class="bars2"><div class="col before"><div class="bar" style="height:100%">電気代<b class="kari">31,500円</b></div></div><div class="col after"><div class="bar" style="height:30%"><b class="kari">7,900円</b></div></div><div class="bubble"><div>約<b>75%</b>削減</div></div></div>
+        <div class="bars2-lb"><span>導入前</span><span>導入後</span></div></article>
+      <article class="case"><p class="who kari">千葉県在住 T様</p><p class="spec">太陽光 <span class="kari">4.8kW</span>＋蓄電池 <span class="kari">7.0kWh</span></p>
+        <div class="bars2"><div class="col before"><div class="bar" style="height:100%">電気代<b class="kari">19,200円</b></div></div><div class="col after"><div class="bar" style="height:32%"><b class="kari">5,600円</b></div></div><div class="bubble"><div>約<b>71%</b>削減</div></div></div>
+        <div class="bars2-lb"><span>導入前</span><span>導入後</span></div></article>
+      <article class="case"><p class="who kari">福島県在住 M様</p><p class="spec">蓄電池 <span class="kari">9.8kWh</span>（卒FIT）</p>
+        <div class="bars2"><div class="col before"><div class="bar" style="height:100%">電気代<b class="kari">22,100円</b></div></div><div class="col after"><div class="bar" style="height:46%"><b class="kari">9,800円</b></div></div><div class="bubble"><div>約<b>56%</b>削減</div></div></div>
+        <div class="bars2-lb"><span>導入前</span><span>導入後</span></div></article>
     </div>
-    <p class="swipe">横にスワイプして、ほかの実例も見られます</p>
-    <p class="note" style="margin-top:8px">※導入前後の同じ月の請求額で比較。ご契約プラン・機器・使い方で異なります。</p>
+    <p class="swipe">← 横にスワイプして、ほかの実例も見られます →</p>
+    <p class="note" style="margin-top:6px">※導入前後の同じ月の請求額で比較。ご契約プラン・機器・使い方で異なります。</p>
 
     <nav class="toc">
       <h3>このページでわかること</h3>
       <ol>
-        <li><a href="#ch2"><span class="num">1</span>なぜ、いま考えるべき？</a></li>
-        <li><a href="#ch3"><span class="num">2</span>どうすれば下がる？</a></li>
-        <li><a href="#ch4"><span class="num">3</span>いくら？元は取れる？</a></li>
-        <li><a href="#ch5"><span class="num">4</span>どこに頼めば安心？</a></li>
+        <li><a href="#ch2"><span class="n">1</span>なぜ、いま考えるべき？</a></li>
+        <li><a href="#ch3"><span class="n">2</span>どうすれば下がる？</a></li>
+        <li><a href="#ch4"><span class="n">3</span>いくら？元は取れる？</a></li>
+        <li><a href="#ch5"><span class="n">4</span>どこに頼めば安心？</a></li>
       </ol>
-      <p class="last">最後に、わが家の数字を無料で診断できます！</p>
+      <p class="last">最後に、わが家の数字を無料で診断できます</p>
     </nav>
-    <p class="bridge">でも、うちも本当に下がるの？<br>そもそも、なぜ電気代はこんなに高いのか。<br>まずはそこから見てみましょう。</p>
   </div>
 </section>
 
-<!-- =================== 3 第2章 なぜ、いま？ =================== -->
-<div class="chap" id="ch2"><h2>なぜ、<span class="y">いま</span>考えるの？</h2></div>
-<section class="sec char">
+<!-- ところで・お悩み -->
+<div class="tokoro" id="ch2"><img src="il_woman.webp" alt=""><p>＼ ところで ／</p><img src="il_man.webp" alt=""></div>
+<section class="sec bg-pale" style="padding-top:44px">
   <div class="wrap">
-    <div class="slot" data-img="S01" data-alt="高騰し続ける電気代…こんなお悩み、ありませんか？ 電気代が年々高くなっている／値上がりはまだ続くの？／停電や地震が不安／元が取れるか分からない"><div class="h2-wrap"><p class="sub-lab">高騰し続ける電気代…</p><h3 class="h2">こんな<span class="y">お悩み</span>、<br>ありませんか？</h3></div>
-    <ul class="worry">
+    <div class="hgroup"><span class="kicker">高騰し続ける電気代</span><h2 class="h2">こんな<span class="r">お悩み</span>、<br>ありませんか？</h2></div>
+    <ul class="checks">
       <li>電気代が、年々高くなっている</li>
       <li>値上がりは、まだ続くの？</li>
       <li>停電や地震の備えが不安</li>
       <li>太陽光は高そう。元が取れるのか分からない</li>
       <li>売電の10年が終わって、売れる額が減った</li>
       <li>訪問で勧められたが、その金額が妥当か分からない</li>
-    </ul></div>
-    <p class="close">何十年も使う設備だからこそ、「うちの場合はいくらか」を数字で確かめてから決めませんか。</p>
-    <p class="bridge">この不安には、はっきりした理由があります。</p>
-
-    <div class="slot" data-img="S02" data-alt="電気代が上がる3つの理由。理由1 燃料の高騰／理由2 再エネ賦課金の増加（1kWhあたり 2012年度0.22円→2026年度4.18円）／理由3 電力会社の値上げ（東北電力は2026年11月1日に値上げ）"><div class="rbox" style="margin-top:44px">
-      <p class="ttl">電気代が上がる <b>3</b>つの理由</p>
-      <div class="reason"><p class="lab">理由 1</p><div class="in"><h4>燃料の高騰</h4><p>火力発電に使う石油・ガスの価格が高いまま。電気代の「燃料費調整額」にそのまま乗ります。</p></div></div>
-      <div class="reason"><p class="lab">理由 2</p><div class="in"><h4>再エネ賦課金の増加</h4><p>使った電気の量に応じて、全員が払っています。</p>
-        <div class="levy" role="img" aria-label="再エネ賦課金（1kWhあたり）2012年度0.22円、2016年度2.25円、2021年度3.36円、2026年度4.18円">
-          <p class="ttl2">再エネ賦課金（1kWhあたり）</p>
-          <div class="bars"><div class="col"><b>0.22円</b><i style="height:5%"></i></div><div class="col"><b>2.25円</b><i style="height:45%"></i></div><div class="col"><b>3.36円</b><i style="height:67%"></i></div><div class="col now"><b>4.18円</b><i style="height:84%"></i></div></div>
-          <div class="yr"><span>2012年度</span><span>2016年度</span><span>2021年度</span><span>2026年度</span></div>
-        </div></div></div>
-      <div class="reason"><p class="lab">理由 3</p><div class="in"><h4>電力会社の値上げ</h4><p>東北電力は2026年11月1日に値上げ（従量電灯B・30A・月260kWhで月＋485円）。<span class="kari">【東京電力の直近の改定も追記】</span></p></div></div>
-    </div></div>
-    <p class="note" style="margin-top:10px;color:#cfd5dd">※賦課金単価は経済産業省の公表値。東北電力は2026年9月28日の同社発表</p>
-    <div class="cta-wrap"><span class="cta-lab" style="color:var(--yellow)">約30秒でわかる！</span><a class="cta js-cta" href="#form"><span>わが家の削減額を<br>無料で診断する</span><span class="arrow">›</span></a></div>
-    <p class="bridge">では、あなたの家では、<br>これからいくら払うことになるのでしょう。</p>
-
-    <div class="slot" data-img="S03" data-alt="例えば4人家族の場合。毎月3万円、1年で36万円、10年で360万円、値上がりしなくても30年で1,080万円"><div class="h2-wrap"><p class="sub-lab">例えば</p><h3 class="h2"><span class="y">4人家族</span>の場合</h3></div>
-    <p class="lead-p">月に500kWh使うご家庭なら、<b>再エネ賦課金だけで毎月 約2,090円</b>。電気代が毎月3万円なら…</p>
-    <div class="bill" role="img" aria-label="毎月3万円、年間36万円、10年で360万円、値上がりしなくても30年で1,080万円">
-      <dl><dt>毎月</dt><dd><span class="num">3</span>万円</dd><dt>年間</dt><dd><span class="num">36</span>万円</dd><dt>10年で</dt><dd><span class="num">360</span>万円</dd></dl>
-      <div class="tot"><p>値上がりしなくても、30年で</p><b><span class="num">1,080</span>万円</b></div>
-    </div></div>
-    <p class="note" style="margin-top:8px;color:#cfd5dd">※月額3万円が30年間続いた場合の単純計算（3万円×12か月×30年）。値上がりは含みません。画像はイメージです</p>
-    <p class="close">光熱費は、終わりのない支払いです。値上がりが続けば、もっと増えます。</p>
-    <div class="cta-wrap">
-      <a class="cta js-cta" href="#form"><span>わが家の削減額を<br>無料で診断する</span><span class="arrow">›</span></a>
-    </div>
-    <p class="bridge">払い続けるしかない？ いいえ。<br>「買う電気」を減らせば、電気代は下がります。</p>
+    </ul>
+    <p class="close">何十年も使う設備だからこそ、<br>「うちの場合はいくらか」を<br><span class="mk">数字で確かめてから</span>決めませんか。</p>
   </div>
 </section>
 
-<!-- =================== 4 第3章 どうすれば下がる？ =================== -->
-<div class="chap" id="ch3"><h2>どうすれば、<br>電気代は<span class="y">下がる</span>？</h2></div>
-<section class="sec pale">
+<!-- 3つの理由・4人家族 -->
+<section class="sec bg-char">
   <div class="wrap">
-    <div class="slot" data-img="S04" data-alt="買う電気を減らせば、電気代は下がる。朝は蓄電池の電気、昼は太陽光でつくって使い余りはためる、夕方〜夜はためた電気、足りないときだけ電力会社から買う"><div class="h2-wrap"><p class="sub-lab">つくって、ためて、使う</p><h3 class="h2"><span class="y">買う電気</span>を減らすと、<br>電気代は下がる</h3></div>
-    <p class="lead-p">太陽光パネルで「つくる」、蓄電池で「ためる」。電力会社から買うのは、足りない分だけになります。</p>
-    <ol class="day">
-      <li><p class="t">朝</p><p class="d">発電が少ない時間は、蓄電池の残りを使う</p></li>
-      <li><p class="t">昼</p><p class="d">太陽光でつくった電気を家で使い、余った分を蓄電池へ</p></li>
-      <li><p class="t">夕方〜夜</p><p class="d">蓄電池にためた電気で、料理・お風呂・エアコン</p></li>
-      <li class="buy"><p class="t">それでも<br>足りないとき</p><p class="d">足りない分だけ、電力会社から買う</p></li>
-    </ol></div>
-    <p class="close">「買う」暮らしから、「つくって使う」暮らしへ。</p>
-    <p class="bridge">でも、太陽光だけ・蓄電池だけではだめなの？</p>
+    <div class="reasons">
+      <div class="rhead"><small>＼ そもそも ／</small><p>電気代が上がる<b>3</b>つの理由</p></div>
+      <div class="reason"><p class="lab">理由<b>1</b></p><div class="body"><div class="tx"><h4>世界的な<span class="r">燃料の高騰</span></h4><p>火力発電に使う<span class="mk">石油・ガスの価格が高いまま</span>。電気代の「燃料費調整額」に乗ります。</p></div><svg class="ico ri"><use href="#i-oil"/></svg></div></div>
+      <div class="reason"><p class="lab">理由<b>2</b></p><div class="body"><div class="tx"><h4><span class="r">再エネ賦課金</span>の増加</h4><p>電気料金に上乗せされる国の制度コストが、<span class="mk">年々アップ</span>。</p></div><svg class="ico ri"><use href="#i-bulb"/></svg></div>
+        <div class="levy" role="img" aria-label="再エネ賦課金（1kWhあたり）2012年度0.22円、2016年度2.25円、2021年度3.36円、2026年度4.18円">
+          <p class="t">再エネ賦課金（1kWhあたり）</p>
+          <div class="bars"><div class="col"><b>0.22円</b><i style="height:4%"></i></div><div class="col"><b>2.25円</b><i style="height:44%"></i></div><div class="col"><b>3.36円</b><i style="height:66%"></i></div><div class="col now"><b>4.18円</b><i style="height:82%"></i></div></div>
+          <div class="yr"><span>2012年度</span><span>2016年度</span><span>2021年度</span><span>2026年度</span></div>
+        </div></div>
+      <div class="reason"><p class="lab">理由<b>3</b></p><div class="body"><div class="tx"><h4><span class="r">電力会社</span>の値上げ</h4><p>東北電力は<span class="mk">2026年11月1日に値上げ</span>（従量電灯B・30A・月260kWhで月＋485円）。<span class="kari">【東京電力の直近の改定も追記】</span></p></div><svg class="ico ri"><use href="#i-chart"/></svg></div></div>
+    </div>
+    <p class="note" style="margin-top:10px">※賦課金単価は経済産業省の公表値。東北電力は2026年9月28日の同社発表</p>
 
-    <div class="h2-wrap"><p class="sub-lab">ここが大事</p><h3 class="h2">太陽光だけ・蓄電池だけ・<br><span class="y">セット</span>、何が違う？</h3></div>
+    <div class="family-h"><img src="il_house.webp" alt=""><p>例えば<b>4人家族</b>の場合</p></div>
+    <div class="bill" role="img" aria-label="毎月3万円、1年で36万円、10年で360万円、値上がりしなくても30年で1,080万円">
+      <dl><dt>・毎月の電気代</dt><dd>30,000円</dd><dt>・1年で</dt><dd>360,000円</dd><dt>・10年で</dt><dd>3,600,000円</dd></dl>
+      <p class="sum">値上がりしなくても、30年で<b>1,080<span>万円</span></b></p>
+    </div>
+    <p class="note" style="margin-top:8px">※月額3万円が30年間続いた場合の単純計算（3万円×12か月×30年）。値上がりは含みません</p>
+    <p class="close">光熱費は、終わりのない支払いです。<br>値上がりが続けば、<span style="color:var(--yellow)">もっと増えます。</span></p>
+    <div class="cta-wrap"><span class="cta-lab">＼ 約30秒でわかる！ ／</span><a class="cta js-cta" href="#form"><span>わが家の削減額を<br>無料で診断する</span><span class="arrow">›</span></a></div>
+  </div>
+</section>
+
+<!-- どうすれば下がる？ -->
+<div class="chap" id="ch3"><p>払い続けるしかない？ いいえ。</p><h2>「買う電気」を減らせば、<br>電気代は<span class="y">下がります</span></h2></div>
+<section class="sec bg-pale">
+  <div class="wrap">
+    <div class="hgroup"><span class="kicker">つくって、ためて、使う</span><h2 class="h2">太陽光で<span class="mk">つくる</span>＋<br>蓄電池に<span class="mk">ためる</span></h2></div>
+    <ol class="day">
+      <li><p class="t"><svg class="ico"><use href="#i-sunset"/></svg>朝</p><p class="d">発電が少ない時間は、蓄電池の残りを使う</p></li>
+      <li><p class="t"><svg class="ico"><use href="#i-sun"/></svg>昼</p><p class="d">太陽光でつくった電気を家で使い、余った分を蓄電池へ</p></li>
+      <li><p class="t"><svg class="ico"><use href="#i-moon"/></svg>夕方〜夜</p><p class="d">蓄電池にためた電気で、料理・お風呂・エアコン</p></li>
+      <li class="buy"><p class="t"><svg class="ico"><use href="#i-tower"/></svg>足りない時</p><p class="d">足りない分だけ、電力会社から買う</p></li>
+    </ol>
+    <p class="close">「買う」暮らしから、<br>「つくって使う」暮らしへ。</p>
+    <p class="bridge">でも、太陽光だけ・蓄電池だけでは<br>だめなの？</p>
+
+    <div class="hgroup" style="margin-top:30px"><span class="kicker">ここが大事</span><h2 class="h2">太陽光だけ・蓄電池だけ・<br><span class="r">セット</span>、何が違う？</h2></div>
     <table class="cmpt">
       <thead><tr><th></th><th>太陽光<br>だけ</th><th>蓄電池<br>だけ</th><th class="set">セット</th></tr></thead>
       <tbody>
         <tr><th>昼の電気</th><td><i>◎</i>つくって使う</td><td><i>△</i>夜にためた分</td><td class="set"><i>◎</i>使って、余りをためる</td></tr>
-        <tr><th>夜の電気</th><td><i class="x">×</i>買う</td><td><i>△</i>買ってためた分</td><td class="set"><i>◎</i>昼にためた分を使う</td></tr>
+        <tr><th>夜の電気</th><td><i>×</i>買う</td><td><i>△</i>買ってためた分</td><td class="set"><i>◎</i>昼にためた分を使う</td></tr>
         <tr><th>停電時</th><td><i>△</i>晴れた昼だけ<span class="kari">【約1,500Wまで】</span></td><td><i>△</i>ためた分だけ</td><td class="set"><i>◎</i>昼に充電、夜も使える</td></tr>
         <tr><th>売電が<br>終わったら</th><td><i>△</i>安く売るだけ</td><td>―</td><td class="set"><i>◎</i>ためて使う</td></tr>
         <tr><th>向いている家</th><td>昼に家にいることが多い</td><td>太陽光がある（卒FIT）</td><td class="set">共働き・オール電化・停電が心配</td></tr>
       </tbody>
     </table>
-    <p class="close">昼間留守にしがちなご家庭ほど、「ためて夜使う」蓄電池とのセットが効きます。どれが合うかは診断でお伝えします。</p>
-    <div class="cta-wrap"><span class="cta-lab">約30秒でわかる！</span><a class="cta js-cta" href="#form"><span>わが家の削減額を<br>無料で診断する</span><span class="arrow">›</span></a></div>
-    <p class="bridge">セットにすると、暮らしはこう変わります。</p>
+    <p class="close">昼間留守にしがちなご家庭ほど、<br><span class="mk">「ためて夜使う」セット</span>が効きます。</p>
   </div>
 </section>
 
-<section class="sec blue">
+<!-- メリット -->
+<section class="sec bg-blue">
   <div class="wrap">
-    <div class="slot" data-img="S05" data-alt="太陽光パネル＋蓄電池で暮らしはこう変わる。01電気代が下がる／02停電しても使える／03賦課金がかからない／04売電が終わっても損しない／05値上げに振り回されにくい／06エコな暮らし"><div class="h2-wrap"><p class="sub-lab">このようなお悩みを解決！</p><h3 class="h2">太陽光＋蓄電池で、<br><span class="y">こう変わります</span></h3>
-      <div class="merit-top"><div class="pair"><span>太陽光パネル</span><i>＋</i><span>蓄電池</span></div></div></div>
-    <div class="mimg"><img src="img_chg1.jpg" alt="電気料金の明細を見る母親" style="object-position:50% 40%"></div>
-    <div class="pt"><span class="lab">うれしいポイント<span class="num">01</span></span><b>電気代が下がる</b><p>買う電気そのものが減るから、値上げの影響も小さくなります</p></div>
-    <div class="pt"><span class="lab">うれしいポイント<span class="num">02</span></span><b>停電しても使える</b><p>冷蔵庫・照明・スマホの充電など、最低限の暮らしが続けられます</p></div>
-    <div class="pt"><span class="lab">うれしいポイント<span class="num">03</span></span><b>賦課金がかからない</b><p>自分でつくって使った電気には、再エネ賦課金がかかりません</p></div>
-    <div class="pt"><span class="lab">うれしいポイント<span class="num">04</span></span><b>売電が終わっても損しない</b><p>安く売る代わりに、ためて自分で使います</p></div>
-    <div class="pt"><span class="lab">うれしいポイント<span class="num">05</span></span><b>値上げに振り回されにくい</b><p>燃料費や電力会社の改定の影響を受けるのは、買う分だけです</p></div>
-    <div class="pt"><span class="lab">うれしいポイント<span class="num">06</span></span><b>エコな暮らし</b><p>再生可能エネルギーでCO2を減らす、子どもの世代にもやさしい選択です</p></div></div>
-    <p class="img-note" style="color:#dbeaff">※画像はイメージです</p>
+    <p class="pill-h">太陽光＋蓄電池で<br>こんな<span class="mk">メリット</span>が！</p>
+    <div class="pt-wrap">
+      <div class="pt"><span class="lab">うれしいポイント<b>01</b></span><h4>電気代が下がる</h4><p>買う電気そのものが減るから、値上げの影響も小さくなります。</p><svg class="ico wm"><use href="#i-yen"/></svg></div>
+      <div class="pt"><span class="lab">うれしいポイント<b>02</b></span><h4>停電時も安心</h4><p>冷蔵庫・照明・スマホの充電など、最低限の暮らしが続けられます。</p><svg class="ico wm"><use href="#i-battery"/></svg></div>
+      <div class="pt"><span class="lab">うれしいポイント<b>03</b></span><h4>賦課金がかからない</h4><p>自分でつくって使った電気には、再エネ賦課金がかかりません。</p><svg class="ico wm"><use href="#i-bill"/></svg></div>
+      <div class="pt"><span class="lab">うれしいポイント<b>04</b></span><h4>売電が終わっても損しない</h4><p>安く売る代わりに、ためて自分で使います。</p><svg class="ico wm"><use href="#i-house"/></svg></div>
+      <div class="pt"><span class="lab">うれしいポイント<b>05</b></span><h4>値上げに振り回されにくい</h4><p>燃料費や電力会社の改定の影響を受けるのは、買う分だけです。</p><svg class="ico wm"><use href="#i-shield"/></svg></div>
+      <div class="pt"><span class="lab">うれしいポイント<b>06</b></span><h4>エコな暮らし</h4><p>再生可能エネルギーでCO₂を減らす、地球にも未来にもやさしい選択です。</p><svg class="ico wm"><use href="#i-leaf"/></svg></div>
+    </div>
     <div class="cta-wrap">
-      <div class="gift2" role="img" aria-label="このページを見た方限定 Amazonギフトカード 最大10万円分プレゼント">
-  <span class="g-rib">このページを見た方限定</span>
-  <div class="g-visual"><i class="g-coin c1"></i><i class="g-coin c2"></i><div class="g-card"><span>Amazon<br>ギフトカード</span></div></div>
-  <div class="g-txt"><p class="g-l1">Amazonギフトカード</p><p class="g-l2">最大<b>10万円</b>分<br>プレゼント</p></div>
-</div>
-      <p class="gift-bd" style="color:#dbeaff">初回相談 ¥2,000／お見積もり ¥5,000／ご成約で合計 ¥100,000</p>
+      <div class="gift2" role="img" aria-label="このページを見た方限定 Amazonギフトカード 最大10万円分プレゼント"><span class="g-rib">このページを見た方限定</span><div class="g-visual"><i class="g-coin c1"></i><i class="g-coin c2"></i><div class="g-card"><span>Amazon<br>ギフトカード</span></div></div><div class="g-txt"><p class="g-l1">Amazonギフトカード</p><p class="g-l2">最大<b>10万円</b>分<br>プレゼント</p></div></div>
+      <p class="gift-bd">初回相談 ¥2,000／お見積もり ¥5,000／ご成約で合計 ¥100,000</p>
       <a class="cta js-cta" href="#form"><span>わが家の削減額を<br>無料で診断する</span><span class="arrow">›</span></a>
     </div>
-    <p class="bridge">中でもよくいただくご質問が、<br>「停電したとき」と「売電が終わったあと」のことです。</p>
   </div>
 </section>
 
-<!-- =================== 5 停電・卒FIT =================== -->
-<section class="sec yel">
+<!-- 停電・卒FIT -->
+<section class="sec bg-white">
   <div class="wrap">
-    <div class="slot" data-img="S06" data-alt="停電しても、電気が使える。冷蔵庫・照明・スマホの充電・テレビ・Wi-Fi"><div class="h2-wrap"><p class="sub-lab">もしものときも安心</p><h3 class="h2"><span class="y">停電</span>したとき、<br>何が使える？</h3></div>
-    <div class="outage">
-      <img src="img_teiden_zu.jpg" alt="停電時に太陽光と蓄電池から家の中へ電気が流れる図" style="filter:hue-rotate(48deg) saturate(1.1)">
-      <p class="lead-p" style="margin-top:12px">停電すると、蓄電池の電気に自動で切り替わります。昼間は太陽光で発電しながら充電できるので、停電が長引いても使い続けられます。</p>
-      <p style="margin-top:14px;font-weight:900;color:var(--navy)">使えるものの例</p>
-      <div class="use"><span>冷蔵庫</span><span>照明</span><span>スマホの充電</span><span>テレビ・ラジオ</span><span>Wi-Fi</span><span>（全負荷型なら）エアコン・IH</span></div></div>
-      <p style="margin-top:14px;font-size:16px">エコキュートのタンクのお湯・水は、断水のときに生活用水として使えます（飲用は不可）</p>
+    <div class="hgroup"><span class="kicker">もしものときも</span><h2 class="h2"><span class="r">停電</span>したとき、<br>何が使える？</h2></div>
+    <p class="lead-p">停電すると、蓄電池の電気に<span class="mk">自動で切り替わります</span>。昼間は太陽光で発電しながら充電できるので、停電が長引いても使い続けられます。</p>
+    <div class="use">
+      <div><svg class="ico"><use href="#i-fridge"/></svg>冷蔵庫</div><div><svg class="ico"><use href="#i-light"/></svg>照明</div><div><svg class="ico"><use href="#i-phone"/></svg>スマホ充電</div>
+      <div><svg class="ico"><use href="#i-tv"/></svg>テレビ</div><div><svg class="ico"><use href="#i-wifi"/></svg>Wi-Fi</div><div><svg class="ico"><use href="#i-ac"/></svg>エアコン<br><small style="font-size:11px">（全負荷型なら）</small></div>
     </div>
     <div class="types">
       <div><h4>全負荷型</h4><p>家全体に電気を送る。200Vのエアコン・IH・エコキュートも使える製品が多い<span class="kari">【要確認】</span></p></div>
-      <div><h4>特定負荷型</h4><p>あらかじめ決めた部屋・コンセントだけ。その分、長く使える</p></div>
+      <div><h4>特定負荷型</h4><p>決めた部屋・コンセントだけ。その分、長く使える</p></div>
     </div>
-    <p class="note" style="margin-top:12px">※使える時間は、蓄電池の容量と残量、使う家電によって変わります。<span class="kari">【容量ごとの目安時間をメーカー資料から追記】</span></p>
-    <p class="bridge">もうひとつ、すでに太陽光をお持ちの方にとって<br>大事な話です。</p>
+    <p class="note" style="margin-top:10px">※使える時間は、蓄電池の容量と残量、使う家電によって変わります。<span class="kari">【容量ごとの目安時間をメーカー資料から追記】</span>　※エコキュートのタンクの水は断水時に生活用水として使えます（飲用不可）</p>
 
-    <div class="slot" data-img="S07" data-alt="売電の10年が終わったら、売るより、ためて使う。売ると約7〜9円、買うと約40円（1kWhあたり）"><div class="h2-wrap"><p class="sub-lab">卒FITのご家庭へ</p><h3 class="h2">売電の10年が終わった家こそ、<br><span class="y">蓄電池</span></h3></div>
+    <div class="hgroup" style="margin-top:52px"><span class="kicker">売電の10年が終わったら</span><h2 class="h2">売るより、<br><span class="mk">ためて使う</span></h2></div>
     <p class="lead-p">太陽光の売電は「最初の10年」が高い単価で、終わると大きく下がります。2019年11月から、順番に10年を迎えています。</p>
     <div class="ur" role="img" aria-label="売ると約7〜9円、買うと約40円（1kWhあたり）">
-      <div class="bx"><p>売ると</p><b>約<span class="num">7~9</span>円</b><small>1kWhあたり</small></div><span class="vs">▶</span>
-      <div class="bx buy"><p>買うと</p><b>約<span class="num">40</span>円</b><small>1kWhあたり</small></div>
+      <div class="bx"><p>売ると</p><b>約7〜9<small>円</small></b><span>1kWhあたり</span></div>
+      <div class="bx buy"><p>買うと</p><b>約40<small>円</small></b><span>1kWhあたり</span></div>
     </div>
-    <p class="ur-msg">安く売って高く買うより、<br><span class="red">ためて自分で使う</span>ほうがお得</p></div>
-    <p style="margin-top:14px;font-size:16px">これから太陽光を付ける場合も、売電単価は最初の4年が<span class="kari">【約24円】</span>、5年目からは<span class="kari">【約8.3円】</span>。長く使うほど「ためて使う」が効いてきます</p>
+    <p class="ur-msg">安く売って高く買うより、<br><span class="mk">ためて自分で使う</span>ほうがお得</p>
+    <p style="margin-top:14px;font-size:15.5px">これから太陽光を付ける場合も、売電単価は最初の4年が<span class="kari">【約24円】</span>、5年目からは<span class="kari">【約8.3円】</span>。長く使うほど「ためて使う」が効いてきます。</p>
     <div class="cta-wrap">
       <a class="cta js-cta" href="#form"><span>うちはいくら下がる？<br>無料で診断する</span><span class="arrow">›</span></a>
       <p class="note cta-note">※売電単価は電力会社の買取プラン・認定時期で異なります。買う単価は東北電力 従量電灯Bの<span class="kari">【三段階目＋賦課金】</span>の例<span class="kari">【要確認】</span></p>
     </div>
-    <p class="bridge">良いことは分かった。<br>でも、気になるのはやっぱりお金ですよね。</p>
   </div>
 </section>
 
-<!-- =================== 6 第4章 相場・補助金・期限 =================== -->
-<div class="chap" id="ch4"><h2>いくらかかる？<br><span class="y">元は取れる</span>？</h2></div>
-<section class="sec white">
+<!-- お金 -->
+<div class="chap" id="ch4"><p>良いことは分かった。でも…</p><h2>いくらかかる？<br><span class="y">元は取れる？</span></h2></div>
+<section class="sec bg-pale">
   <div class="wrap">
-    <div class="h2-wrap"><p class="sub-lab">まずは</p><h3 class="h2"><span class="y">相場</span>を知っておきましょう</h3></div>
+    <div class="hgroup"><span class="kicker">まずは</span><h2 class="h2"><span class="mk">相場</span>を知っておきましょう</h2></div>
     <div class="price">
-      <table><thead><tr><th colspan="2" class="pcap">太陽光パネル</th></tr></thead>
-        <tr><th>4kW</th><td>約107万円</td></tr><tr><th>5kW</th><td>約134万円</td></tr><tr><th>6kW</th><td>約160万円</td></tr><tr><th>10kW</th><td>約267万円</td></tr></table>
-      <table><thead><tr><th colspan="2" class="pcap">蓄電池</th></tr></thead>
-        <tr><th>5kWh</th><td>約130〜180万円</td></tr><tr><th>7kWh</th><td>約170〜230万円</td></tr><tr><th>10kWh</th><td>約200〜300万円</td></tr><tr><th>12kWh以上</th><td>約250〜350万円</td></tr></table>
+      <table><thead><tr><th colspan="2" class="pcap">太陽光パネル</th></tr></thead><tbody>
+        <tr><th>4kW</th><td>約107万円</td></tr><tr><th>5kW</th><td>約134万円</td></tr><tr><th>6kW</th><td>約160万円</td></tr><tr><th>10kW</th><td>約267万円</td></tr></tbody></table>
+      <table><thead><tr><th colspan="2" class="pcap">蓄電池</th></tr></thead><tbody>
+        <tr><th>5kWh</th><td>約130〜180万円</td></tr><tr><th>7kWh</th><td>約170〜230万円</td></tr><tr><th>10kWh</th><td>約200〜300万円</td></tr><tr><th>12kWh以上</th><td>約250〜350万円</td></tr></tbody></table>
     </div>
     <p class="note" style="margin-top:8px">太陽光は1kWあたり 約26.7万円で計算。※工事費込みの目安。屋根の形・メーカー・工事内容で前後します。<span class="kari">【アームズの実際の価格帯に差し替え】</span></p>
-    <p class="point">蓄電池は1kWhあたり<br><span class="mk">約25〜30万円</span>が目安。<br><span style="font-size:16.5px">これを大きく超える見積もりは、理由を確認してください。</span></p>
-    <p class="close">ここから補助金を引いた「わが家の実質額」は、無料診断でお出しします。</p>
-    <div class="cta-wrap">
-      <a class="cta js-cta" href="#form"><span>わが家の削減額を<br>無料で診断する</span><span class="arrow">›</span></a>
-    </div>
+    <p class="point">蓄電池は1kWhあたり <span class="big">約25〜30万円</span> が目安。<br>これを大きく超える見積もりは、<br>理由を確認してください。</p>
     <p class="bridge">この金額を、そのまま払う必要はありません。</p>
 
-    <div class="slot" data-img="S08" data-alt="補助金は、3つ重ねて使える。導入費用から国・都道府県・市区町村の補助金を差し引いた額が実際に払う額。申請は当社が代行します"><div class="h2-wrap"><p class="sub-lab">国・都道府県・市区町村</p><h3 class="h2">補助金は、<span class="y">3つ重ねて</span><br>使えます</h3></div>
-
+    <div class="hgroup" style="margin-top:30px"><span class="kicker">国・都道府県・市区町村</span><h2 class="h2">補助金は、<br><span class="mk">3つ重ねて</span>使えます</h2></div>
     <div class="wf">
-      <p class="cap">導入費用から、補助金を3つ差し引くと</p>
       <div class="total">導入費用</div>
-      <div class="row"><div class="pay" style="flex:0 0 34%"><span>実際に<br>払う額</span></div><div class="s3" style="flex:0 0 16%">市区<br>町村</div><div class="s2" style="flex:0 0 22%">都道<br>府県</div><div class="s1" style="flex:1">国</div></div>
+      <div class="row"><div class="pay" style="flex:0 0 34%">実際に<br>払う額</div><div class="s1" style="flex:1">国</div><div class="s2" style="flex:0 0 22%">都道<br>府県</div><div class="s3" style="flex:0 0 16%">市区<br>町村</div></div>
       <div class="legend">
         <p><b>国</b>蓄電池のDR補助金＋給湯省エネ（エコキュート）<span class="nw">上限<span class="kari">74万円</span></span></p>
         <p><b>都道府県</b>お住まいの都道府県の制度 <span class="nw">上限<span class="kari">◯万円</span></span></p>
         <p><b>市区町村</b>上乗せの制度 <span class="nw">上限<span class="kari">◯万円</span></span></p>
       </div>
-      <p class="note" style="margin-top:10px">※図はイメージです。金額は各自治体の公式で裏取り後に確定。全額受け取れるとは限りません</p>
-    </div></div>
-    <p class="lead-p">組み合わせると、導入費用が大きく下がることも。お住まいの地域で使える制度をまとめてお調べし、<b>申請まで当社が代行</b>します。</p>
+      <p class="note" style="margin-top:8px">※図はイメージです。金額は各自治体の公式で裏取り後に確定。全額受け取れるとは限りません</p>
+    </div>
+    <p class="lead-p" style="margin-top:16px">お住まいの地域で使える制度をまとめてお調べし、<b>申請まで当社が代行</b>します。</p>
     <p class="caution">契約・工事の前に申請しないともらえない制度もあります。当社は交付決定を待って着工します。</p>
-    <p class="bridge">ただし、補助金には期限があります。</p>
+    <div class="notice"><h3>重要なお知らせ</h3><p>自治体の補助金は、<span class="mk">予算がなくなり次第、年度の途中でも受付が終わります。</span>検討中の方は、早めの診断がおすすめです。</p></div>
   </div>
-  <div class="slot" data-img="S09" data-alt="重要なお知らせ。自治体の補助金は、予算がなくなり次第、受付終了。検討中の方は、早めの診断がおすすめです"><div class="notice"><h3>重要なお知らせ</h3><p>自治体の補助金は、<span class="y">予算がなくなり次第、年度の途中でも受付が終わります。</span>契約・工事の前に申請が必要な制度もあるため、検討中の方は早めの診断がおすすめです。</p></div></div>
-  <div class="wrap"><p class="bridge">では、補助金を使うと実際どうなるのか。<br>2つのご家庭で試算しました。</p></div>
 </section>
 
-<!-- =================== 7 試算・回収・寿命 =================== -->
-<section class="sec pale">
+<section class="sec bg-white">
   <div class="wrap">
-    <div class="slot" data-img="S10" data-alt="2つのご家庭で試算しました。ケース1 4人家族・オール電化 月30,000円→5,000円、元が取れるまで補助金なし約17年→補助金あり約4年。ケース2 2人暮らし・ガス併用から 月18,000円→4,000円、補助金なし約21年→補助金あり約3年"><div class="h2-wrap"><p class="sub-lab">当社試算</p><h3 class="h2"><span class="y">2つのご家庭</span>で<br>試算しました</h3></div>
-    <div class="sim"><div class="hd2"><b>ケース1　4人家族・オール電化</b><span>太陽光10kW＋蓄電池12kWh＋エコキュート／南向き</span></div>
-      <div class="bd"><p style="font-size:14.5px;color:var(--sub);text-align:center;font-weight:700">月の電気代</p><div class="ba2"><span class="num">30,000</span>円<span class="to">▶</span><span class="num after">5,000</span>円</div>
-        <dl><dt>20年の差</dt><dd>約<span class="num">600</span>万円</dd><dt>導入費用</dt><dd>約<span class="num">500</span>万円</dd><dt>補助金</dt><dd>最大<span class="num">389</span>万円</dd></dl></div></div>
-    <div class="sim"><div class="hd2"><b>ケース2　2人暮らし・ガス併用から</b><span>太陽光5kW＋蓄電池9.8kWh＋エコキュート／東西向き</span></div>
-      <div class="bd"><p style="font-size:14.5px;color:var(--sub);text-align:center;font-weight:700">月の電気代</p><div class="ba2"><span class="num">18,000</span>円<span class="to">▶</span><span class="num after">4,000</span>円</div>
-        <dl><dt>20年の差</dt><dd>約<span class="num">336</span>万円</dd><dt>導入費用</dt><dd>約<span class="num">350</span>万円</dd><dt>補助金</dt><dd>最大<span class="num">307</span>万円</dd></dl></div></div>
-    <div class="h2-wrap"><p class="sub-lab">元は取れるの？</p><h3 class="h2"><span class="y">数字</span>でお答えします</h3></div>
-    <p class="formula">回収年数 ＝<br>（導入費用 − 補助金）÷ 1年間の電気代の削減額</p>
-    <div class="pb"><h4>ケース1：4人家族・オール電化</h4><p style="font-size:14.5px;color:var(--sub)">導入費用 約500万円／削減額 月約2.5万円（年約30万円）</p>
-      <div class="r"><span>補助金なし</span><div class="bar" style="width:81%">約17年</div></div>
-      <div class="r"><span>補助金あり<br>（最大389万円）</span><div class="bar with" style="width:22%">約4年</div></div><p class="cap2">※補助金を最大額使えた場合</p></div>
-    <div class="pb"><h4>ケース2：2人暮らし・ガス併用から</h4><p style="font-size:14.5px;color:var(--sub)">導入費用 約350万円／削減額 月約1.4万円（年約17万円）</p>
-      <div class="r"><span>補助金なし</span><div class="bar" style="width:100%">約21年</div></div>
-      <div class="r"><span>補助金あり<br>（最大307万円）</span><div class="bar with" style="width:18%">約3年</div></div><p class="cap2">※補助金を最大額使えた場合</p></div>
-    </div><p class="note" style="margin-top:10px">※当社試算。20年の差は月の削減額×240か月。値上がり・売電収入は含みません。実在のお客様の数値ではありません</p>
-    <p class="close">元が取れるかどうかは、「補助金をいくら使えるか」で大きく変わります。だからこそ、契約の前に診断で確かめてください。</p>
-    <div class="cta-wrap">
-      <a class="cta js-cta" href="#form"><span>うちの回収年数を<br>無料で診断する</span><span class="arrow">›</span></a>
-      <p class="note cta-note">※当社試算。売電収入・値上がり・メンテナンス費は含みません。補助金は最大額を使えた場合。実在のお客様の数値ではありません</p>
-    </div>
-    <p class="bridge">元を取ったあとも、長く使えるかどうかが大事です。</p>
+    <div class="hgroup"><span class="kicker">当社試算</span><h2 class="h2">2つのご家庭で<br>試算しました</h2></div>
+    <div class="sim"><h4>ケース1　4人家族・オール電化</h4><p class="sp">太陽光10kW＋蓄電池12kWh＋エコキュート／南向き</p>
+      <div class="bars2"><div class="col before"><div class="bar" style="height:100%">電気代<b>30,000円</b></div></div><div class="col after"><div class="bar" style="height:22%"><b>5,000円</b></div></div><div class="bubble"><div>約<b>83%</b>削減</div></div></div>
+      <div class="bars2-lb"><span>導入前</span><span>導入後</span></div>
+      <dl><dt>20年の差</dt><dd>約600万円</dd><dt>導入費用</dt><dd>約500万円</dd><dt>補助金</dt><dd>最大389万円</dd></dl></div>
+    <div class="sim"><h4>ケース2　2人暮らし・ガス併用から</h4><p class="sp">太陽光5kW＋蓄電池9.8kWh＋エコキュート／東西向き</p>
+      <div class="bars2"><div class="col before"><div class="bar" style="height:100%">電気代<b>18,000円</b></div></div><div class="col after"><div class="bar" style="height:26%"><b>4,000円</b></div></div><div class="bubble"><div>約<b>78%</b>削減</div></div></div>
+      <div class="bars2-lb"><span>導入前</span><span>導入後</span></div>
+      <dl><dt>20年の差</dt><dd>約336万円</dd><dt>導入費用</dt><dd>約350万円</dd><dt>補助金</dt><dd>最大307万円</dd></dl></div>
+    <p class="note" style="margin-top:10px">※当社試算。20年の差は月の削減額×240か月。値上がり・売電収入は含みません。実在のお客様の数値ではありません</p>
 
-    <div class="h2-wrap"><p class="sub-lab">寿命と交換</p><h3 class="h2">何年使える？<br><span class="y">交換はいつ</span>？</h3></div>
+    <div class="hgroup" style="margin-top:52px"><span class="kicker">元は取れるの？</span><h2 class="h2"><span class="mk">回収年数</span>で比べると</h2></div>
+    <p class="formula">回収年数 ＝（導入費用 − 補助金）<br>÷ 1年間の電気代の削減額</p>
+    <div class="pb"><h4>ケース1：4人家族・オール電化</h4>
+      <div class="r"><span>補助金なし</span><div class="bar" style="width:81%">約17年</div></div>
+      <div class="r"><span>補助金あり</span><div class="bar with" style="width:22%">約4年</div></div></div>
+    <div class="pb"><h4>ケース2：2人暮らし・ガス併用から</h4>
+      <div class="r"><span>補助金なし</span><div class="bar" style="width:100%">約21年</div></div>
+      <div class="r"><span>補助金あり</span><div class="bar with" style="width:18%">約3年</div></div></div>
+    <p class="note" style="margin-top:8px">※補助金を最大額使えた場合。売電収入・値上がり・メンテナンス費は含みません</p>
+    <p class="close">元が取れるかは<span class="mk">「補助金をいくら使えるか」</span>で<br>大きく変わります。</p>
+    <div class="cta-wrap"><a class="cta js-cta" href="#form"><span>うちの回収年数を<br>無料で診断する</span><span class="arrow">›</span></a></div>
+
+    <div class="hgroup" style="margin-top:52px"><span class="kicker">寿命と交換</span><h2 class="h2">何年使える？<br>交換はいつ？</h2></div>
     <div class="life">
       <div><b>太陽光パネル</b><span>メーカーの出力保証<span class="kari">【約20〜30年】</span></span></div>
       <div><b>蓄電池</b><span>メーカー保証<span class="kari">【約10〜15年】</span>、充放電の寿命<span class="kari">【◯回】</span></span></div>
       <div><b>パワーコンディショナ</b><span>交換の目安<span class="kari">【約10〜15年】</span>、交換費用<span class="kari">【約◯万円】</span></span></div>
     </div>
-    <p class="close">長く使う設備だから、交換の時期と費用も最初にお伝えします。診断書には、20年間の支出として交換費用も入れて試算します。</p>
-    <p class="note" style="margin-top:8px">※年数はメーカー・製品で異なります。取扱メーカーの公式資料で確定</p>
-    <p class="bridge">数字の見方が分かったら、<br>あとは「どこに頼むか」です。</p>
+    <p class="note" style="margin-top:8px">※診断書には、20年間の支出として交換費用も入れて試算します。年数はメーカー・製品で異なります</p>
   </div>
 </section>
 
-<!-- =================== 8 第5章 どこに頼めば安心？ =================== -->
-<div class="chap" id="ch5"><h2>どこに頼めば<span class="y">安心</span>？</h2></div>
-<section class="sec white">
+<!-- どこに頼む -->
+<div class="chap" id="ch5"><p>数字の見方が分かったら</p><h2>どこに頼めば<br><span class="y">安心？</span></h2></div>
+<section class="sec bg-pale">
   <div class="wrap">
-    <div class="h2-wrap"><p class="sub-lab">契約の前に</p><h3 class="h2">その見積もり、<br><span class="y">安さだけ</span>で選んでいませんか？</h3></div>
-    <p class="lead-p">見積もりは、何が含まれているかで値段が変わります。契約の前に、この6つを確認してください。</p>
-    <div class="est"><img src="zu_mitsumori.jpg" alt="御見積書の見本。本体・工事費・補助金・お支払い総額・保証の欄に番号"></div>
+    <div class="hgroup"><span class="kicker">契約の前に</span><h2 class="h2">その見積もり、<br><span class="mk">6つ</span>を確認してください</h2></div>
     <ol class="estlist">
-      <li><span class="mark">1</span><div><b>本体価格</b>容量（kW・kWh）とメーカー・型番が書いてあるか</div></li>
-      <li><span class="mark">2</span><div><b>工事費</b>別紙・「一式」でまとめられていないか</div></li>
-      <li><span class="mark">3</span><div><b>支払総額</b>ローンなら金利込みでいくらか</div></li>
-      <li><span class="mark">4</span><div><b>補助金</b>引いた後の金額か、申請は誰がするか</div></li>
-      <li><span class="mark">5</span><div><b>保証</b>何が、何年、点検費はかかるか</div></li>
-      <li><span class="mark">6</span><div><b>比べる条件</b>他社と同じ容量で比べているか</div></li>
+      <li><span class="m">1</span><div><b>本体価格</b>容量（kW・kWh）とメーカー・型番が書いてあるか</div></li>
+      <li><span class="m">2</span><div><b>工事費</b>別紙・「一式」でまとめられていないか</div></li>
+      <li><span class="m">3</span><div><b>支払総額</b>ローンなら金利込みでいくらか</div></li>
+      <li><span class="m">4</span><div><b>補助金</b>引いた後の金額か、申請は誰がするか</div></li>
+      <li><span class="m">5</span><div><b>保証</b>何が、何年、点検費はかかるか</div></li>
+      <li><span class="m">6</span><div><b>比べる条件</b>他社と同じ容量で比べているか</div></li>
     </ol>
-    <p class="close">「工事費無料」と「総額が安い」は別の話です。当社は、工事費も含めた総額でお見積もりします。</p>
-    <div class="cta-wrap"><span class="cta-lab">他社の見積もりもOK！</span><a class="cta js-cta" href="#form"><span>今の見積もりを<br>無料で確認してもらう</span><span class="arrow">›</span></a></div>
-    <p class="bridge">この確認が大事なのは、<br>実際にこんな相談が増えているからです。</p>
-  </div>
-</section>
-<section class="sec char">
-  <div class="wrap">
-    <div class="slot" data-img="S11" data-alt="蓄電池のトラブル相談が約4倍に（国民生活センター：2016年度325件→2020年度1,314件）。こんな営業に注意：「この値段は今日だけ」「電力会社の関連会社です」「無料点検のついでに…」"><div class="h2-wrap"><p class="sub-lab">残念ですが…</p><h3 class="h2">蓄電池のトラブル相談が<br><span class="y">約4倍</span>に</h3></div>
-    <div class="soudan" role="img" aria-label="国民生活センターに寄せられた家庭用蓄電池の相談。2016年度325件、2020年度1,314件、約4倍">
-      <p class="ttl2">国民生活センターに寄せられた家庭用蓄電池の相談</p>
-      <div class="bars"><div class="col"><b>325件</b><i style="height:22%"></i></div><div class="col now"><b>1,314件</b><i style="height:86%"></i></div><div class="x4"><div>約<br><b>4</b>倍</div></div></div>
-      <div class="yr"><span>2016年度</span><span>2020年度</span></div>
-    </div>
-    <div class="h2-wrap"><h3 class="h2">「この値段は<span class="y">今日だけ</span>」<br>と言われたら</h3></div>
-    <div class="quotes">
-      <blockquote><span class="num">1</span>「この値段は今日限り」と急かされ、その場で契約した</blockquote>
-      <blockquote><span class="num">2</span>電力会社の関連会社だと名乗られた</blockquote>
-      <blockquote><span class="num">3</span>太陽光の無料点検に来た業者に、蓄電池を勧められた</blockquote>
-    </div></div>
-    <p class="close">他社の見積もりをお持ちの方も、当社が<b>無料で確認</b>します。その上で他社に決められても構いません。</p>
-    <div class="cool"><h4>契約してしまった方へ</h4><p style="font-size:16px;margin-top:4px">訪問販売で契約した場合、契約書面を受け取った日を含む8日間はクーリング・オフができます。困ったときは消費者ホットライン「188」へ。</p></div>
-    <div class="cta-wrap">
-      <a class="cta js-cta" href="#form"><span>今の見積もりを<br>無料で確認してもらう</span><span class="arrow">›</span></a>
-      <p class="note cta-note" style="color:#cfd5dd">※出典：国民生活センター 2021年6月3日 報道発表「家庭用蓄電池の訪問販売等のトラブル」</p>
-    </div>
-    <p class="bridge">だから私たちは、<br>3つのことをお約束しています。</p>
-  </div>
-</section>
-<section class="sec yel">
-  <div class="wrap">
-    <div class="slot" data-img="S12" data-alt="私たちの3つのお約束。1 お得にならない家には、お勧めしません／2 その場での契約を急かしません／3 工事費も含めた総額でお見積もりします"><div class="h2-wrap"><p class="sub-lab">私たちの</p><h3 class="h2"><span class="y">3つ</span>のお約束</h3></div>
-    <div class="promise">
-      <div><span class="num">1</span><div><b>お得にならない家には、<br>お勧めしません。</b><p>メリットが出にくい場合は、診断書の数字で正直にお伝えします</p></div></div>
-      <div><span class="num">2</span><div><b>その場での契約を<br>急かしません。</b><p>ご家族で相談してから決めてください</p></div></div>
-      <div><span class="num">3</span><div><b>工事費も含めた総額で<br>お見積もりします。</b><p>後から追加費用が出ないよう、現地調査で確認します</p></div></div>
-    </div></div>
-    <div class="cta-wrap"><span class="cta-lab">約30秒でわかる！</span><a class="cta js-cta" href="#form"><span>わが家の削減額を<br>無料で診断する</span><span class="arrow">›</span></a></div>
-    <p class="bridge">このお約束を守るために、<br>こんな体制を整えています。</p>
+    <p class="close">「工事費無料」と「総額が安い」は別の話。<br>当社は<span class="mk">工事費も含めた総額</span>でお見積もりします。</p>
+    <div class="cta-wrap"><span class="cta-lab">＼ 他社の見積もりもOK ／</span><a class="cta js-cta" href="#form"><span>今の見積もりを<br>無料で確認してもらう</span><span class="arrow">›</span></a></div>
   </div>
 </section>
 
-<!-- =================== 9 選ばれる理由・メーカー・保証・声 =================== -->
-<section class="sec pale">
+<section class="sec bg-char">
   <div class="wrap">
-    <div class="feat-top"><span class="s">あなたに最適なプランを設備のプロがご案内</span><p class="bn" style="margin-top:14px"><span class="kari">みんなの住まい.com</span>が選ばれる</p><h3><span class="num">5</span>つの特徴</h3></div>
+    <div class="hgroup"><span class="kicker">残念ですが…</span><h2 class="h2">蓄電池のトラブル相談が<br><span class="y">約4倍</span>に</h2></div>
+    <p class="note" style="text-align:center">国民生活センターに寄せられた家庭用蓄電池の相談件数</p>
+    <div class="trouble" role="img" aria-label="2016年度325件、2020年度1,314件、約4倍"><div class="col"><b>325件</b><i style="height:20%"></i></div><div class="col now"><b>1,314件</b><i style="height:80%"></i></div><div class="bubble"><div>約<b>4</b>倍</div></div></div>
+    <div class="trouble-yr"><span>2016年度</span><span>2020年度</span></div>
+    <p class="warn-h">こんな営業には注意</p>
+    <div class="quotes"><p>「この値段は今日限り」と急かされ、その場で契約した</p><p>電力会社の関連会社だと名乗られた</p><p>太陽光の無料点検に来た業者に、蓄電池を勧められた</p></div>
+    <div class="cool"><h4>契約してしまった方へ</h4><p>訪問販売で契約した場合、契約書面を受け取った日を含む8日間はクーリング・オフができます。困ったときは消費者ホットライン「188」へ。</p></div>
+    <p class="note" style="margin-top:10px">※出典：国民生活センター 2021年6月3日 報道発表「家庭用蓄電池の訪問販売等のトラブル」</p>
+  </div>
+</section>
+
+<section class="sec bg-white">
+  <div class="wrap">
+    <div class="hgroup"><span class="kicker">だから私たちは</span><h2 class="h2"><span class="mk">3つのお約束</span>をしています</h2></div>
+    <div class="staff"><img src="il_staff.webp" alt=""><div class="say"><h4>無理にはお勧めしません</h4><p>他社の見積もりをお持ちの方も、当社が無料で確認します。その上で他社に決められても構いません。</p></div></div>
+    <ul class="promise">
+      <li><span class="n">1</span><div><b>お得にならない家には、お勧めしません</b><p>メリットが出にくい場合は、診断書の数字で正直にお伝えします</p></div></li>
+      <li><span class="n">2</span><div><b>その場での契約を急かしません</b><p>ご家族で相談してから決めてください</p></div></li>
+      <li><span class="n">3</span><div><b>工事費も含めた総額でお見積もりします</b><p>後から追加費用が出ないよう、現地調査で確認します</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="sec bg-pale">
+  <div class="wrap">
+    <div class="hgroup"><span class="kicker"><span class="kari">みんなの住まい.com</span>が選ばれる</span><h2 class="h2"><span class="feat-num">5</span>つの特徴</h2></div>
     <div class="feat">
-      <article><span class="no">Feature 01</span><div class="row"><img src="img_feat1.jpg" alt="屋根で太陽光パネルを取り付けるスタッフ" style="object-position:50% 40%"><div><h3>施工実績<span class="kari">1,200件</span></h3><p>関東・東北で<span class="kari">12年</span>、太陽光と蓄電池を設置してきました</p></div></div></article>
-      <article><span class="no">Feature 02</span><div class="row"><img src="img_feat2.jpg" alt="太陽光パネルと蓄電池の展示" style="object-position:40% 50%"><div><h3>複数メーカーから選べる</h3><p>屋根の形・方角・ご家族の電気の使い方に合わせて組み合わせます</p></div></div></article>
-      <article><span class="no">Feature 03</span><div class="row"><img src="img_feat3.jpg" alt="家族に診断書を説明するスタッフ" style="object-position:45% 50%"><div><h3>口頭ではなく、診断書で</h3><p>削減額・補助金・回収年数を数字でお渡しします。ご家族でじっくりご検討ください</p></div></div></article>
-      <article><span class="no">Feature 04</span><div class="row"><img src="img_feat4.jpg" alt="補助金の申請書類をまとめる手元"><div><h3>補助金の申請を代行</h3><p>制度を調べ、書類を作り、交付決定を待ってから着工します</p></div></div></article>
-      <article><span class="no">Feature 05</span><div class="row"><img src="img_feat5.jpg" alt="蓄電池を点検するスタッフ" style="object-position:55% 50%"><div><h3>導入後も定期点検</h3><p><span class="kari">【◯年に1回】</span>の点検を<span class="kari">【無償】</span>で。故障の窓口も当社ひとつです</p></div></div></article>
+      <article><div class="fi"><svg class="ico"><use href="#i-house"/></svg></div><div><p class="no">FEATURE 01</p><h3>施工実績<span class="kari">1,200件</span></h3><p>関東・東北で<span class="kari">12年</span>、太陽光と蓄電池を設置してきました</p></div></article>
+      <article><div class="fi"><svg class="ico"><use href="#i-grid"/></svg></div><div><p class="no">FEATURE 02</p><h3>複数メーカーから選べる</h3><p>屋根の形・方角・電気の使い方に合わせて組み合わせます</p></div></article>
+      <article><div class="fi"><svg class="ico"><use href="#i-doc"/></svg></div><div><p class="no">FEATURE 03</p><h3>口頭ではなく、診断書で</h3><p>削減額・補助金・回収年数を数字でお渡しします</p></div></article>
+      <article><div class="fi"><svg class="ico"><use href="#i-hand"/></svg></div><div><p class="no">FEATURE 04</p><h3>補助金の申請を代行</h3><p>制度を調べ、書類を作り、交付決定を待ってから着工します</p></div></article>
+      <article><div class="fi"><svg class="ico"><use href="#i-tool"/></svg></div><div><p class="no">FEATURE 05</p><h3>導入後も定期点検</h3><p><span class="kari">【◯年に1回】</span>の点検を<span class="kari">【無償】</span>で。故障の窓口も当社ひとつです</p></div></article>
     </div>
-    <p class="img-note">※画像はイメージです</p>
     <div class="cta-wrap">
-      <div class="gift2" role="img" aria-label="このページを見た方限定 Amazonギフトカード 最大10万円分プレゼント">
-  <span class="g-rib">このページを見た方限定</span>
-  <div class="g-visual"><i class="g-coin c1"></i><i class="g-coin c2"></i><div class="g-card"><span>Amazon<br>ギフトカード</span></div></div>
-  <div class="g-txt"><p class="g-l1">Amazonギフトカード</p><p class="g-l2">最大<b>10万円</b>分<br>プレゼント</p></div>
-</div>
+      <div class="gift2" role="img" aria-label="このページを見た方限定 Amazonギフトカード 最大10万円分プレゼント"><span class="g-rib">このページを見た方限定</span><div class="g-visual"><i class="g-coin c1"></i><i class="g-coin c2"></i><div class="g-card"><span>Amazon<br>ギフトカード</span></div></div><div class="g-txt"><p class="g-l1">Amazonギフトカード</p><p class="g-l2">最大<b>10万円</b>分<br>プレゼント</p></div></div>
       <p class="gift-bd">初回相談 ¥2,000／お見積もり ¥5,000／ご成約で合計 ¥100,000</p>
       <a class="cta js-cta" href="#form"><span>わが家の削減額を<br>無料で診断する</span><span class="arrow">›</span></a>
     </div>
-    <p class="bridge">設備は、ご家庭に合うものを<br>複数のメーカーから選びます。</p>
 
-    <div class="h2-wrap"><p class="sub-lab">ところで</p><h3 class="h2">どんな<span class="y">メーカー</span>があるの？</h3></div>
+    <div class="hgroup" style="margin-top:52px"><span class="kicker">取扱メーカー</span><h2 class="h2">ご家庭に合う組み合わせを</h2></div>
     <div class="makers"><div class="maker">メーカーA<small>ロゴ（仮）</small></div><div class="maker">メーカーB<small>ロゴ（仮）</small></div><div class="maker">メーカーC<small>ロゴ（仮）</small></div><div class="maker">メーカーD<small>ロゴ（仮）</small></div><div class="maker">メーカーE<small>ロゴ（仮）</small></div><div class="maker">メーカーF<small>ロゴ（仮）</small></div></div>
-    <p class="close">メーカーごとに得意が違います。ご家庭に合う組み合わせをご提案します。</p>
-    <p class="bridge">付けたあとも、ずっとお付き合いが続きます。</p>
 
-    <div class="h2-wrap"><p class="sub-lab">保証・アフター</p><h3 class="h2">導入したあとも、<span class="y">ずっと</span></h3></div>
-    <p class="lead-p">メーカーと工事会社に別々に連絡する必要はありません。窓口は当社ひとつです。</p>
+    <div class="hgroup" style="margin-top:52px"><span class="kicker">保証・アフター</span><h2 class="h2">導入したあとも、<span class="mk">ずっと</span></h2></div>
+    <p class="lead-p" style="margin-bottom:12px">メーカーと工事会社に別々に連絡する必要はありません。窓口は当社ひとつです。</p>
     <table class="warranty">
       <tr><th>メーカー保証</th><td><span class="kari">【◯年】</span></td></tr>
       <tr><th>施工保証</th><td><span class="kari">【◯年】</span>（工事が原因の不具合を無償で修理）</td></tr>
@@ -1052,83 +711,70 @@ body,button,input,select,textarea{font-family:"M PLUS Rounded 1c","Hiragino Maru
       <tr><th>定期点検</th><td><span class="kari">【◯年に1回・無償】</span></td></tr>
       <tr><th>故障したとき</th><td><span class="kari">【◯時間以内】</span>にご連絡</td></tr>
     </table>
-    <p class="bridge">実際に導入したお客様の声です。</p>
   </div>
 </section>
 
-<section class="sec yel">
+<section class="sec bg-white">
   <div class="wrap">
-    <div class="h2-wrap"><p class="sub-lab">当社で導入した</p><h3 class="h2"><span class="y">お客様の声</span></h3></div>
-    <div class="voice"><p class="meta kari">埼玉県にお住まい／元の電気代 24,800円</p><div class="in"><p class="h kari">補助金を使って、電気代が7割下がりました</p>
-      <div class="ph"><img src="voice1.jpg" alt="お客様のイメージ"><span>写真は仮</span></div>
-      <div class="ba"><div class="b"><small>Before</small><b class="kari">24,800円</b></div><div class="a"><small>After</small><b class="kari">6,200円</b></div></div>
-      <p class="c kari">【決め手・工事の印象・導入後の変化をご本人の言葉で】</p><p class="kansou">※個人の感想です</p></div></div>
-    <div class="voice"><p class="meta kari">宮城県にお住まい／元の電気代 31,500円</p><div class="in"><p class="h kari">停電の夜も、冷蔵庫と照明が使えて安心でした</p>
-      <div class="ph"><img src="voice2.jpg" alt="お客様のイメージ"><span>写真は仮</span></div>
-      <div class="ba"><div class="b"><small>Before</small><b class="kari">31,500円</b></div><div class="a"><small>After</small><b class="kari">7,900円</b></div></div>
-      <p class="c kari">【決め手・工事の印象・導入後の変化をご本人の言葉で】</p><p class="kansou">※個人の感想です</p></div></div>
-    <div class="voice"><p class="meta kari">千葉県にお住まい／元の電気代 19,200円</p><div class="in"><p class="h kari">他社の見積もりを確認してもらい、納得して決められました</p>
-      <div class="ph"><img src="voice3.jpg" alt="お客様のイメージ"><span>写真は仮</span></div>
-      <div class="ba"><div class="b"><small>Before</small><b class="kari">19,200円</b></div><div class="a"><small>After</small><b class="kari">5,600円</b></div></div>
-      <p class="c kari">【決め手・工事の印象・導入後の変化をご本人の言葉で】</p><p class="kansou">※個人の感想です</p></div></div>
-    <div class="cta-wrap">
-      <a class="cta js-cta" href="#form"><span>無料診断を申し込む</span><span class="arrow">›</span></a>
-      <p class="note cta-note">※個人の感想です。ご契約プランや機器によって異なり、効果を保証するものではありません</p>
+    <div class="hgroup"><span class="kicker">当社で導入した</span><h2 class="h2">お客様の声</h2></div>
+    <div class="voice"><div class="top"><div class="av"><svg class="ico"><use href="#i-user"/></svg></div><div><p class="meta kari">埼玉県にお住まい</p><p class="h kari">補助金を使って、電気代が7割下がりました</p></div></div>
+      <div class="ba"><span class="b kari">24,800円</span><i>▶</i><span class="a kari">6,200円</span></div>
+      <p class="c kari">【決め手・工事の印象・導入後の変化をご本人の言葉で】</p><p class="kansou">※個人の感想です</p></div>
+    <div class="voice"><div class="top"><div class="av"><svg class="ico"><use href="#i-user"/></svg></div><div><p class="meta kari">宮城県にお住まい</p><p class="h kari">停電の夜も、冷蔵庫と照明が使えて安心でした</p></div></div>
+      <div class="ba"><span class="b kari">31,500円</span><i>▶</i><span class="a kari">7,900円</span></div>
+      <p class="c kari">【決め手・工事の印象・導入後の変化をご本人の言葉で】</p><p class="kansou">※個人の感想です</p></div>
+    <div class="voice"><div class="top"><div class="av"><svg class="ico"><use href="#i-user"/></svg></div><div><p class="meta kari">千葉県にお住まい</p><p class="h kari">他社の見積もりを確認してもらい、納得して決められました</p></div></div>
+      <div class="ba"><span class="b kari">19,200円</span><i>▶</i><span class="a kari">5,600円</span></div>
+      <p class="c kari">【決め手・工事の印象・導入後の変化をご本人の言葉で】</p><p class="kansou">※個人の感想です</p></div>
+    <p class="note" style="margin-top:10px">※個人の感想です。ご契約プランや機器によって異なり、効果を保証するものではありません</p>
+  </div>
+</section>
+
+<!-- まずは何を -->
+<div class="chap" id="ch6"><p>「うちはどうだろう」と思った方へ</p><h2>まずは、<span class="y">無料診断</span>から</h2></div>
+<section class="sec bg-pale">
+  <div class="wrap">
+    <div class="staff"><img src="il_staff.webp" alt=""><div class="say"><h4>補助金に詳しくなくても大丈夫！</h4><p>まだ決めていない方も、「対象になるか知りたい」だけの方も、お気軽にご相談ください。</p></div></div>
+    <div class="hgroup" style="margin-top:44px"><span class="kicker">無料診断でわかること</span><h2 class="h2">このページの数字を、<br><span class="mk">わが家の数字</span>で</h2></div>
+    <div class="doc" role="img" aria-label="わが家の診断書（サンプル）">
+      <p class="dh">わが家の診断書<small>サンプル</small></p>
+      <dl><dt>使える補助金</dt><dd>128万円</dd><dt>補助金を引いた費用</dt><dd>212万円</dd><dt>電気代の削減額（月）</dt><dd>18,600円</dd><dt>元が取れる年数</dt><dd>9.5年</dd></dl>
+      <p class="ft">※数字は記入例です</p>
     </div>
-    <p class="bridge">ここまで読んで「うちはどうだろう」と思った方へ。<br>その答えを出すのが、無料診断です。</p>
-  </div>
-</section>
-
-<!-- =================== 10 第6章 無料診断・流れ・対象 =================== -->
-<div class="chap" id="ch6"><h2>まずは、<span class="y">何を</span>すればいい？</h2></div>
-<section class="sec pale">
-  <div class="wrap">
-    <div class="slot" data-img="S13" data-alt="無料診断で、わが家の数字がわかる。使える補助金／補助金を引いた費用／電気代の削減額／元が取れる年数（診断書のサンプル）"><div class="h2-wrap"><p class="sub-lab">無料診断</p><h3 class="h2">このページの数字を、<br><span class="y">「わが家の数字」</span>で</h3></div>
-    <p class="lead-p">お住まいの地域・住宅・いまの電気代をもとに、専門スタッフが「わが家の診断書」をお作りします。</p>
     <ul class="know">
-      <li><span class="num">1</span><div><b>使える補助金</b>（国・都道府県・市区町村）</div></li>
-      <li><span class="num">2</span><div><b>補助金を引いた費用</b>（実際に払う金額）</div></li>
-      <li><span class="num">3</span><div><b>電気代の削減額</b>（毎月・20年の差）</div></li>
-      <li><span class="num">4</span><div><b>元が取れる年数</b>（交換費用も入れて）</div></li>
+      <li><b>使える補助金</b>国・都道府県・市区町村</li>
+      <li><b>補助金を引いた費用</b>実際に払う金額</li>
+      <li><b>電気代の削減額</b>毎月・20年の差</li>
+      <li><b>元が取れる年数</b>交換費用も入れて</li>
     </ul>
-    <img class="diag-img" src="zu_shindansho.jpg" alt="わが家の診断書（サンプル）"></div>
-    <p class="close">補助金に詳しくなくても大丈夫。「対象になるか知りたい」だけでも、お気軽にどうぞ。</p>
     <div class="cta-wrap">
       <a class="cta js-cta" href="#form"><span>わが家の診断書を<br>無料でもらう</span><span class="arrow">›</span></a>
       <p class="note cta-note">※補助制度の有無・内容・受付状況は、自治体や時期により異なります</p>
     </div>
-    <p class="bridge">お申込みから設置までは、この流れです。</p>
 
-    <div class="slot" data-img="S14" data-alt="お申込みから設置まで。1無料診断に申し込む→2お電話でご状況を確認→3現地調査（無料）→4診断書とお見積もりをご説明（ここで決めなくて大丈夫）→5ご契約・補助金の申請→6工事→7運転開始・定期点検"><div class="h2-wrap"><p class="sub-lab">ご利用の流れ</p><h3 class="h2">お申込みから<span class="y">設置まで</span></h3></div>
-    <div class="flow-total"><span>お申込みから設置まで</span><b>最短<span class="num kari">約3</span><span class="kari">週間</span></b></div>
+    <div class="hgroup" style="margin-top:52px"><span class="kicker">ご利用の流れ</span><h2 class="h2">お申込みから設置まで<br>最短<span class="mk kari">約3週間</span></h2></div>
     <ol class="flow">
-      <li><span class="n">1</span><div><p class="ft">無料診断に申し込む</p><p class="fd">このページのフォームから。入力は約30秒</p></div><span class="who you">お客様</span></li>
-      <li><span class="n">2</span><div><p class="ft">お電話でご状況を確認</p><p class="fd">電気代・お住まい・ご検討状況をうかがいます</p></div><span class="who">当社</span></li>
-      <li><span class="n">3</span><div><p class="ft">現地調査（無料）</p><p class="fd">屋根の向き・状態を確認。1〜2時間</p></div><span class="who">当社</span></li>
-      <li class="key"><span class="n">4</span><div><p class="ft">診断書とお見積もりをご説明</p><p class="fd">補助金・費用・削減額を数字でお渡しします。ここで決めなくて大丈夫です</p></div><span class="who">当社</span></li>
-      <li><span class="n">5</span><div><p class="ft">ご契約・補助金の申請</p><p class="fd">申請は当社が代行。交付決定を待ってから着工します</p></div><span class="who">当社</span></li>
-      <li><span class="n">6</span><div><p class="ft">工事</p><p class="fd">設置は1〜2日、停電は約1時間</p></div><span class="who">当社</span></li>
-      <li><span class="n">7</span><div><p class="ft">運転開始・定期点検</p><p class="fd">使い方をご説明し、その後も点検でお付き合いします</p></div><span class="who">当社</span></li>
-    </ol></div>
-    <p class="note">※設置までの期間は補助金の審査期間により前後します</p>
-    <p class="bridge">お申込みの前に、対象になるかをご確認ください。</p>
+      <li><span class="n">1</span><p class="ft">無料診断に申し込む</p><p class="fd">このページのフォームから。入力は約30秒</p></li>
+      <li><span class="n">2</span><p class="ft">お電話でご状況を確認</p><p class="fd">電気代・お住まい・ご検討状況をうかがいます</p></li>
+      <li><span class="n">3</span><p class="ft">現地調査（無料）</p><p class="fd">屋根の向き・状態を確認。1〜2時間</p></li>
+      <li class="key"><span class="n">4</span><p class="ft">診断書とお見積もりをご説明<span class="tag">ここで決めなくて大丈夫</span></p><p class="fd">補助金・費用・削減額を数字でお渡しします</p></li>
+      <li><span class="n">5</span><p class="ft">ご契約・補助金の申請</p><p class="fd">申請は当社が代行。交付決定を待ってから着工します</p></li>
+      <li><span class="n">6</span><p class="ft">工事</p><p class="fd">設置は1〜2日、停電は約1時間</p></li>
+      <li style="padding-bottom:0"><span class="n">7</span><p class="ft">運転開始・定期点検</p><p class="fd">使い方をご説明し、その後も点検でお付き合いします</p></li>
+    </ol>
+    <p class="note" style="margin-top:12px">※設置までの期間は補助金の審査期間により前後します</p>
 
-    <div class="h2-wrap"><p class="sub-lab">対象エリア</p><h3 class="h2">対象となる<span class="y">お住まい</span></h3></div>
+    <div class="hgroup" style="margin-top:52px"><span class="kicker">対象エリア</span><h2 class="h2">対象となるお住まい</h2></div>
     <div class="area">
-      <div><h4>対応エリア</h4>
-        <p class="rg">関東</p><p class="pr"><span>東京都</span><span>神奈川県</span><span>埼玉県</span><span>千葉県</span><span>茨城県</span><span>栃木県</span><span>群馬県</span></p>
-        <p class="rg">東北</p><p class="pr"><span>宮城県</span><span>福島県</span></p></div>
-      <div><h4>お住まい</h4><p style="font-weight:900;margin-top:8px;font-size:17px">持ち家の一戸建て<br><span style="font-weight:500;font-size:15px;color:var(--sub)">（賃貸・マンションは対象外）</span></p>
-        <p style="font-size:15.5px;margin-top:8px">築年数や屋根の状態は現地調査で確認します。屋根の修繕が先に必要な場合もお伝えします</p></div>
+      <div><h4>対応エリア</h4><p class="rg">関東</p><p class="pr"><span>東京都</span><span>神奈川県</span><span>埼玉県</span><span>千葉県</span><span>茨城県</span><span>栃木県</span><span>群馬県</span></p><p class="rg">東北</p><p class="pr"><span>宮城県</span><span>福島県</span></p></div>
+      <div><h4>お住まい</h4><p style="font-weight:800;margin-top:4px">持ち家の一戸建て<span style="font-weight:500;font-size:14.5px;color:var(--sub)">（賃貸・マンションは対象外）</span></p><p style="font-size:15.5px;margin-top:4px">築年数や屋根の状態は現地調査で確認します。屋根の修繕が先に必要な場合もお伝えします</p></div>
     </div>
-    <p class="bridge">よくいただくご質問にもお答えします。</p>
   </div>
 </section>
 
-<!-- =================== 11 FAQ・フォーム・会社概要 =================== -->
-<section class="sec yel">
+<section class="sec bg-white">
   <div class="wrap">
-    <div class="h2-wrap"><p class="sub-lab">Q&amp;A</p><h3 class="h2">よくあるご質問</h3></div>
+    <div class="hgroup"><span class="kicker">Q&amp;A</span><h2 class="h2">よくあるご質問</h2></div>
     <div class="faq">
       <details open><summary><span class="q">Q</span>相談・診断だけでも大丈夫？</summary><p class="a">大丈夫です。診断だけで導入されない方もいらっしゃいます。費用はかかりません。</p></details>
       <details><summary><span class="q">Q</span>他社で見積もり中でもいい？</summary><p class="a">はい。お手元の見積もりも、本体・工事・支払総額・補助金・保証の観点で無料で確認します。</p></details>
@@ -1143,20 +789,15 @@ body,button,input,select,textarea{font-family:"M PLUS Rounded 1c","Hiragino Maru
       <details><summary><span class="q">Q</span>しつこく営業されない？</summary><p class="a">ご不要とお伝えいただければ、それ以降のご連絡は控えます。</p></details>
       <details><summary><span class="q">Q</span>ギフトはいつもらえる？</summary><p class="a">初回相談・お見積もり・ご成約の段階ごとに、条件を満たした方へ進呈します。進呈時期は<span class="kari">【◯】</span>です。</p></details>
     </div>
-    <p class="bridge">その他のご質問は、<br>無料診断の際に専門スタッフがお答えします！</p>
   </div>
 </section>
 
 <section class="form-sec" id="form">
-  <div class="slot" data-img="S15" data-alt="入力するだけ！約30秒でわかる わが家の削減額を無料で診断。このページを見た方限定 Amazonギフトカード最大10万円分プレゼント"><p class="s">入力するだけ！<span class="num">30</span>秒でわかる！</p>
+  <p style="text-align:center;font-weight:800;color:var(--blue)">＼ 入力するだけ！約30秒 ／</p>
   <h2>わが家の削減額を<br>無料で診断</h2>
   <p class="trust"><span>✓ 無料</span><span>✓ 約30秒</span><span>✓ しつこい営業はしません</span></p>
-  <div class="gift2" role="img" aria-label="このページを見た方限定 Amazonギフトカード 最大10万円分プレゼント">
-  <span class="g-rib">このページを見た方限定</span>
-  <div class="g-visual"><i class="g-coin c1"></i><i class="g-coin c2"></i><div class="g-card"><span>Amazon<br>ギフトカード</span></div></div>
-  <div class="g-txt"><p class="g-l1">Amazonギフトカード</p><p class="g-l2">最大<b>10万円</b>分<br>プレゼント</p></div>
-</div>
-  <p class="gift-bd" style="color:#e1eeff">初回相談 ¥2,000／お見積もり ¥5,000／ご成約で合計 ¥100,000</p></div>
+  <div class="gift2" role="img" aria-label="このページを見た方限定 Amazonギフトカード 最大10万円分プレゼント"><span class="g-rib">このページを見た方限定</span><div class="g-visual"><i class="g-coin c1"></i><i class="g-coin c2"></i><div class="g-card"><span>Amazon<br>ギフトカード</span></div></div><div class="g-txt"><p class="g-l1">Amazonギフトカード</p><p class="g-l2">最大<b>10万円</b>分<br>プレゼント</p></div></div>
+  <p class="gift-bd" style="text-align:center">初回相談 ¥2,000／お見積もり ¥5,000／ご成約で合計 ¥100,000</p>
   <div class="form" id="qform">
     <div class="prog"><span id="pnum">質問 1／5</span><span class="rest" id="prest"></span></div>
     <div class="pbar"><i id="pbar"></i></div>
@@ -1185,7 +826,7 @@ body,button,input,select,textarea{font-family:"M PLUS Rounded 1c","Hiragino Maru
 
 <section class="company">
   <div class="wrap">
-    <h3 class="h2" style="font-size:20px">会社概要</h3>
+    <h3>会社概要</h3>
     <dl>
       <dt>会社名</dt><dd class="kari">【会社名】</dd>
       <dt>所在地</dt><dd class="kari">【所在地】</dd>
@@ -1194,7 +835,7 @@ body,button,input,select,textarea{font-family:"M PLUS Rounded 1c","Hiragino Maru
       <dt>受付時間</dt><dd class="kari">【受付時間】</dd>
       <dt>電話番号</dt><dd class="kari">【電話番号】</dd>
     </dl>
-    <p style="margin-top:16px;font-size:15.5px;text-align:center"><a href="#">プライバシーポリシー</a></p>
+    <p style="margin-top:16px;font-size:15px;text-align:center"><a href="#">プライバシーポリシー</a></p>
   </div>
 </section>
 <footer>© みんなの住まい.com</footer>
@@ -1203,13 +844,11 @@ body,button,input,select,textarea{font-family:"M PLUS Rounded 1c","Hiragino Maru
 <div class="sticky" id="sticky"><a class="cta" href="#form"><span>わが家の削減額を無料で診断する<small>約30秒・無料</small></span><span class="arrow">›</span></a></div>
 
 <script>
-// ページ内のボタンかフォームが見えている間は、追従ボタンを隠す
 (function(){
   const s=document.getElementById('sticky'); const seen=new Set();
   const io=new IntersectionObserver(es=>{es.forEach(e=>{e.isIntersecting?seen.add(e.target):seen.delete(e.target)}); s.classList.toggle('hide',seen.size>0)},{threshold:.1});
   document.querySelectorAll('.js-cta,#form').forEach(el=>io.observe(el));
 })();
-// ステップ式フォーム（1問ずつ。3問目から残りの問数を表示）
 (function(){
   const steps=[...document.querySelectorAll('#qform .step')]; let cur=1; const total=steps.length;
   const show=n=>{cur=n;steps.forEach(st=>st.classList.toggle('on',+st.dataset.s===n));
@@ -1220,19 +859,6 @@ body,button,input,select,textarea{font-family:"M PLUS Rounded 1c","Hiragino Maru
   document.getElementById('next4').addEventListener('click',()=>show(5));
   document.querySelectorAll('#qform .back').forEach(b=>b.addEventListener('click',()=>show(Math.max(cur-1,1))));
   show(1);
-})();
-// セクション画像（S01.png など）が置かれていれば、そのセクションを画像に差し替える
-(function(){
-  document.querySelectorAll('.slot[data-img]').forEach(el=>{
-    const id=el.dataset.img, exts=['webp','png','jpg'];
-    (function tryNext(n){
-      if(n>=exts.length) return;
-      const im=new Image();
-      im.onload=()=>{im.alt=el.dataset.alt||''; im.className='slot-img'; im.width=im.naturalWidth; im.height=im.naturalHeight; el.replaceChildren(im); el.classList.add('is-img')};
-      im.onerror=()=>tryNext(n+1);
-      im.src=''+id+'.'+exts[n];
-    })(0);
-  });
 })();
 </script>
 </body>
