@@ -370,6 +370,17 @@ footer{background:var(--navy);color:#cfdcef;text-align:center;font-size:12.5px;p
 .sticky.hide{transform:translate(-50%,120%)}
 .sticky .cta{font-size:17px;padding:12px 50px 12px 18px}
 @media (max-width:380px){.h2,.chap h2{font-size:24px}.pill-h{font-size:21px}.reasons .rhead p{font-size:20px}.bill .sum b{font-size:40px}.family-h p{font-size:18px}.family-h p b{font-size:28px}}
+
+/* v8：デザイン部分は画像 */
+.sx{display:block;width:100%;height:auto}
+.blk{padding:14px 20px 0}
+.blk .note{margin-top:6px}
+.cta-band{background:#fff;padding:26px 20px 30px;text-align:center}
+.cta-band.pale{background:var(--blue-l)}
+.cta-band .note{margin-top:10px}
+.gift-img{display:block;width:100%;max-width:560px;margin:0 auto 6px}
+.html-sec{padding:44px 0}
+.html-sec .h2{font-size:24px}
 </style>
 </head>
 <body>
@@ -400,306 +411,105 @@ footer{background:var(--navy);color:#cfdcef;text-align:center;font-size:12.5px;p
   <symbol id="i-user" viewBox="0 0 64 64"><circle cx="32" cy="22" r="10"/><path d="M12 56c2-12 10-18 20-18s18 6 20 18"/></symbol>
 </svg>
 <div class="page">
-
 <header class="hd"><img src="logo.png" alt="みんなの住まい.com"><a href="#form">無料診断<br>はこちら</a></header>
 
 <!-- FV -->
 <div class="fv-img"><img src="fv_sp.webp" width="1024" height="1536" fetchpriority="high" alt="太陽光パネル＋蓄電池で、毎月の電気代3万円が3,000円に。約90%削減。30年間の電気代は1,080万円が108万円に"></div>
 <p class="fv-notes">※1 当社試算のモデルケース（月の電気代3万円のご家庭で約90%削減した場合）。削減額はお住まい・ご契約プラン・機器・使い方により異なります。<br>※2 月額を30年間同じとした単純計算（3万円×12か月×30年／3,000円×12か月×30年）。電気料金の値上がり・機器費用は含みません。</p>
 
-<div class="wrap cta-wrap">
-  <p class="note" style="margin-bottom:6px">施工実績 <span class="kari">1,200件</span>／太陽光事業 <span class="kari">12年</span>　<span class="kari">※仮の数字（【20XX年X月時点・当社調べ】の注記を入れる）</span></p>
-  <div class="gift2" role="img" aria-label="このページを見た方限定 Amazonギフトカード 最大10万円分プレゼント"><span class="g-rib">このページを見た方限定</span><div class="g-visual"><i class="g-coin c1"></i><i class="g-coin c2"></i><div class="g-card"><span>Amazon<br>ギフトカード</span></div></div><div class="g-txt"><p class="g-l1">Amazonギフトカード</p><p class="g-l2">最大<b>10万円</b>分<br>プレゼント</p></div></div>
+
+<div class="cta-band">
+  <p class="note" style="margin-bottom:8px">施工実績 <span class="kari">1,200件</span>／太陽光事業 <span class="kari">12年</span>　<span class="kari">※仮の数字（【20XX年X月時点・当社調べ】の注記を入れる）</span></p>
+  <img class="gift-img" src="I19.webp" alt="このページを見た方限定 Amazonギフトカード 最大10万円分プレゼント" loading="lazy">
   <p class="gift-bd">初回相談 ¥2,000／お見積もり ¥5,000／ご成約で合計 ¥100,000</p>
   <span class="cta-lab">＼ 約30秒でわかる！ ／</span>
   <a class="cta js-cta" href="#form"><span>わが家の削減額を<br>無料で診断する</span><span class="arrow">›</span></a>
   <p class="note cta-note">※ギフトの進呈条件はフォーム下をご確認ください</p>
 </div>
 
-<!-- 実例・目次 -->
-<section class="sec bg-white">
-  <div class="wrap">
-    <div class="hgroup"><span class="kicker">導入したご家庭の電気代</span><h2 class="h2">実際に、こんなふうに<br><span class="mk">下がっています。</span></h2></div>
-    <div class="cases">
-      <article class="case"><p class="who kari">埼玉県在住 S様</p><p class="spec">太陽光 <span class="kari">5.5kW</span>＋蓄電池 <span class="kari">9.8kWh</span></p>
-        <div class="bars2"><div class="col before"><div class="bar" style="height:100%">電気代<b class="kari">24,800円</b></div></div><div class="col after"><div class="bar" style="height:30%"><b class="kari">6,200円</b></div></div><div class="bubble"><div>約<b>75%</b>削減</div></div></div>
-        <div class="bars2-lb"><span>導入前</span><span>導入後</span></div></article>
-      <article class="case"><p class="who kari">宮城県在住 K様</p><p class="spec">太陽光 <span class="kari">6.2kW</span>＋蓄電池 <span class="kari">12.7kWh</span></p>
-        <div class="bars2"><div class="col before"><div class="bar" style="height:100%">電気代<b class="kari">31,500円</b></div></div><div class="col after"><div class="bar" style="height:30%"><b class="kari">7,900円</b></div></div><div class="bubble"><div>約<b>75%</b>削減</div></div></div>
-        <div class="bars2-lb"><span>導入前</span><span>導入後</span></div></article>
-      <article class="case"><p class="who kari">千葉県在住 T様</p><p class="spec">太陽光 <span class="kari">4.8kW</span>＋蓄電池 <span class="kari">7.0kWh</span></p>
-        <div class="bars2"><div class="col before"><div class="bar" style="height:100%">電気代<b class="kari">19,200円</b></div></div><div class="col after"><div class="bar" style="height:32%"><b class="kari">5,600円</b></div></div><div class="bubble"><div>約<b>71%</b>削減</div></div></div>
-        <div class="bars2-lb"><span>導入前</span><span>導入後</span></div></article>
-      <article class="case"><p class="who kari">福島県在住 M様</p><p class="spec">蓄電池 <span class="kari">9.8kWh</span>（卒FIT）</p>
-        <div class="bars2"><div class="col before"><div class="bar" style="height:100%">電気代<b class="kari">22,100円</b></div></div><div class="col after"><div class="bar" style="height:46%"><b class="kari">9,800円</b></div></div><div class="bubble"><div>約<b>56%</b>削減</div></div></div>
-        <div class="bars2-lb"><span>導入前</span><span>導入後</span></div></article>
-    </div>
-    <p class="swipe">← 横にスワイプして、ほかの実例も見られます →</p>
-    <p class="note" style="margin-top:6px">※導入前後の同じ月の請求額で比較。ご契約プラン・機器・使い方で異なります。</p>
+<img class="sx" src="I01.webp" alt="導入したご家庭の電気代。埼玉県S様24,800円→6,200円（約75%削減）、宮城県K様31,500円→7,900円（約75%削減）、千葉県T様19,200円→5,600円（約71%削減）、福島県M様22,100円→9,800円（約56%削減）" loading="lazy" decoding="async">
+<div class="blk"><p class="note"><span class="kari">※実例の数値・お名前は仮です（実データに差し替え）。</span>導入前後の同じ月の請求額で比較。ご契約プラン・機器・使い方で異なります。</p></div>
 
-    <nav class="toc">
-      <h3>このページでわかること</h3>
-      <ol>
-        <li><a href="#ch2"><span class="n">1</span>なぜ、いま考えるべき？</a></li>
-        <li><a href="#ch3"><span class="n">2</span>どうすれば下がる？</a></li>
-        <li><a href="#ch4"><span class="n">3</span>いくら？元は取れる？</a></li>
-        <li><a href="#ch5"><span class="n">4</span>どこに頼めば安心？</a></li>
-      </ol>
-      <p class="last">最後に、わが家の数字を無料で診断できます</p>
-    </nav>
-  </div>
-</section>
+<div id="ch2" style="height:20px"></div>
+<img class="sx" src="I02.webp" alt="ところで、こんなお悩みありませんか？電気代が年々高くなっている／値上がりはまだ続くの？／停電や地震の備えが不安／太陽光は高そう。元が取れるか分からない／売電の10年が終わって売れる額が減った／訪問で勧められた金額が妥当か分からない" loading="lazy" decoding="async">
+<img class="sx" src="I03.webp" alt="そもそも電気代が上がる3つの理由。理由1 世界的な燃料の高騰／理由2 再エネ賦課金の増加（2012年度0.22円→2026年度4.18円）／理由3 電力会社の値上げ（東北電力は2026年11月1日に値上げ）" loading="lazy" decoding="async">
+<img class="sx" src="I04.webp" alt="例えば4人家族の場合。毎月の電気代30,000円、1年で360,000円、10年で3,600,000円。値上がりしなくても30年で1,080万円" loading="lazy" decoding="async">
+<div class="blk"><p class="note">※賦課金単価は経済産業省の公表値。東北電力は2026年9月28日の同社発表。30年の金額は月額3万円が続いた場合の単純計算（値上がりは含みません）</p></div>
+<div class="cta-band">
+  
+  <span class="cta-lab">＼ 約30秒でわかる！ ／</span>
+  <a class="cta js-cta" href="#form"><span>わが家の削減額を<br>無料で診断する</span><span class="arrow">›</span></a>
+  
+</div>
 
-<!-- ところで・お悩み -->
-<div class="tokoro" id="ch2"><img src="il_woman.webp" alt=""><p>＼ ところで ／</p><img src="il_man.webp" alt=""></div>
-<section class="sec bg-pale" style="padding-top:44px">
-  <div class="wrap">
-    <div class="hgroup"><span class="kicker">高騰し続ける電気代</span><h2 class="h2">こんな<span class="r">お悩み</span>、<br>ありませんか？</h2></div>
-    <ul class="checks">
-      <li>電気代が、年々高くなっている</li>
-      <li>値上がりは、まだ続くの？</li>
-      <li>停電や地震の備えが不安</li>
-      <li>太陽光は高そう。元が取れるのか分からない</li>
-      <li>売電の10年が終わって、売れる額が減った</li>
-      <li>訪問で勧められたが、その金額が妥当か分からない</li>
-    </ul>
-    <p class="close">何十年も使う設備だからこそ、<br>「うちの場合はいくらか」を<br><span class="mk">数字で確かめてから</span>決めませんか。</p>
-  </div>
-</section>
+<div id="ch3"></div>
+<img class="sx" src="I05.webp" alt="太陽光でつくる＋蓄電池にためる。朝は蓄電池にためた電気を使う／昼は太陽光でつくって使い余りはためる／夕方〜夜はためた電気で料理・お風呂・エアコン／足りない時だけ電力会社から買う" loading="lazy" decoding="async">
+<img class="sx" src="I06.webp" alt="太陽光だけ・蓄電池だけ・セットの比較表。昼の電気、夜の電気、停電時、売電終了後のいずれもセットが◎。昼間留守にしがちなご家庭ほどセットが効きます" loading="lazy" decoding="async">
+<img class="sx" src="I07.webp" alt="太陽光＋蓄電池でこんなメリットが。01電気代が下がる／02停電時も安心／03賦課金がかからない／04売電が終わっても損しない／05値上げに振り回されにくい／06エコな暮らし" loading="lazy" decoding="async">
+<div class="cta-band">
+  <img class="gift-img" src="I19.webp" alt="このページを見た方限定 Amazonギフトカード 最大10万円分プレゼント" loading="lazy">
+  <p class="gift-bd">初回相談 ¥2,000／お見積もり ¥5,000／ご成約で合計 ¥100,000</p>
+  <span class="cta-lab">＼ 約30秒でわかる！ ／</span>
+  <a class="cta js-cta" href="#form"><span>わが家の削減額を<br>無料で診断する</span><span class="arrow">›</span></a>
+  
+</div>
 
-<!-- 3つの理由・4人家族 -->
-<section class="sec bg-char">
-  <div class="wrap">
-    <div class="reasons">
-      <div class="rhead"><small>＼ そもそも ／</small><p>電気代が上がる<b>3</b>つの理由</p></div>
-      <div class="reason"><p class="lab">理由<b>1</b></p><div class="body"><div class="tx"><h4>世界的な<span class="r">燃料の高騰</span></h4><p>火力発電に使う<span class="mk">石油・ガスの価格が高いまま</span>。電気代の「燃料費調整額」に乗ります。</p></div><svg class="ico ri"><use href="#i-oil"/></svg></div></div>
-      <div class="reason"><p class="lab">理由<b>2</b></p><div class="body"><div class="tx"><h4><span class="r">再エネ賦課金</span>の増加</h4><p>電気料金に上乗せされる国の制度コストが、<span class="mk">年々アップ</span>。</p></div><svg class="ico ri"><use href="#i-bulb"/></svg></div>
-        <div class="levy" role="img" aria-label="再エネ賦課金（1kWhあたり）2012年度0.22円、2016年度2.25円、2021年度3.36円、2026年度4.18円">
-          <p class="t">再エネ賦課金（1kWhあたり）</p>
-          <div class="bars"><div class="col"><b>0.22円</b><i style="height:4%"></i></div><div class="col"><b>2.25円</b><i style="height:44%"></i></div><div class="col"><b>3.36円</b><i style="height:66%"></i></div><div class="col now"><b>4.18円</b><i style="height:82%"></i></div></div>
-          <div class="yr"><span>2012年度</span><span>2016年度</span><span>2021年度</span><span>2026年度</span></div>
-        </div></div>
-      <div class="reason"><p class="lab">理由<b>3</b></p><div class="body"><div class="tx"><h4><span class="r">電力会社</span>の値上げ</h4><p>東北電力は<span class="mk">2026年11月1日に値上げ</span>（従量電灯B・30A・月260kWhで月＋485円）。<span class="kari">【東京電力の直近の改定も追記】</span></p></div><svg class="ico ri"><use href="#i-chart"/></svg></div></div>
-    </div>
-    <p class="note" style="margin-top:10px">※賦課金単価は経済産業省の公表値。東北電力は2026年9月28日の同社発表</p>
+<img class="sx" src="I08.webp" alt="停電したとき何が使える？冷蔵庫・照明・スマホ充電・テレビ・Wi-Fi・エアコン" loading="lazy" decoding="async">
+<div class="blk"><p class="note">※使える時間・家電は、蓄電池の容量と残量、タイプ（全負荷型・特定負荷型）によって変わります。エアコン等の200V機器は全負荷型の場合。<span class="kari">【容量ごとの目安時間をメーカー資料から追記】</span></p></div>
+<img class="sx" src="I09.webp" alt="売電の10年が終わったら、売るより、ためて使う。売ると約7〜9円、買うと約40円（1kWhあたり）" loading="lazy" decoding="async">
+<div class="blk"><p class="note">※売電単価は買取プラン・認定時期で異なります。買う単価は東北電力 従量電灯Bの<span class="kari">【三段階目＋賦課金】</span>の例<span class="kari">【要確認】</span></p></div>
+<div class="cta-band">
+  
+  <span class="cta-lab">＼ 約30秒でわかる！ ／</span>
+  <a class="cta js-cta" href="#form"><span>うちはいくら下がる？<br>無料で診断する</span><span class="arrow">›</span></a>
+  
+</div>
 
-    <div class="family-h"><img src="il_house.webp" alt=""><p>例えば<b>4人家族</b>の場合</p></div>
-    <div class="bill" role="img" aria-label="毎月3万円、1年で36万円、10年で360万円、値上がりしなくても30年で1,080万円">
-      <dl><dt>・毎月の電気代</dt><dd>30,000円</dd><dt>・1年で</dt><dd>360,000円</dd><dt>・10年で</dt><dd>3,600,000円</dd></dl>
-      <p class="sum">値上がりしなくても、30年で<b>1,080<span>万円</span></b></p>
-    </div>
-    <p class="note" style="margin-top:8px">※月額3万円が30年間続いた場合の単純計算（3万円×12か月×30年）。値上がりは含みません</p>
-    <p class="close">光熱費は、終わりのない支払いです。<br>値上がりが続けば、<span style="color:var(--yellow)">もっと増えます。</span></p>
-    <div class="cta-wrap"><span class="cta-lab">＼ 約30秒でわかる！ ／</span><a class="cta js-cta" href="#form"><span>わが家の削減額を<br>無料で診断する</span><span class="arrow">›</span></a></div>
-  </div>
-</section>
-
-<!-- どうすれば下がる？ -->
-<div class="chap" id="ch3"><p>払い続けるしかない？ いいえ。</p><h2>「買う電気」を減らせば、<br>電気代は<span class="y">下がります</span></h2></div>
-<section class="sec bg-pale">
-  <div class="wrap">
-    <div class="hgroup"><span class="kicker">つくって、ためて、使う</span><h2 class="h2">太陽光で<span class="mk">つくる</span>＋<br>蓄電池に<span class="mk">ためる</span></h2></div>
-    <ol class="day">
-      <li><p class="t"><svg class="ico"><use href="#i-sunset"/></svg>朝</p><p class="d">発電が少ない時間は、蓄電池の残りを使う</p></li>
-      <li><p class="t"><svg class="ico"><use href="#i-sun"/></svg>昼</p><p class="d">太陽光でつくった電気を家で使い、余った分を蓄電池へ</p></li>
-      <li><p class="t"><svg class="ico"><use href="#i-moon"/></svg>夕方〜夜</p><p class="d">蓄電池にためた電気で、料理・お風呂・エアコン</p></li>
-      <li class="buy"><p class="t"><svg class="ico"><use href="#i-tower"/></svg>足りない時</p><p class="d">足りない分だけ、電力会社から買う</p></li>
-    </ol>
-    <p class="close">「買う」暮らしから、<br>「つくって使う」暮らしへ。</p>
-    <p class="bridge">でも、太陽光だけ・蓄電池だけでは<br>だめなの？</p>
-
-    <div class="hgroup" style="margin-top:30px"><span class="kicker">ここが大事</span><h2 class="h2">太陽光だけ・蓄電池だけ・<br><span class="r">セット</span>、何が違う？</h2></div>
-    <table class="cmpt">
-      <thead><tr><th></th><th>太陽光<br>だけ</th><th>蓄電池<br>だけ</th><th class="set">セット</th></tr></thead>
-      <tbody>
-        <tr><th>昼の電気</th><td><i>◎</i>つくって使う</td><td><i>△</i>夜にためた分</td><td class="set"><i>◎</i>使って、余りをためる</td></tr>
-        <tr><th>夜の電気</th><td><i>×</i>買う</td><td><i>△</i>買ってためた分</td><td class="set"><i>◎</i>昼にためた分を使う</td></tr>
-        <tr><th>停電時</th><td><i>△</i>晴れた昼だけ<span class="kari">【約1,500Wまで】</span></td><td><i>△</i>ためた分だけ</td><td class="set"><i>◎</i>昼に充電、夜も使える</td></tr>
-        <tr><th>売電が<br>終わったら</th><td><i>△</i>安く売るだけ</td><td>―</td><td class="set"><i>◎</i>ためて使う</td></tr>
-        <tr><th>向いている家</th><td>昼に家にいることが多い</td><td>太陽光がある（卒FIT）</td><td class="set">共働き・オール電化・停電が心配</td></tr>
-      </tbody>
-    </table>
-    <p class="close">昼間留守にしがちなご家庭ほど、<br><span class="mk">「ためて夜使う」セット</span>が効きます。</p>
-  </div>
-</section>
-
-<!-- メリット -->
-<section class="sec bg-blue">
-  <div class="wrap">
-    <p class="pill-h">太陽光＋蓄電池で<br>こんな<span class="mk">メリット</span>が！</p>
-    <div class="pt-wrap">
-      <div class="pt"><span class="lab">うれしいポイント<b>01</b></span><h4>電気代が下がる</h4><p>買う電気そのものが減るから、値上げの影響も小さくなります。</p><svg class="ico wm"><use href="#i-yen"/></svg></div>
-      <div class="pt"><span class="lab">うれしいポイント<b>02</b></span><h4>停電時も安心</h4><p>冷蔵庫・照明・スマホの充電など、最低限の暮らしが続けられます。</p><svg class="ico wm"><use href="#i-battery"/></svg></div>
-      <div class="pt"><span class="lab">うれしいポイント<b>03</b></span><h4>賦課金がかからない</h4><p>自分でつくって使った電気には、再エネ賦課金がかかりません。</p><svg class="ico wm"><use href="#i-bill"/></svg></div>
-      <div class="pt"><span class="lab">うれしいポイント<b>04</b></span><h4>売電が終わっても損しない</h4><p>安く売る代わりに、ためて自分で使います。</p><svg class="ico wm"><use href="#i-house"/></svg></div>
-      <div class="pt"><span class="lab">うれしいポイント<b>05</b></span><h4>値上げに振り回されにくい</h4><p>燃料費や電力会社の改定の影響を受けるのは、買う分だけです。</p><svg class="ico wm"><use href="#i-shield"/></svg></div>
-      <div class="pt"><span class="lab">うれしいポイント<b>06</b></span><h4>エコな暮らし</h4><p>再生可能エネルギーでCO₂を減らす、地球にも未来にもやさしい選択です。</p><svg class="ico wm"><use href="#i-leaf"/></svg></div>
-    </div>
-    <div class="cta-wrap">
-      <div class="gift2" role="img" aria-label="このページを見た方限定 Amazonギフトカード 最大10万円分プレゼント"><span class="g-rib">このページを見た方限定</span><div class="g-visual"><i class="g-coin c1"></i><i class="g-coin c2"></i><div class="g-card"><span>Amazon<br>ギフトカード</span></div></div><div class="g-txt"><p class="g-l1">Amazonギフトカード</p><p class="g-l2">最大<b>10万円</b>分<br>プレゼント</p></div></div>
-      <p class="gift-bd">初回相談 ¥2,000／お見積もり ¥5,000／ご成約で合計 ¥100,000</p>
-      <a class="cta js-cta" href="#form"><span>わが家の削減額を<br>無料で診断する</span><span class="arrow">›</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- 停電・卒FIT -->
-<section class="sec bg-white">
-  <div class="wrap">
-    <div class="hgroup"><span class="kicker">もしものときも</span><h2 class="h2"><span class="r">停電</span>したとき、<br>何が使える？</h2></div>
-    <p class="lead-p">停電すると、蓄電池の電気に<span class="mk">自動で切り替わります</span>。昼間は太陽光で発電しながら充電できるので、停電が長引いても使い続けられます。</p>
-    <div class="use">
-      <div><svg class="ico"><use href="#i-fridge"/></svg>冷蔵庫</div><div><svg class="ico"><use href="#i-light"/></svg>照明</div><div><svg class="ico"><use href="#i-phone"/></svg>スマホ充電</div>
-      <div><svg class="ico"><use href="#i-tv"/></svg>テレビ</div><div><svg class="ico"><use href="#i-wifi"/></svg>Wi-Fi</div><div><svg class="ico"><use href="#i-ac"/></svg>エアコン<br><small style="font-size:11px">（全負荷型なら）</small></div>
-    </div>
-    <div class="types">
-      <div><h4>全負荷型</h4><p>家全体に電気を送る。200Vのエアコン・IH・エコキュートも使える製品が多い<span class="kari">【要確認】</span></p></div>
-      <div><h4>特定負荷型</h4><p>決めた部屋・コンセントだけ。その分、長く使える</p></div>
-    </div>
-    <p class="note" style="margin-top:10px">※使える時間は、蓄電池の容量と残量、使う家電によって変わります。<span class="kari">【容量ごとの目安時間をメーカー資料から追記】</span>　※エコキュートのタンクの水は断水時に生活用水として使えます（飲用不可）</p>
-
-    <div class="hgroup" style="margin-top:52px"><span class="kicker">売電の10年が終わったら</span><h2 class="h2">売るより、<br><span class="mk">ためて使う</span></h2></div>
-    <p class="lead-p">太陽光の売電は「最初の10年」が高い単価で、終わると大きく下がります。2019年11月から、順番に10年を迎えています。</p>
-    <div class="ur" role="img" aria-label="売ると約7〜9円、買うと約40円（1kWhあたり）">
-      <div class="bx"><p>売ると</p><b>約7〜9<small>円</small></b><span>1kWhあたり</span></div>
-      <div class="bx buy"><p>買うと</p><b>約40<small>円</small></b><span>1kWhあたり</span></div>
-    </div>
-    <p class="ur-msg">安く売って高く買うより、<br><span class="mk">ためて自分で使う</span>ほうがお得</p>
-    <p style="margin-top:14px;font-size:15.5px">これから太陽光を付ける場合も、売電単価は最初の4年が<span class="kari">【約24円】</span>、5年目からは<span class="kari">【約8.3円】</span>。長く使うほど「ためて使う」が効いてきます。</p>
-    <div class="cta-wrap">
-      <a class="cta js-cta" href="#form"><span>うちはいくら下がる？<br>無料で診断する</span><span class="arrow">›</span></a>
-      <p class="note cta-note">※売電単価は電力会社の買取プラン・認定時期で異なります。買う単価は東北電力 従量電灯Bの<span class="kari">【三段階目＋賦課金】</span>の例<span class="kari">【要確認】</span></p>
-    </div>
-  </div>
-</section>
-
-<!-- お金 -->
-<div class="chap" id="ch4"><p>良いことは分かった。でも…</p><h2>いくらかかる？<br><span class="y">元は取れる？</span></h2></div>
-<section class="sec bg-pale">
-  <div class="wrap">
-    <div class="hgroup"><span class="kicker">まずは</span><h2 class="h2"><span class="mk">相場</span>を知っておきましょう</h2></div>
-    <div class="price">
-      <table><thead><tr><th colspan="2" class="pcap">太陽光パネル</th></tr></thead><tbody>
-        <tr><th>4kW</th><td>約107万円</td></tr><tr><th>5kW</th><td>約134万円</td></tr><tr><th>6kW</th><td>約160万円</td></tr><tr><th>10kW</th><td>約267万円</td></tr></tbody></table>
-      <table><thead><tr><th colspan="2" class="pcap">蓄電池</th></tr></thead><tbody>
-        <tr><th>5kWh</th><td>約130〜180万円</td></tr><tr><th>7kWh</th><td>約170〜230万円</td></tr><tr><th>10kWh</th><td>約200〜300万円</td></tr><tr><th>12kWh以上</th><td>約250〜350万円</td></tr></tbody></table>
-    </div>
-    <p class="note" style="margin-top:8px">太陽光は1kWあたり 約26.7万円で計算。※工事費込みの目安。屋根の形・メーカー・工事内容で前後します。<span class="kari">【アームズの実際の価格帯に差し替え】</span></p>
-    <p class="point">蓄電池は1kWhあたり <span class="big">約25〜30万円</span> が目安。<br>これを大きく超える見積もりは、<br>理由を確認してください。</p>
-    <p class="bridge">この金額を、そのまま払う必要はありません。</p>
-
-    <div class="hgroup" style="margin-top:30px"><span class="kicker">国・都道府県・市区町村</span><h2 class="h2">補助金は、<br><span class="mk">3つ重ねて</span>使えます</h2></div>
-    <div class="wf">
-      <div class="total">導入費用</div>
-      <div class="row"><div class="pay" style="flex:0 0 34%">実際に<br>払う額</div><div class="s1" style="flex:1">国</div><div class="s2" style="flex:0 0 22%">都道<br>府県</div><div class="s3" style="flex:0 0 16%">市区<br>町村</div></div>
-      <div class="legend">
-        <p><b>国</b>蓄電池のDR補助金＋給湯省エネ（エコキュート）<span class="nw">上限<span class="kari">74万円</span></span></p>
-        <p><b>都道府県</b>お住まいの都道府県の制度 <span class="nw">上限<span class="kari">◯万円</span></span></p>
-        <p><b>市区町村</b>上乗せの制度 <span class="nw">上限<span class="kari">◯万円</span></span></p>
-      </div>
-      <p class="note" style="margin-top:8px">※図はイメージです。金額は各自治体の公式で裏取り後に確定。全額受け取れるとは限りません</p>
-    </div>
-    <p class="lead-p" style="margin-top:16px">お住まいの地域で使える制度をまとめてお調べし、<b>申請まで当社が代行</b>します。</p>
-    <p class="caution">契約・工事の前に申請しないともらえない制度もあります。当社は交付決定を待って着工します。</p>
-    <div class="notice"><h3>重要なお知らせ</h3><p>自治体の補助金は、<span class="mk">予算がなくなり次第、年度の途中でも受付が終わります。</span>検討中の方は、早めの診断がおすすめです。</p></div>
-  </div>
-</section>
-
-<section class="sec bg-white">
-  <div class="wrap">
-    <div class="hgroup"><span class="kicker">当社試算</span><h2 class="h2">2つのご家庭で<br>試算しました</h2></div>
-    <div class="sim"><h4>ケース1　4人家族・オール電化</h4><p class="sp">太陽光10kW＋蓄電池12kWh＋エコキュート／南向き</p>
-      <div class="bars2"><div class="col before"><div class="bar" style="height:100%">電気代<b>30,000円</b></div></div><div class="col after"><div class="bar" style="height:22%"><b>5,000円</b></div></div><div class="bubble"><div>約<b>83%</b>削減</div></div></div>
-      <div class="bars2-lb"><span>導入前</span><span>導入後</span></div>
-      <dl><dt>20年の差</dt><dd>約600万円</dd><dt>導入費用</dt><dd>約500万円</dd><dt>補助金</dt><dd>最大389万円</dd></dl></div>
-    <div class="sim"><h4>ケース2　2人暮らし・ガス併用から</h4><p class="sp">太陽光5kW＋蓄電池9.8kWh＋エコキュート／東西向き</p>
-      <div class="bars2"><div class="col before"><div class="bar" style="height:100%">電気代<b>18,000円</b></div></div><div class="col after"><div class="bar" style="height:26%"><b>4,000円</b></div></div><div class="bubble"><div>約<b>78%</b>削減</div></div></div>
-      <div class="bars2-lb"><span>導入前</span><span>導入後</span></div>
-      <dl><dt>20年の差</dt><dd>約336万円</dd><dt>導入費用</dt><dd>約350万円</dd><dt>補助金</dt><dd>最大307万円</dd></dl></div>
-    <p class="note" style="margin-top:10px">※当社試算。20年の差は月の削減額×240か月。値上がり・売電収入は含みません。実在のお客様の数値ではありません</p>
-
-    <div class="hgroup" style="margin-top:52px"><span class="kicker">元は取れるの？</span><h2 class="h2"><span class="mk">回収年数</span>で比べると</h2></div>
-    <p class="formula">回収年数 ＝（導入費用 − 補助金）<br>÷ 1年間の電気代の削減額</p>
-    <div class="pb"><h4>ケース1：4人家族・オール電化</h4>
-      <div class="r"><span>補助金なし</span><div class="bar" style="width:81%">約17年</div></div>
-      <div class="r"><span>補助金あり</span><div class="bar with" style="width:22%">約4年</div></div></div>
-    <div class="pb"><h4>ケース2：2人暮らし・ガス併用から</h4>
-      <div class="r"><span>補助金なし</span><div class="bar" style="width:100%">約21年</div></div>
-      <div class="r"><span>補助金あり</span><div class="bar with" style="width:18%">約3年</div></div></div>
-    <p class="note" style="margin-top:8px">※補助金を最大額使えた場合。売電収入・値上がり・メンテナンス費は含みません</p>
-    <p class="close">元が取れるかは<span class="mk">「補助金をいくら使えるか」</span>で<br>大きく変わります。</p>
-    <div class="cta-wrap"><a class="cta js-cta" href="#form"><span>うちの回収年数を<br>無料で診断する</span><span class="arrow">›</span></a></div>
-
-    <div class="hgroup" style="margin-top:52px"><span class="kicker">寿命と交換</span><h2 class="h2">何年使える？<br>交換はいつ？</h2></div>
+<div id="ch4"></div>
+<img class="sx" src="I10.webp" alt="相場。太陽光パネル4kW約107万円、5kW約134万円、6kW約160万円、10kW約267万円。蓄電池5kWh約130〜180万円、7kWh約170〜230万円、10kWh約200〜300万円、12kWh以上約250〜350万円。蓄電池は1kWhあたり約25〜30万円が目安" loading="lazy" decoding="async">
+<div class="blk"><p class="note">※工事費込みの目安。太陽光は1kWあたり約26.7万円で計算。屋根の形・メーカー・工事内容で前後します。<span class="kari">【アームズの実際の価格帯に差し替え】</span></p></div>
+<img class="sx" src="I11.webp" alt="補助金は国・都道府県・市区町村の3つ重ねて使えます。申請は当社が代行します。重要なお知らせ：自治体の補助金は予算がなくなり次第、年度の途中でも受付が終わります" loading="lazy" decoding="async">
+<div class="blk"><p class="note">※国：蓄電池のDR補助金＋給湯省エネ 上限<span class="kari">74万円</span>／都道府県・市区町村 上限<span class="kari">◯万円</span>。図はイメージで、全額受け取れるとは限りません。契約・工事の前に申請が必要な制度もあります（当社は交付決定を待って着工します）</p></div>
+<img class="sx" src="I12.webp" alt="2つのご家庭で試算。ケース1 4人家族・オール電化 30,000円→5,000円（約83%削減）、元が取れるまで補助金なし約17年・補助金あり約4年。ケース2 2人暮らし・ガス併用から 18,000円→4,000円（約78%削減）、補助金なし約21年・補助金あり約3年" loading="lazy" decoding="async">
+<div class="blk"><p class="note">※当社試算。実在のお客様の数値ではありません。補助金は最大額（ケース1：389万円／ケース2：307万円）を使えた場合。売電収入・値上がり・メンテナンス費は含みません</p></div>
+<section class="html-sec bg-white"><div class="wrap"><div class="hgroup" style="margin-top:52px"><span class="kicker">寿命と交換</span><h2 class="h2">何年使える？<br>交換はいつ？</h2></div>
     <div class="life">
       <div><b>太陽光パネル</b><span>メーカーの出力保証<span class="kari">【約20〜30年】</span></span></div>
       <div><b>蓄電池</b><span>メーカー保証<span class="kari">【約10〜15年】</span>、充放電の寿命<span class="kari">【◯回】</span></span></div>
       <div><b>パワーコンディショナ</b><span>交換の目安<span class="kari">【約10〜15年】</span>、交換費用<span class="kari">【約◯万円】</span></span></div>
     </div>
-    <p class="note" style="margin-top:8px">※診断書には、20年間の支出として交換費用も入れて試算します。年数はメーカー・製品で異なります</p>
-  </div>
-</section>
+    <p class="note" style="margin-top:8px">※診断書には、20年間の支出として交換費用も入れて試算します。年数はメーカー・製品で異なります</p></div></section>
+<div class="cta-band pale">
+  
+  <span class="cta-lab">＼ 約30秒でわかる！ ／</span>
+  <a class="cta js-cta" href="#form"><span>うちの回収年数を<br>無料で診断する</span><span class="arrow">›</span></a>
+  
+</div>
 
-<!-- どこに頼む -->
-<div class="chap" id="ch5"><p>数字の見方が分かったら</p><h2>どこに頼めば<br><span class="y">安心？</span></h2></div>
-<section class="sec bg-pale">
-  <div class="wrap">
-    <div class="hgroup"><span class="kicker">契約の前に</span><h2 class="h2">その見積もり、<br><span class="mk">6つ</span>を確認してください</h2></div>
-    <ol class="estlist">
-      <li><span class="m">1</span><div><b>本体価格</b>容量（kW・kWh）とメーカー・型番が書いてあるか</div></li>
-      <li><span class="m">2</span><div><b>工事費</b>別紙・「一式」でまとめられていないか</div></li>
-      <li><span class="m">3</span><div><b>支払総額</b>ローンなら金利込みでいくらか</div></li>
-      <li><span class="m">4</span><div><b>補助金</b>引いた後の金額か、申請は誰がするか</div></li>
-      <li><span class="m">5</span><div><b>保証</b>何が、何年、点検費はかかるか</div></li>
-      <li><span class="m">6</span><div><b>比べる条件</b>他社と同じ容量で比べているか</div></li>
-    </ol>
-    <p class="close">「工事費無料」と「総額が安い」は別の話。<br>当社は<span class="mk">工事費も含めた総額</span>でお見積もりします。</p>
-    <div class="cta-wrap"><span class="cta-lab">＼ 他社の見積もりもOK ／</span><a class="cta js-cta" href="#form"><span>今の見積もりを<br>無料で確認してもらう</span><span class="arrow">›</span></a></div>
-  </div>
-</section>
-
-<section class="sec bg-char">
-  <div class="wrap">
-    <div class="hgroup"><span class="kicker">残念ですが…</span><h2 class="h2">蓄電池のトラブル相談が<br><span class="y">約4倍</span>に</h2></div>
-    <p class="note" style="text-align:center">国民生活センターに寄せられた家庭用蓄電池の相談件数</p>
-    <div class="trouble" role="img" aria-label="2016年度325件、2020年度1,314件、約4倍"><div class="col"><b>325件</b><i style="height:20%"></i></div><div class="col now"><b>1,314件</b><i style="height:80%"></i></div><div class="bubble"><div>約<b>4</b>倍</div></div></div>
-    <div class="trouble-yr"><span>2016年度</span><span>2020年度</span></div>
-    <p class="warn-h">こんな営業には注意</p>
-    <div class="quotes"><p>「この値段は今日限り」と急かされ、その場で契約した</p><p>電力会社の関連会社だと名乗られた</p><p>太陽光の無料点検に来た業者に、蓄電池を勧められた</p></div>
-    <div class="cool"><h4>契約してしまった方へ</h4><p>訪問販売で契約した場合、契約書面を受け取った日を含む8日間はクーリング・オフができます。困ったときは消費者ホットライン「188」へ。</p></div>
-    <p class="note" style="margin-top:10px">※出典：国民生活センター 2021年6月3日 報道発表「家庭用蓄電池の訪問販売等のトラブル」</p>
-  </div>
-</section>
-
-<section class="sec bg-white">
-  <div class="wrap">
-    <div class="hgroup"><span class="kicker">だから私たちは</span><h2 class="h2"><span class="mk">3つのお約束</span>をしています</h2></div>
-    <div class="staff"><img src="il_staff.webp" alt=""><div class="say"><h4>無理にはお勧めしません</h4><p>他社の見積もりをお持ちの方も、当社が無料で確認します。その上で他社に決められても構いません。</p></div></div>
-    <ul class="promise">
-      <li><span class="n">1</span><div><b>お得にならない家には、お勧めしません</b><p>メリットが出にくい場合は、診断書の数字で正直にお伝えします</p></div></li>
-      <li><span class="n">2</span><div><b>その場での契約を急かしません</b><p>ご家族で相談してから決めてください</p></div></li>
-      <li><span class="n">3</span><div><b>工事費も含めた総額でお見積もりします</b><p>後から追加費用が出ないよう、現地調査で確認します</p></div></li>
-    </ul>
-  </div>
-</section>
-
-<section class="sec bg-pale">
-  <div class="wrap">
-    <div class="hgroup"><span class="kicker"><span class="kari">みんなの住まい.com</span>が選ばれる</span><h2 class="h2"><span class="feat-num">5</span>つの特徴</h2></div>
-    <div class="feat">
-      <article><div class="fi"><svg class="ico"><use href="#i-house"/></svg></div><div><p class="no">FEATURE 01</p><h3>施工実績<span class="kari">1,200件</span></h3><p>関東・東北で<span class="kari">12年</span>、太陽光と蓄電池を設置してきました</p></div></article>
-      <article><div class="fi"><svg class="ico"><use href="#i-grid"/></svg></div><div><p class="no">FEATURE 02</p><h3>複数メーカーから選べる</h3><p>屋根の形・方角・電気の使い方に合わせて組み合わせます</p></div></article>
-      <article><div class="fi"><svg class="ico"><use href="#i-doc"/></svg></div><div><p class="no">FEATURE 03</p><h3>口頭ではなく、診断書で</h3><p>削減額・補助金・回収年数を数字でお渡しします</p></div></article>
-      <article><div class="fi"><svg class="ico"><use href="#i-hand"/></svg></div><div><p class="no">FEATURE 04</p><h3>補助金の申請を代行</h3><p>制度を調べ、書類を作り、交付決定を待ってから着工します</p></div></article>
-      <article><div class="fi"><svg class="ico"><use href="#i-tool"/></svg></div><div><p class="no">FEATURE 05</p><h3>導入後も定期点検</h3><p><span class="kari">【◯年に1回】</span>の点検を<span class="kari">【無償】</span>で。故障の窓口も当社ひとつです</p></div></article>
-    </div>
-    <div class="cta-wrap">
-      <div class="gift2" role="img" aria-label="このページを見た方限定 Amazonギフトカード 最大10万円分プレゼント"><span class="g-rib">このページを見た方限定</span><div class="g-visual"><i class="g-coin c1"></i><i class="g-coin c2"></i><div class="g-card"><span>Amazon<br>ギフトカード</span></div></div><div class="g-txt"><p class="g-l1">Amazonギフトカード</p><p class="g-l2">最大<b>10万円</b>分<br>プレゼント</p></div></div>
-      <p class="gift-bd">初回相談 ¥2,000／お見積もり ¥5,000／ご成約で合計 ¥100,000</p>
-      <a class="cta js-cta" href="#form"><span>わが家の削減額を<br>無料で診断する</span><span class="arrow">›</span></a>
-    </div>
-
-    <div class="hgroup" style="margin-top:52px"><span class="kicker">取扱メーカー</span><h2 class="h2">ご家庭に合う組み合わせを</h2></div>
+<div id="ch5"></div>
+<img class="sx" src="I13.webp" alt="その見積もり、6つを確認してください。1本体価格 2工事費 3支払総額 4補助金 5保証 6比べる条件" loading="lazy" decoding="async">
+<div class="cta-band">
+  
+  <span class="cta-lab">＼ 他社の見積もりもOK ／</span>
+  <a class="cta js-cta" href="#form"><span>今の見積もりを<br>無料で確認してもらう</span><span class="arrow">›</span></a>
+  
+</div>
+<img class="sx" src="I14.webp" alt="蓄電池のトラブル相談が約4倍に（2016年度325件→2020年度1,314件）。こんな営業に注意：この値段は今日だけです／電力会社の関連会社です／無料点検のついでに…" loading="lazy" decoding="async">
+<section class="html-sec bg-char" style="padding:26px 0 30px"><div class="wrap">
+  <div class="cool" style="margin-top:0"><h4>契約してしまった方へ</h4><p>訪問販売で契約した場合、契約書面を受け取った日を含む8日間はクーリング・オフができます。困ったときは消費者ホットライン「188」へ。</p></div>
+  <p class="note" style="margin-top:10px">※出典：国民生活センター 2021年6月3日 報道発表「家庭用蓄電池の訪問販売等のトラブル」</p>
+</div></section>
+<img class="sx" src="I15.webp" alt="だから私たちは3つのお約束。1お得にならない家には、お勧めしません 2その場での契約を急かしません 3工事費も含めた総額でお見積もりします" loading="lazy" decoding="async">
+<img class="sx" src="I16.webp" alt="選ばれる理由 5つの特徴。関東・東北の施工に対応／複数メーカーから選べる／口頭ではなく診断書で／補助金の申請を代行／導入後も定期点検" loading="lazy" decoding="async">
+<div class="blk"><p class="note"><span class="kari">※施工実績・点検頻度など、実際の数字が決まり次第追記</span></p></div>
+<div class="cta-band pale">
+  <img class="gift-img" src="I19.webp" alt="このページを見た方限定 Amazonギフトカード 最大10万円分プレゼント" loading="lazy">
+  <p class="gift-bd">初回相談 ¥2,000／お見積もり ¥5,000／ご成約で合計 ¥100,000</p>
+  <span class="cta-lab">＼ 約30秒でわかる！ ／</span>
+  <a class="cta js-cta" href="#form"><span>わが家の削減額を<br>無料で診断する</span><span class="arrow">›</span></a>
+  
+</div>
+<section class="html-sec bg-pale" style="padding-top:20px"><div class="wrap"><div class="hgroup" style="margin-top:52px"><span class="kicker">取扱メーカー</span><h2 class="h2">ご家庭に合う組み合わせを</h2></div>
     <div class="makers"><div class="maker">メーカーA<small>ロゴ（仮）</small></div><div class="maker">メーカーB<small>ロゴ（仮）</small></div><div class="maker">メーカーC<small>ロゴ（仮）</small></div><div class="maker">メーカーD<small>ロゴ（仮）</small></div><div class="maker">メーカーE<small>ロゴ（仮）</small></div><div class="maker">メーカーF<small>ロゴ（仮）</small></div></div>
 
     <div class="hgroup" style="margin-top:52px"><span class="kicker">保証・アフター</span><h2 class="h2">導入したあとも、<span class="mk">ずっと</span></h2></div>
@@ -710,9 +520,7 @@ footer{background:var(--navy);color:#cfdcef;text-align:center;font-size:12.5px;p
       <tr><th>自然災害の補償</th><td><span class="kari">【◯年】</span>（火災・落雷・風災・水害など）</td></tr>
       <tr><th>定期点検</th><td><span class="kari">【◯年に1回・無償】</span></td></tr>
       <tr><th>故障したとき</th><td><span class="kari">【◯時間以内】</span>にご連絡</td></tr>
-    </table>
-  </div>
-</section>
+    </table></div></section>
 
 <section class="sec bg-white">
   <div class="wrap">
@@ -730,47 +538,23 @@ footer{background:var(--navy);color:#cfdcef;text-align:center;font-size:12.5px;p
   </div>
 </section>
 
-<!-- まずは何を -->
-<div class="chap" id="ch6"><p>「うちはどうだろう」と思った方へ</p><h2>まずは、<span class="y">無料診断</span>から</h2></div>
-<section class="sec bg-pale">
-  <div class="wrap">
-    <div class="staff"><img src="il_staff.webp" alt=""><div class="say"><h4>補助金に詳しくなくても大丈夫！</h4><p>まだ決めていない方も、「対象になるか知りたい」だけの方も、お気軽にご相談ください。</p></div></div>
-    <div class="hgroup" style="margin-top:44px"><span class="kicker">無料診断でわかること</span><h2 class="h2">このページの数字を、<br><span class="mk">わが家の数字</span>で</h2></div>
-    <div class="doc" role="img" aria-label="わが家の診断書（サンプル）">
-      <p class="dh">わが家の診断書<small>サンプル</small></p>
-      <dl><dt>使える補助金</dt><dd>128万円</dd><dt>補助金を引いた費用</dt><dd>212万円</dd><dt>電気代の削減額（月）</dt><dd>18,600円</dd><dt>元が取れる年数</dt><dd>9.5年</dd></dl>
-      <p class="ft">※数字は記入例です</p>
-    </div>
-    <ul class="know">
-      <li><b>使える補助金</b>国・都道府県・市区町村</li>
-      <li><b>補助金を引いた費用</b>実際に払う金額</li>
-      <li><b>電気代の削減額</b>毎月・20年の差</li>
-      <li><b>元が取れる年数</b>交換費用も入れて</li>
-    </ul>
-    <div class="cta-wrap">
-      <a class="cta js-cta" href="#form"><span>わが家の診断書を<br>無料でもらう</span><span class="arrow">›</span></a>
-      <p class="note cta-note">※補助制度の有無・内容・受付状況は、自治体や時期により異なります</p>
-    </div>
-
-    <div class="hgroup" style="margin-top:52px"><span class="kicker">ご利用の流れ</span><h2 class="h2">お申込みから設置まで<br>最短<span class="mk kari">約3週間</span></h2></div>
-    <ol class="flow">
-      <li><span class="n">1</span><p class="ft">無料診断に申し込む</p><p class="fd">このページのフォームから。入力は約30秒</p></li>
-      <li><span class="n">2</span><p class="ft">お電話でご状況を確認</p><p class="fd">電気代・お住まい・ご検討状況をうかがいます</p></li>
-      <li><span class="n">3</span><p class="ft">現地調査（無料）</p><p class="fd">屋根の向き・状態を確認。1〜2時間</p></li>
-      <li class="key"><span class="n">4</span><p class="ft">診断書とお見積もりをご説明<span class="tag">ここで決めなくて大丈夫</span></p><p class="fd">補助金・費用・削減額を数字でお渡しします</p></li>
-      <li><span class="n">5</span><p class="ft">ご契約・補助金の申請</p><p class="fd">申請は当社が代行。交付決定を待ってから着工します</p></li>
-      <li><span class="n">6</span><p class="ft">工事</p><p class="fd">設置は1〜2日、停電は約1時間</p></li>
-      <li style="padding-bottom:0"><span class="n">7</span><p class="ft">運転開始・定期点検</p><p class="fd">使い方をご説明し、その後も点検でお付き合いします</p></li>
-    </ol>
-    <p class="note" style="margin-top:12px">※設置までの期間は補助金の審査期間により前後します</p>
-
-    <div class="hgroup" style="margin-top:52px"><span class="kicker">対象エリア</span><h2 class="h2">対象となるお住まい</h2></div>
+<div id="ch6"></div>
+<img class="sx" src="I17.webp" alt="補助金に詳しくなくても大丈夫。無料診断でわが家の数字がわかる。わが家の診断書（サンプル）：使える補助金128万円、補助金を引いた費用212万円、電気代の削減額（月）18,600円、元が取れる年数9.5年" loading="lazy" decoding="async">
+<div class="blk"><p class="note">※診断書の数字は記入例です。補助制度の有無・内容・受付状況は、自治体や時期により異なります</p></div>
+<div class="cta-band">
+  
+  <span class="cta-lab">＼ 約30秒でわかる！ ／</span>
+  <a class="cta js-cta" href="#form"><span>わが家の診断書を<br>無料でもらう</span><span class="arrow">›</span></a>
+  
+</div>
+<img class="sx" src="I18.webp" alt="お申込みから設置まで。1無料診断に申し込む 2お電話でご状況を確認 3現地調査（無料） 4診断書とお見積もりをご説明（ここで決めなくて大丈夫） 5ご契約・補助金の申請 6工事 7運転開始・定期点検" loading="lazy" decoding="async">
+<div class="blk"><p class="note">※設置までの期間は補助金の審査期間により前後します（最短<span class="kari">約3週間</span>）</p></div>
+<section class="html-sec bg-pale" style="padding-top:10px"><div class="wrap"><div class="hgroup" style="margin-top:52px"><span class="kicker">対象エリア</span><h2 class="h2">対象となるお住まい</h2></div>
     <div class="area">
       <div><h4>対応エリア</h4><p class="rg">関東</p><p class="pr"><span>東京都</span><span>神奈川県</span><span>埼玉県</span><span>千葉県</span><span>茨城県</span><span>栃木県</span><span>群馬県</span></p><p class="rg">東北</p><p class="pr"><span>宮城県</span><span>福島県</span></p></div>
       <div><h4>お住まい</h4><p style="font-weight:800;margin-top:4px">持ち家の一戸建て<span style="font-weight:500;font-size:14.5px;color:var(--sub)">（賃貸・マンションは対象外）</span></p><p style="font-size:15.5px;margin-top:4px">築年数や屋根の状態は現地調査で確認します。屋根の修繕が先に必要な場合もお伝えします</p></div>
     </div>
-  </div>
-</section>
+  </div></section>
 
 <section class="sec bg-white">
   <div class="wrap">
@@ -796,7 +580,7 @@ footer{background:var(--navy);color:#cfdcef;text-align:center;font-size:12.5px;p
   <p style="text-align:center;font-weight:800;color:var(--blue)">＼ 入力するだけ！約30秒 ／</p>
   <h2>わが家の削減額を<br>無料で診断</h2>
   <p class="trust"><span>✓ 無料</span><span>✓ 約30秒</span><span>✓ しつこい営業はしません</span></p>
-  <div class="gift2" role="img" aria-label="このページを見た方限定 Amazonギフトカード 最大10万円分プレゼント"><span class="g-rib">このページを見た方限定</span><div class="g-visual"><i class="g-coin c1"></i><i class="g-coin c2"></i><div class="g-card"><span>Amazon<br>ギフトカード</span></div></div><div class="g-txt"><p class="g-l1">Amazonギフトカード</p><p class="g-l2">最大<b>10万円</b>分<br>プレゼント</p></div></div>
+  <img class="gift-img" src="I19.webp" alt="このページを見た方限定 Amazonギフトカード 最大10万円分プレゼント" loading="lazy">
   <p class="gift-bd" style="text-align:center">初回相談 ¥2,000／お見積もり ¥5,000／ご成約で合計 ¥100,000</p>
   <div class="form" id="qform">
     <div class="prog"><span id="pnum">質問 1／5</span><span class="rest" id="prest"></span></div>
